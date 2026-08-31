@@ -1,0 +1,45 @@
+Traceback (most recent call last):
+  File "/home/flora/Eng_Pidgin_Edu/train.py", line 281, in <module>
+    training_args = Seq2SeqTrainingArguments(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: Seq2SeqTrainingArguments.__init__() got an unexpected keyword argument 'group_by_length'
+W0811 22:12:43.535000 53339 torch/distributed/elastic/multiprocessing/api.py:1028] Sending process 53359 closing signal SIGTERM
+E0811 22:12:43.603000 53339 torch/distributed/elastic/multiprocessing/api.py:1002] failed (exitcode: 1) local_rank: 1 (pid: 53360) of binary: /home/flora/env/bin/python3
+Traceback (most recent call last):
+  File "/home/flora/env/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 367, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/run.py", line 1028, in main
+    run(args)
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/run.py", line 1019, in run
+    elastic_launch(
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 194, in __call__
+    return launch_agent(
+           ^^^^^^^^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 383, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+train.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2026-08-11_22:12:43
+  host      : riftvm
+  rank      : 0 (local_rank: 0)
+  exitcode  : -15 (pid: 53359)  (SIGTERM)
+  error_file: <N/A>
+  traceback : Signal 15 (SIGTERM) received by PID 53359
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-08-11_22:12:43
+  host      : riftvm
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 53360) 
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

@@ -1,0 +1,16 @@
+# Model checkpoints and predictions -- large binaries, not code.
+# Flagship model release goes to HuggingFace (deliverable #1), not GitHub.
+output_*/
+baseline_runs/
+output/
+
+# Third-party clone from the Pidgin-UNMT investigation (§9.1) -- not
+# this project's own code.
+external/
+
+# Python
+__pycache__/
+*.pyc
+
+# Editor/OS cruft
+.DS_Store

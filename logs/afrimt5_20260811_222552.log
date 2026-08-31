@@ -1,0 +1,28 @@
+================================================================================
+MODEL           : afrimt5 (masakhane/afri-mt5-base)
+WORLD SIZE      : 2 process(es)
+BATCH / GPU     : 4
+GRAD ACCUM      : 2
+EFFECTIVE BATCH : 16
+OUTPUT DIR      : /home/flora/Eng_Pidgin_Edu/output_afrimt5
+================================================================================
+/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W811 22:26:00.425887673 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+NCCL version 2.29.3+cuda12.9
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/284 [00:00<?, ?it/s]Loading weights: 100%|██████████| 284/284 [00:00<00:00, 9113.52it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie shared.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/284 [00:00<?, ?it/s]Loading weights: 100%|██████████| 284/284 [00:00<00:00, 10361.35it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie shared.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+================================================================================
+STARTING TRAINING: afrimt5
+================================================================================
+  0%|          | 0/6560 [00:00<?, ?it/s]/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+  return func(*args, **kwargs)
+/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+  return func(*args, **kwargs)
+[transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+[transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+  0%|          | 1/6560 [00:02<5:02:48,  2.77s/it]  0%|          | 2/6560 [00:04<4:08:35,  2.27s/it]  0%|          | 3/6560 [00:06<3:48:40,  2.09s/it]  0%|          | 4/6560 [00:08<3:39:03,  2.00s/it]  0%|          | 5/6560 [00:10<3:23:20,  1.86s/it]  0%|          | 6/6560 [00:11<3:24:47,  1.87s/it]  0%|          | 7/6560 [00:13<3:24:09,  1.87s/it]  0%|          | 8/6560 [00:15<3:18:30,  1.82s/it]  0%|          | 9/6560 [00:17<3:16:24,  1.80s/it]  0%|          | 10/6560 [00:19<3:17:36,  1.81s/it]  0%|          | 11/6560 [00:20<3:17:37,  1.81s/it]  0%|          | 12/6560 [00:22<3:17:52,  1.81s/it]  0%|          | 13/6560 [00:24<3:19:04,  1.82s/it]  0%|          | 14/6560 [00:26<3:22:18,  1.85s/it]  0%|          | 15/6560 [00:28<3:19:09,  1.83s/it]  0%|          | 16/6560 [00:30<3:19:20,  1.83s/it]  0%|          | 17/6560 [00:31<3:19:07,  1.83s/it]  0%|          | 18/6560 [00:34<3:30:13,  1.93s/it]  0%|          | 19/6560 [00:35<3:25:06,  1.88s/it]

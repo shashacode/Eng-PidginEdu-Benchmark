@@ -1,0 +1,64 @@
+================================================================================
+MODEL           : afrimt5 (masakhane/afri-mt5-base)
+WORLD SIZE      : 2 process(es)
+BATCH / GPU     : 4
+GRAD ACCUM      : 2
+EFFECTIVE BATCH : 16
+OUTPUT DIR      : /home/flora/Eng_Pidgin_Edu/output_afrimt5
+================================================================================
+/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W811 22:25:22.217172305 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+NCCL version 2.29.3+cuda12.9
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Tokenizing (num_proc=4):   0%|          | 0/20986 [00:00<?, ? examples/s]Tokenizing (num_proc=4):   5%|▍         | 1000/20986 [00:00<00:09, 2025.80 examples/s]Tokenizing (num_proc=4):  24%|██▍       | 5000/20986 [00:00<00:02, 7684.11 examples/s]Tokenizing (num_proc=4):  43%|████▎     | 9000/20986 [00:01<00:01, 10434.07 examples/s]Tokenizing (num_proc=4):  62%|██████▏   | 13000/20986 [00:01<00:00, 12005.32 examples/s]Tokenizing (num_proc=4):  76%|███████▌  | 16000/20986 [00:01<00:00, 14763.28 examples/s]Tokenizing (num_proc=4):  86%|████████▌ | 18000/20986 [00:01<00:00, 13907.82 examples/s]Tokenizing (num_proc=4):  94%|█████████▍| 19740/20986 [00:01<00:00, 14298.17 examples/s]Tokenizing (num_proc=4): 100%|██████████| 20986/20986 [00:01<00:00, 10764.85 examples/s]
+Tokenizing (num_proc=4):   0%|          | 0/2623 [00:00<?, ? examples/s]Tokenizing (num_proc=4):  25%|██▌       | 656/2623 [00:00<00:01, 1824.92 examples/s]Tokenizing (num_proc=4): 100%|██████████| 2623/2623 [00:00<00:00, 5034.57 examples/s]
+Tokenizing (num_proc=4):   0%|          | 0/2623 [00:00<?, ? examples/s]Tokenizing (num_proc=4):  25%|██▌       | 656/2623 [00:00<00:01, 1779.21 examples/s]Tokenizing (num_proc=4): 100%|██████████| 2623/2623 [00:00<00:00, 4870.56 examples/s]
+/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+Loading weights:   0%|          | 0/284 [00:00<?, ?it/s]Loading weights: 100%|██████████| 284/284 [00:00<00:00, 9333.53it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie shared.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+Loading weights:   0%|          | 0/284 [00:00<?, ?it/s]Loading weights: 100%|██████████| 284/284 [00:00<00:00, 11232.06it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie shared.weight to lm_head.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+================================================================================
+STARTING TRAINING: afrimt5
+================================================================================
+  0%|          | 0/6560 [00:00<?, ?it/s]/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+  return func(*args, **kwargs)
+/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+  return func(*args, **kwargs)
+[transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+[transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+  0%|          | 1/6560 [00:01<3:38:00,  1.99s/it]  0%|          | 2/6560 [00:03<2:34:59,  1.42s/it]  0%|          | 3/6560 [00:04<2:15:06,  1.24s/it]  0%|          | 4/6560 [00:05<2:05:33,  1.15s/it]  0%|          | 5/6560 [00:06<2:00:31,  1.10s/it]  0%|          | 6/6560 [00:07<1:57:53,  1.08s/it]  0%|          | 7/6560 [00:08<1:55:51,  1.06s/it]  0%|          | 8/6560 [00:09<1:54:12,  1.05s/it]  0%|          | 9/6560 [00:10<1:53:10,  1.04s/it]  0%|          | 10/6560 [00:11<1:52:47,  1.03s/it]  0%|          | 11/6560 [00:12<1:52:20,  1.03s/it]  0%|          | 12/6560 [00:13<1:52:57,  1.04s/it]  0%|          | 13/6560 [00:14<1:51:56,  1.03s/it]  0%|          | 14/6560 [00:15<1:51:34,  1.02s/it]  0%|          | 15/6560 [00:16<1:50:40,  1.01s/it]  0%|          | 16/6560 [00:17<1:50:19,  1.01s/it]  0%|          | 17/6560 [00:18<1:49:57,  1.01s/it]  0%|          | 18/6560 [00:19<2:03:41,  1.13s/it]  0%|          | 19/6560 [00:20<1:59:20,  1.09s/it]  0%|          | 20/6560 [00:21<1:57:44,  1.08s/it]  0%|          | 21/6560 [00:22<1:55:31,  1.06s/it]  0%|          | 22/6560 [00:23<1:54:40,  1.05s/it]  0%|          | 23/6560 [00:24<1:53:58,  1.05s/it]  0%|          | 24/6560 [00:26<2:11:34,  1.21s/it]  0%|          | 25/6560 [00:28<2:26:28,  1.34s/it]  0%|          | 26/6560 [00:29<2:25:18,  1.33s/it]  0%|          | 27/6560 [00:30<2:15:08,  1.24s/it]  0%|          | 28/6560 [00:31<2:25:02,  1.33s/it]  0%|          | 29/6560 [00:33<2:33:35,  1.41s/it]  0%|          | 30/6560 [00:34<2:25:35,  1.34s/it]  0%|          | 31/6560 [00:36<2:35:30,  1.43s/it]  0%|          | 32/6560 [00:37<2:38:31,  1.46s/it]  1%|          | 33/6560 [00:39<2:43:08,  1.50s/it]  1%|          | 34/6560 [00:41<2:52:59,  1.59s/it]  1%|          | 35/6560 [00:43<2:59:33,  1.65s/it]  1%|          | 36/6560 [00:44<3:03:25,  1.69s/it]  1%|          | 37/6560 [00:46<3:16:28,  1.81s/it]  1%|          | 38/6560 [00:48<3:16:47,  1.81s/it]  1%|          | 39/6560 [00:50<3:15:03,  1.79s/it]  1%|          | 40/6560 [00:52<3:14:14,  1.79s/it]  1%|          | 41/6560 [00:54<3:16:52,  1.81s/it]  1%|          | 42/6560 [00:55<3:14:33,  1.79s/it]  1%|          | 43/6560 [00:57<3:12:46,  1.77s/it]  1%|          | 44/6560 [00:59<3:14:45,  1.79s/it]  1%|          | 45/6560 [01:01<3:13:37,  1.78s/it]  1%|          | 46/6560 [01:02<3:12:08,  1.77s/it]  1%|          | 47/6560 [01:04<3:11:46,  1.77s/it]  1%|          | 48/6560 [01:06<3:14:55,  1.80s/it]  1%|          | 49/6560 [01:08<3:16:24,  1.81s/it]  1%|          | 50/6560 [01:10<3:13:15,  1.78s/it]                                                   {'loss': '23.61', 'grad_norm': '12.18', 'learning_rate': '2.978e-05', 'epoch': '0.03811'}
+  1%|          | 50/6560 [01:10<3:13:15,  1.78s/it]  1%|          | 51/6560 [01:11<3:15:46,  1.80s/it]  1%|          | 52/6560 [01:13<3:05:52,  1.71s/it]  1%|          | 53/6560 [01:14<2:42:50,  1.50s/it]  1%|          | 54/6560 [01:15<2:27:47,  1.36s/it]  1%|          | 55/6560 [01:16<2:16:13,  1.26s/it]  1%|          | 56/6560 [01:17<2:16:16,  1.26s/it]  1%|          | 57/6560 [01:18<2:08:39,  1.19s/it]  1%|          | 58/6560 [01:19<2:03:19,  1.14s/it]  1%|          | 59/6560 [01:20<1:59:16,  1.10s/it]  1%|          | 60/6560 [01:21<1:57:08,  1.08s/it]  1%|          | 61/6560 [01:22<1:55:08,  1.06s/it]  1%|          | 62/6560 [01:23<1:53:34,  1.05s/it]  1%|          | 63/6560 [01:24<1:52:17,  1.04s/it]  1%|          | 64/6560 [01:25<1:52:02,  1.03s/it]  1%|          | 65/6560 [01:26<1:51:11,  1.03s/it]  1%|          | 66/6560 [01:28<1:52:15,  1.04s/it]  1%|          | 67/6560 [01:29<1:53:38,  1.05s/it]  1%|          | 68/6560 [01:30<1:52:37,  1.04s/it]  1%|          | 69/6560 [01:31<1:51:53,  1.03s/it]  1%|          | 70/6560 [01:32<1:51:26,  1.03s/it]  1%|          | 71/6560 [01:33<1:51:48,  1.03s/it]  1%|          | 72/6560 [01:34<1:51:55,  1.04s/it]  1%|          | 73/6560 [01:35<1:51:17,  1.03s/it]  1%|          | 74/6560 [01:36<1:50:50,  1.03s/it]  1%|          | 75/6560 [01:37<1:50:22,  1.02s/it]  1%|          | 76/6560 [01:38<1:59:16,  1.10s/it]  1%|          | 77/6560 [01:39<1:56:38,  1.08s/it]  1%|          | 78/6560 [01:40<1:54:16,  1.06s/it]  1%|          | 79/6560 [01:41<1:55:53,  1.07s/it]  1%|          | 80/6560 [01:42<1:53:29,  1.05s/it]  1%|          | 81/6560 [01:43<1:52:05,  1.04s/it]  1%|▏         | 82/6560 [01:44<1:53:14,  1.05s/it]  1%|▏         | 83/6560 [01:45<1:53:46,  1.05s/it]  1%|▏         | 84/6560 [01:46<1:52:20,  1.04s/it]  1%|▏         | 85/6560 [01:47<1:51:04,  1.03s/it]  1%|▏         | 86/6560 [01:48<1:49:57,  1.02s/it]  1%|▏         | 87/6560 [01:49<1:49:58,  1.02s/it]  1%|▏         | 88/6560 [01:50<1:49:15,  1.01s/it]  1%|▏         | 89/6560 [01:51<1:49:33,  1.02s/it]  1%|▏         | 90/6560 [01:52<1:49:36,  1.02s/it]  1%|▏         | 91/6560 [01:53<1:49:26,  1.02s/it]  1%|▏         | 92/6560 [01:55<1:49:43,  1.02s/it]  1%|▏         | 93/6560 [01:56<1:49:50,  1.02s/it]  1%|▏         | 94/6560 [01:57<1:50:10,  1.02s/it]  1%|▏         | 95/6560 [01:58<1:58:39,  1.10s/it]  1%|▏         | 96/6560 [01:59<1:55:38,  1.07s/it]  1%|▏         | 97/6560 [02:00<1:55:18,  1.07s/it]  1%|▏         | 98/6560 [02:01<1:53:53,  1.06s/it]W0811 22:27:41.084000 55191 torch/distributed/elastic/agent/server/api.py:753] Received 15 death signal, shutting down workers
+W0811 22:27:41.086000 55191 torch/distributed/elastic/multiprocessing/api.py:1028] Sending process 55221 closing signal SIGTERM
+W0811 22:27:41.089000 55191 torch/distributed/elastic/multiprocessing/api.py:1028] Sending process 55222 closing signal SIGTERM
+Traceback (most recent call last):
+  File "/home/flora/env/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 367, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/run.py", line 1028, in main
+    run(args)
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/run.py", line 1019, in run
+    elastic_launch(
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 194, in __call__
+    return launch_agent(
+           ^^^^^^^^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 374, in launch_agent
+    result = agent.run()
+             ^^^^^^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/elastic/metrics/api.py", line 134, in wrapper
+    result = f(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/elastic/agent/server/api.py", line 745, in run
+    result = self._invoke_run(role)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/elastic/agent/server/api.py", line 923, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 86, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 55191 got signal: 15

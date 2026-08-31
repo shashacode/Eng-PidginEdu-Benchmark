@@ -1,0 +1,43 @@
+Tue Aug 25 01:36:04 UTC 2026 waiting on toucan (already running, greedy)
+Tue Aug 25 01:41:26 UTC 2026 toucan: zero-shot done
+Tue Aug 25 01:41:26 UTC 2026 waiting on seamless (already running, greedy)
+Tue Aug 25 01:41:26 UTC 2026 seamless: zero-shot done
+Tue Aug 25 01:41:26 UTC 2026 launching afriteva (gpu0), greedy decoding
+Tue Aug 25 01:41:26 UTC 2026 launching mt5 (gpu1), greedy decoding
+Tue Aug 25 01:43:56 UTC 2026 afriteva: zero-shot done
+Tue Aug 25 01:43:56 UTC 2026 mt5: zero-shot done
+Tue Aug 25 01:43:56 UTC 2026 launching afrimt5 (gpu0), greedy decoding
+Tue Aug 25 01:43:56 UTC 2026 launching nllb (gpu1), greedy decoding
+Tue Aug 25 01:56:29 UTC 2026 afrimt5: zero-shot done
+Tue Aug 25 01:56:29 UTC 2026 nllb: zero-shot done
+Tue Aug 25 01:56:29 UTC 2026 launching mbart50 (gpu0), greedy decoding
+Tue Aug 25 01:56:29 UTC 2026 launching afriteva_v2_large (gpu1), greedy decoding
+Tue Aug 25 02:04:51 UTC 2026 mbart50: zero-shot done
+Tue Aug 25 02:04:51 UTC 2026 afriteva_v2_large: zero-shot done
+Tue Aug 25 02:04:51 UTC 2026 launching cheetah (gpu0), greedy decoding
+Tue Aug 25 02:04:51 UTC 2026 launching mt5_large (gpu1), greedy decoding
+Tue Aug 25 02:28:47 UTC 2026 cheetah: zero-shot done
+Tue Aug 25 02:28:47 UTC 2026 mt5_large: zero-shot done
+Tue Aug 25 02:28:47 UTC 2026 launching m2m100_1.2b (gpu0), greedy decoding
+Tue Aug 25 02:28:47 UTC 2026 launching madlad3b (gpu1), greedy decoding
+Tue Aug 25 03:12:47 UTC 2026 m2m100_1.2b: zero-shot done
+Tue Aug 25 03:12:47 UTC 2026 madlad3b: zero-shot done
+Tue Aug 25 03:12:47 UTC 2026 launching final model: t5v11xl (solo, odd count out)
+Tue Aug 25 03:12:47 UTC 2026 launching t5v11xl (gpu0), greedy decoding
+Tue Aug 25 03:35:53 UTC 2026 t5v11xl: zero-shot done
+Tue Aug 25 03:35:53 UTC 2026 zero-shot sweep complete: all 14 models scored, greedy decoding throughout.
+model                    BLEU   chrF++  GlossAcc  GlossF1
+nllb                     2.08    14.20      0.04     0.07
+afrimt5                  0.03     4.31      0.00     0.00
+afriteva                 0.30     4.82      0.00     0.00
+afriteva_v2_large        5.84    19.42      0.00     0.00
+cheetah                  0.00     0.01      0.00     0.00
+m2m100                  27.08    57.93      0.00     0.00
+m2m100_1.2b             28.23    58.85      0.00     0.00
+madlad3b                 5.80    25.96      0.00     0.00
+mbart50                  2.34    10.19      0.00     0.00
+mt5                      0.28     4.88      0.00     0.00
+mt5_large                0.97    15.83      0.00     0.00
+seamless                32.71    62.53      0.00     0.00
+t5v11xl                  3.16    11.88      0.00     0.00
+toucan                  17.01    40.68      0.00     0.00

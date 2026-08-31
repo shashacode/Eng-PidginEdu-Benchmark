@@ -1,0 +1,144 @@
+================================================================================
+MODEL           : m2m100 (facebook/m2m100_418M, 418M)
+OPTIMIZER       : adamw_torch
+WORLD SIZE      : 2 process(es)
+BATCH / GPU     : 8
+EVAL BATCH / GPU: 16
+BEAMS eval/test : 1 / 5
+TARGET COLUMN   : pcm_augmented
+GRAD ACCUM      : 1
+EFFECTIVE BATCH : 16
+OUTPUT DIR      : /home/flora/Eng_Pidgin_Edu/output_m2m100
+================================================================================
+/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W815 15:19:13.445867193 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+NCCL version 2.29.3+cuda12.9
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+language tokens : en -> en (bos id 49)
+Tokenizing (num_proc=4):   0%|          | 0/20986 [00:00<?, ? examples/s]Tokenizing (num_proc=4):   5%|▍         | 1000/20986 [00:00<00:10, 1869.14 examples/s]Tokenizing (num_proc=4):  24%|██▍       | 5000/20986 [00:00<00:02, 6446.83 examples/s]Tokenizing (num_proc=4):  43%|████▎     | 9000/20986 [00:01<00:01, 8392.23 examples/s]Tokenizing (num_proc=4):  62%|██████▏   | 13000/20986 [00:01<00:00, 9499.42 examples/s]Tokenizing (num_proc=4):  81%|████████  | 17000/20986 [00:01<00:00, 10215.02 examples/s]Tokenizing (num_proc=4):  98%|█████████▊| 20493/20986 [00:02<00:00, 13107.77 examples/s]Tokenizing (num_proc=4): 100%|██████████| 20986/20986 [00:02<00:00, 9402.95 examples/s] 
+Tokenizing (num_proc=4):   0%|          | 0/2623 [00:00<?, ? examples/s]Tokenizing (num_proc=4):  25%|██▌       | 656/2623 [00:00<00:01, 1660.50 examples/s]Tokenizing (num_proc=4): 100%|██████████| 2623/2623 [00:00<00:00, 4645.47 examples/s]
+Tokenizing (num_proc=4):   0%|          | 0/2623 [00:00<?, ? examples/s]Tokenizing (num_proc=4):  25%|██▌       | 656/2623 [00:00<00:01, 1687.11 examples/s]Tokenizing (num_proc=4): 100%|██████████| 2623/2623 [00:00<00:00, 4654.77 examples/s]
+/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+VALIDATION      : 1000 of 2623 examples (seeded subsample)
+Loading weights:   0%|          | 0/512 [00:00<?, ?it/s]Loading weights: 100%|██████████| 512/512 [00:00<00:00, 10858.82it/s]
+Loading weights:   0%|          | 0/512 [00:00<?, ?it/s]Loading weights: 100%|██████████| 512/512 [00:00<00:00, 13437.14it/s]
+================================================================================
+STARTING TRAINING: m2m100
+================================================================================
+  0%|          | 0/6560 [00:00<?, ?it/s]/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+  return func(*args, **kwargs)
+/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+  return func(*args, **kwargs)
+  0%|          | 1/6560 [00:01<3:19:29,  1.82s/it]  0%|          | 2/6560 [00:02<1:45:36,  1.04it/s][rank1]: Traceback (most recent call last):
+[rank1]:   File "/home/flora/Eng_Pidgin_Edu/train.py", line 801, in <module>
+[rank1]:     trainer.train(resume_from_checkpoint=RESUME_FROM)
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/trainer.py", line 1449, in train
+[rank1]:     return inner_training_loop(
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/trainer.py", line 1531, in _inner_training_loop
+[rank1]:     self._run_epoch(
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/trainer.py", line 1759, in _run_epoch
+[rank1]:     tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+[rank1]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/trainer.py", line 1931, in training_step
+[rank1]:     loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/trainer.py", line 2005, in compute_loss
+[rank1]:     outputs = model(**inputs)
+[rank1]:               ^^^^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[rank1]:     return self._call_impl(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[rank1]:     return forward_call(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1886, in forward
+[rank1]:     inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+[rank1]:                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1775, in _pre_forward
+[rank1]:     if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+[rank1]:                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]: RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+[rank1]: making sure all `forward` function outputs participate in calculating loss. 
+[rank1]: If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+[rank1]: Parameter indices which did not receive grad for rank 1: 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64
+[rank1]:  In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/flora/Eng_Pidgin_Edu/train.py", line 801, in <module>
+[rank0]:     trainer.train(resume_from_checkpoint=RESUME_FROM)
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/trainer.py", line 1449, in train
+[rank0]:     return inner_training_loop(
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/trainer.py", line 1531, in _inner_training_loop
+[rank0]:     self._run_epoch(
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/trainer.py", line 1759, in _run_epoch
+[rank0]:     tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+[rank0]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/trainer.py", line 1931, in training_step
+[rank0]:     loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/trainer.py", line 2005, in compute_loss
+[rank0]:     outputs = model(**inputs)
+[rank0]:               ^^^^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+[rank0]:     return self._call_impl(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+[rank0]:     return forward_call(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1886, in forward
+[rank0]:     inputs, kwargs = self._pre_forward(*inputs, **kwargs)
+[rank0]:                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/torch/nn/parallel/distributed.py", line 1775, in _pre_forward
+[rank0]:     if torch.is_grad_enabled() and self.reducer._rebuild_buckets():
+[rank0]:                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: RuntimeError: Expected to have finished reduction in the prior iteration before starting a new one. This error indicates that your module has parameters that were not used in producing loss. You can enable unused parameter detection by passing the keyword argument `find_unused_parameters=True` to `torch.nn.parallel.DistributedDataParallel`, and by 
+[rank0]: making sure all `forward` function outputs participate in calculating loss. 
+[rank0]: If you already have done the above, then the distributed data parallel module wasn't able to locate the output tensors in the return value of your module's `forward` function. Please include the loss function and the structure of the return value of `forward` of your module when reporting this issue (e.g. list, dict, iterable).
+[rank0]: Parameter indices which did not receive grad for rank 0: 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64
+[rank0]:  In addition, you can set the environment variable TORCH_DISTRIBUTED_DEBUG to either INFO or DETAIL to print out information about which particular parameters did not receive gradient on this rank as part of this error
+[rank0]:[W815 15:19:36.741292270 ProcessGroupNCCL.cpp:1624] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+  0%|          | 2/6560 [00:03<3:23:34,  1.86s/it]
+W0815 15:19:38.210000 156979 torch/distributed/elastic/multiprocessing/api.py:1028] Sending process 156999 closing signal SIGTERM
+E0815 15:19:38.427000 156979 torch/distributed/elastic/multiprocessing/api.py:1002] failed (exitcode: 1) local_rank: 0 (pid: 156998) of binary: /home/flora/env/bin/python3
+Traceback (most recent call last):
+  File "/home/flora/env/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 367, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/run.py", line 1028, in main
+    run(args)
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/run.py", line 1019, in run
+    elastic_launch(
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 194, in __call__
+    return launch_agent(
+           ^^^^^^^^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 383, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+train.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2026-08-15_15:19:38
+  host      : riftvm
+  rank      : 1 (local_rank: 1)
+  exitcode  : -15 (pid: 156999)  (SIGTERM)
+  error_file: <N/A>
+  traceback : Signal 15 (SIGTERM) received by PID 156999
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-08-15_15:19:38
+  host      : riftvm
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 156998) 
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

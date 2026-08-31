@@ -1,0 +1,53 @@
+# Eng-PidginEdu benchmark -- pinned, verified-working environment.
+#
+# torch needs the CUDA 12.6 wheel index, not plain PyPI (PyPI does not
+# host the "+cu126" local version tag). Install it FIRST, separately:
+#
+#   pip install torch==2.13.0+cu126 --index-url https://download.pytorch.org/whl/cu126
+#
+# Then install everything else:
+#
+#   pip install -r requirements.txt
+#
+# See BENCHMARK_REPORT.md §1 for the full hardware/software environment
+# this was developed and verified against (2x Tesla V100-32GB, CUDA
+# 13.0 driver, fp32 throughout -- no bf16 support on Volta). torch's own
+# +cu126 build target is older than the 13.0 driver on that hardware;
+# this is normal -- CUDA wheels are forward-compatible with newer
+# drivers, only the reverse direction matters.
+#
+# transformers is pinned to 4.57.6, not the 5.15.0 originally used for
+# the earliest full-fine-tuning runs (§1) -- installing peft/comet
+# later in the project pulled in this version via normal dependency
+# resolution, and it is what every result from the AfriCOMET
+# implementation onward (zero-shot sweep, LoRA phase, and the §3.20
+# fix/re-verification) actually ran under. Confirmed directly, not
+# assumed: the two behavioral differences this codebase's comments
+# reference as "transformers 5.x" (the dtype= kwarg rename, and
+# forced_bos_token_id on model.config becoming a hard error rather
+# than a deprecation warning) both check out identically under this
+# pinned 4.57.6 -- dtype= genuinely controls load precision, and the
+# codepath this project already avoids for exactly this reason (using
+# generation_config instead) works correctly either way. This pin is
+# the one to trust for reproduction.
+
+transformers==4.57.6
+accelerate==1.14.0
+peft==0.20.0
+datasets==5.0.1
+evaluate==0.4.6
+huggingface_hub==0.36.2
+
+# Data / metrics
+sacrebleu==2.6.0
+sentencepiece==0.2.2
+pandas==3.0.5
+numpy==1.26.4
+scipy==1.17.1
+protobuf==4.25.9
+tokenizers==0.22.2
+
+# AfriCOMET (africomet_metrics.py)
+unbabel-comet==2.2.7
+pytorch-lightning==2.6.5
+torchmetrics==0.10.3

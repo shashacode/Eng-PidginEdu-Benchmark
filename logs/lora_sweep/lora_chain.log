@@ -1,0 +1,40 @@
+Wed Aug 26 20:06:56 UTC 2026 launching lora afriteva (gpu0)
+Wed Aug 26 20:06:56 UTC 2026 launching lora seamless (gpu1)
+Thu Aug 27 07:32:04 UTC 2026 afriteva: lora done
+Thu Aug 27 07:32:04 UTC 2026 seamless: lora done
+Thu Aug 27 07:32:04 UTC 2026 launching lora m2m100 (gpu0)
+Thu Aug 27 07:32:04 UTC 2026 launching lora mt5_large (gpu1)
+Thu Aug 27 20:22:17 UTC 2026 m2m100: lora done
+Thu Aug 27 20:22:17 UTC 2026 mt5_large: lora done
+Thu Aug 27 20:22:17 UTC 2026 launching lora mt5 (gpu0)
+Thu Aug 27 20:22:17 UTC 2026 launching lora cheetah (gpu1)
+Fri Aug 28 08:58:31 UTC 2026 mt5: lora done
+Fri Aug 28 08:58:31 UTC 2026 cheetah: lora done
+Fri Aug 28 08:58:31 UTC 2026 launching lora afrimt5 (gpu0)
+Fri Aug 28 08:58:31 UTC 2026 launching lora toucan (gpu1)
+Fri Aug 28 21:18:13 UTC 2026 afrimt5: lora done
+Fri Aug 28 21:18:13 UTC 2026 toucan: lora done
+Fri Aug 28 21:18:13 UTC 2026 launching lora nllb (gpu0)
+Fri Aug 28 21:18:13 UTC 2026 launching lora afriteva_v2_large (gpu1)
+Sat Aug 29 09:35:55 UTC 2026 nllb: lora done
+Sat Aug 29 09:35:55 UTC 2026 afriteva_v2_large: lora done
+Sat Aug 29 09:35:55 UTC 2026 launching lora mbart50 (gpu0)
+Sat Aug 29 09:35:55 UTC 2026 launching lora m2m100_1.2b (gpu1)
+Sat Aug 29 19:04:53 UTC 2026 mbart50: lora done
+Sat Aug 29 19:04:53 UTC 2026 m2m100_1.2b: lora done
+Sat Aug 29 19:04:53 UTC 2026 LoRA sweep complete: all 14 models now have a LoRA result.
+model                    BLEU   chrF++  GlossAcc  GlossF1
+seamless                65.05    79.59     78.36    76.08
+mbart50                 67.17    79.23     74.36    74.59
+m2m100_1.2b             66.60    78.82     73.66    74.00
+nllb                    63.89    79.05     77.55    73.75
+madlad3b                61.43    78.44     73.07    70.78
+m2m100                  65.62    78.31     69.85    70.65
+t5v11xl                 63.68    78.09     66.14    66.36
+toucan                  64.38    78.28     62.47    64.18
+afriteva_v2_large       65.87    78.59     59.35    62.50
+mt5_large               63.32    77.46     58.88    61.68
+cheetah                 63.36    77.67     57.78    60.75
+afriteva                57.50    74.96     24.17    31.26
+afrimt5                 63.56    77.61     20.51    29.22
+mt5                     61.58    76.74     12.00    18.52

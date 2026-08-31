@@ -1,0 +1,70 @@
+================================================================================
+MODEL           : afriteva (castorini/afriteva_base, 229M)
+OPTIMIZER       : adamw_torch
+WORLD SIZE      : 1 process(es)
+BATCH / GPU     : 8
+EVAL BATCH / GPU: 16
+BEAMS eval/test : 1 / 5
+TARGET COLUMN   : pcm_augmented
+GRAD ACCUM      : 2
+EFFECTIVE BATCH : 16
+OUTPUT DIR      : /home/flora/Eng_Pidgin_Edu/output_lora_afriteva
+================================================================================
+VALIDATION      : 20 of 2623 examples (seeded subsample)
+trainable params: 4,718,592 || all params: 233,746,944 || trainable%: 2.0187
+================================================================================
+STARTING TRAINING: afriteva
+================================================================================
+  0%|          | 0/1312 [00:00<?, ?it/s]  0%|          | 1/1312 [00:02<47:45,  2.19s/it]  0%|          | 2/1312 [00:02<28:39,  1.31s/it]  0%|          | 3/1312 [00:03<22:25,  1.03s/it]  0%|          | 4/1312 [00:04<19:05,  1.14it/s]  0%|          | 5/1312 [00:04<17:13,  1.26it/s]  0%|          | 6/1312 [00:05<16:06,  1.35it/s]  1%|          | 7/1312 [00:06<15:15,  1.43it/s]  1%|          | 8/1312 [00:06<14:45,  1.47it/s]  1%|          | 9/1312 [00:07<14:21,  1.51it/s]  1%|          | 10/1312 [00:08<14:07,  1.54it/s]  1%|          | 11/1312 [00:08<13:58,  1.55it/s]  1%|          | 12/1312 [00:09<13:55,  1.56it/s]  1%|          | 13/1312 [00:09<13:48,  1.57it/s]  1%|          | 14/1312 [00:10<13:41,  1.58it/s]  1%|          | 15/1312 [00:11<13:40,  1.58it/s]  1%|          | 16/1312 [00:12<16:28,  1.31it/s]  1%|▏         | 17/1312 [00:12<15:32,  1.39it/s]  1%|▏         | 18/1312 [00:13<14:56,  1.44it/s]  1%|▏         | 19/1312 [00:14<14:31,  1.48it/s]  2%|▏         | 20/1312 [00:14<14:15,  1.51it/s]/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+  return func(*args, **kwargs)
+
+  0%|          | 0/2 [00:00<?, ?it/s][A
+100%|██████████| 2/2 [00:00<00:00,  2.05it/s][ASaved predictions -> /home/flora/Eng_Pidgin_Edu/output_lora_afriteva/predictions.csv
+                                                 
+                                             [A{'eval_loss': 2.5764269828796387, 'eval_bleu': 4.4699, 'eval_chrf': 20.5635, 'eval_chrf++': 19.2985, 'eval_ter': 145.3313, 'eval_gen_len': 98.3, 'eval_runtime': 8.5126, 'eval_samples_per_second': 2.349, 'eval_steps_per_second': 0.235, 'epoch': 0.02}
+  2%|▏         | 20/1312 [00:23<14:15,  1.51it/s]
+100%|██████████| 2/2 [00:01<00:00,  2.05it/s][A
+                                             [A/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+  2%|▏         | 21/1312 [00:24<1:12:02,  3.35s/it]  2%|▏         | 22/1312 [00:24<54:24,  2.53s/it]    2%|▏         | 23/1312 [00:25<42:06,  1.96s/it]  2%|▏         | 24/1312 [00:26<33:27,  1.56s/it]  2%|▏         | 25/1312 [00:26<27:23,  1.28s/it]  2%|▏         | 26/1312 [00:27<23:06,  1.08s/it]  2%|▏         | 27/1312 [00:28<20:06,  1.07it/s]  2%|▏         | 28/1312 [00:28<18:00,  1.19it/s]  2%|▏         | 29/1312 [00:29<16:36,  1.29it/s]  2%|▏         | 30/1312 [00:29<15:37,  1.37it/s]  2%|▏         | 31/1312 [00:30<15:01,  1.42it/s]  2%|▏         | 32/1312 [00:31<14:29,  1.47it/s]  3%|▎         | 33/1312 [00:31<14:12,  1.50it/s]  3%|▎         | 34/1312 [00:32<16:09,  1.32it/s]  3%|▎         | 35/1312 [00:33<15:19,  1.39it/s]  3%|▎         | 36/1312 [00:34<14:42,  1.45it/s]  3%|▎         | 37/1312 [00:34<16:02,  1.32it/s]  3%|▎         | 38/1312 [00:35<15:10,  1.40it/s]  3%|▎         | 39/1312 [00:36<14:36,  1.45it/s]  3%|▎         | 40/1312 [00:36<14:11,  1.49it/s]/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+  return func(*args, **kwargs)
+
+  0%|          | 0/2 [00:00<?, ?it/s][A
+100%|██████████| 2/2 [00:05<00:00,  2.57s/it][ASaved predictions -> /home/flora/Eng_Pidgin_Edu/output_lora_afriteva/predictions.csv
+                                                 
+                                             [A{'eval_loss': 2.3641018867492676, 'eval_bleu': 4.8225, 'eval_chrf': 28.2395, 'eval_chrf++': 25.7119, 'eval_ter': 182.3795, 'eval_gen_len': 133.65, 'eval_runtime': 11.8371, 'eval_samples_per_second': 1.69, 'eval_steps_per_second': 0.169, 'epoch': 0.03}
+  3%|▎         | 40/1312 [00:48<14:11,  1.49it/s]
+100%|██████████| 2/2 [00:06<00:00,  2.57s/it][A
+                                             [A/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+  3%|▎         | 41/1312 [00:49<1:32:08,  4.35s/it]  3%|▎         | 42/1312 [00:50<1:08:25,  3.23s/it]  3%|▎         | 43/1312 [00:51<54:00,  2.55s/it]    3%|▎         | 44/1312 [00:52<41:48,  1.98s/it]  3%|▎         | 45/1312 [00:52<33:17,  1.58s/it]  4%|▎         | 46/1312 [00:53<27:18,  1.29s/it]  4%|▎         | 47/1312 [00:53<23:02,  1.09s/it]  4%|▎         | 48/1312 [00:54<20:04,  1.05it/s]  4%|▎         | 49/1312 [00:55<18:00,  1.17it/s]  4%|▍         | 50/1312 [00:55<16:31,  1.27it/s]                                                 {'loss': 2.9356, 'grad_norm': 2.416423797607422, 'learning_rate': 0.0009626524390243902, 'epoch': 0.04}
+  4%|▍         | 50/1312 [00:55<16:31,  1.27it/s]  4%|▍         | 51/1312 [00:56<15:25,  1.36it/s]  4%|▍         | 52/1312 [00:57<14:44,  1.42it/s]  4%|▍         | 53/1312 [00:57<14:12,  1.48it/s]  4%|▍         | 54/1312 [00:58<13:52,  1.51it/s]  4%|▍         | 55/1312 [00:58<13:39,  1.53it/s]  4%|▍         | 56/1312 [00:59<13:29,  1.55it/s]  4%|▍         | 57/1312 [01:00<13:23,  1.56it/s]  4%|▍         | 58/1312 [01:01<15:22,  1.36it/s]  4%|▍         | 59/1312 [01:01<14:56,  1.40it/s]W0826 20:06:44.325000 455080 torch/distributed/elastic/agent/server/api.py:753] Received 15 death signal, shutting down workers
+W0826 20:06:44.327000 455080 torch/distributed/elastic/multiprocessing/api.py:1028] Sending process 455098 closing signal SIGTERM
+Traceback (most recent call last):
+  File "/home/flora/env/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 367, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/run.py", line 1028, in main
+    run(args)
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/run.py", line 1019, in run
+    elastic_launch(
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 194, in __call__
+    return launch_agent(
+           ^^^^^^^^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 374, in launch_agent
+    result = agent.run()
+             ^^^^^^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/elastic/metrics/api.py", line 134, in wrapper
+    result = f(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/elastic/agent/server/api.py", line 745, in run
+    result = self._invoke_run(role)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/elastic/agent/server/api.py", line 923, in _invoke_run
+    time.sleep(monitor_interval)
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/api.py", line 86, in _terminate_process_handler
+    raise SignalException(f"Process {os.getpid()} got signal: {sigval}", sigval=sigval)
+torch.distributed.elastic.multiprocessing.api.SignalException: Process 455080 got signal: 15

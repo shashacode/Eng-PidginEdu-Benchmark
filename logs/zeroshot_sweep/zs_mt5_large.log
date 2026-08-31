@@ -1,0 +1,31 @@
+You are using the default legacy behaviour of the <class 'transformers.models.t5.tokenization_t5.T5Tokenizer'>. This is expected, and simply means that the `legacy` (previous) behavior will be used so nothing changes for you. If you want to use the new behaviour, set `legacy=False`. This should only be set if you understand what it means, and thoroughly read the reason why this was added as explained in https://github.com/huggingface/transformers/pull/24565
+/home/flora/env/lib/python3.12/site-packages/transformers/convert_slow_tokenizer.py:566: UserWarning: The sentencepiece tokenizer that you are converting to a fast tokenizer uses the byte fallback option which is not implemented in the fast tokenizers. In practice this means that the fast version of the tokenizer can produce unknown tokens whereas the sentencepiece version would have converted these unknown tokens into a sequence of byte tokens matching the original piece of text.
+  warnings.warn(
+model-key : mt5_large
+mode      : zero-shot
+loading   : google/mt5-large
+prefix    : 'translate English to Pidgin: '
+split     : test (2623 examples)
+beams     : 1
+  16/2623  32/2623  48/2623  64/2623  80/2623  96/2623  112/2623  128/2623  144/2623  160/2623  176/2623  192/2623  208/2623  224/2623  240/2623  256/2623  272/2623  288/2623  304/2623  320/2623  336/2623  352/2623  368/2623  384/2623  400/2623  416/2623  432/2623  448/2623  464/2623  480/2623  496/2623  512/2623  528/2623  544/2623  560/2623  576/2623  592/2623  608/2623  624/2623  640/2623  656/2623  672/2623  688/2623  704/2623  720/2623  736/2623  752/2623  768/2623  784/2623  800/2623  816/2623  832/2623  848/2623  864/2623  880/2623  896/2623  912/2623  928/2623  944/2623  960/2623  976/2623  992/2623  1008/2623  1024/2623  1040/2623  1056/2623  1072/2623  1088/2623  1104/2623  1120/2623  1136/2623  1152/2623  1168/2623  1184/2623  1200/2623  1216/2623  1232/2623  1248/2623  1264/2623  1280/2623  1296/2623  1312/2623  1328/2623  1344/2623  1360/2623  1376/2623  1392/2623  1408/2623  1424/2623  1440/2623  1456/2623  1472/2623  1488/2623  1504/2623  1520/2623  1536/2623  1552/2623  1568/2623  1584/2623  1600/2623  1616/2623  1632/2623  1648/2623  1664/2623  1680/2623  1696/2623  1712/2623  1728/2623  1744/2623  1760/2623  1776/2623  1792/2623  1808/2623  1824/2623  1840/2623  1856/2623  1872/2623  1888/2623  1904/2623  1920/2623  1936/2623  1952/2623  1968/2623  1984/2623  2000/2623  2016/2623  2032/2623  2048/2623  2064/2623  2080/2623  2096/2623  2112/2623  2128/2623  2144/2623  2160/2623  2176/2623  2192/2623  2208/2623  2224/2623  2240/2623  2256/2623  2272/2623  2288/2623  2304/2623  2320/2623  2336/2623  2352/2623  2368/2623  2384/2623  2400/2623  2416/2623  2432/2623  2448/2623  2464/2623  2480/2623  2496/2623  2512/2623  2528/2623  2544/2623  2560/2623  2576/2623  2592/2623  2608/2623  2623/2623
+
+MT metrics (clean references, glosses stripped)
+  bleu    :    0.9723
+  chrf    :   17.5068
+  chrf++  :   15.8256
+  ter     :  304.9113
+
+MT metrics (augmented references)
+  bleu    :     0.905
+  chrf    :   17.0481
+  chrf++  :   15.0169
+  ter     :  239.1089
+
+Glossary metrics
+  gloss accuracy      :       0.0
+  gloss presence rate :    0.1834
+  gloss precision     :       0.0
+  gloss F1            :       0.0
+  over-glossing rate  :   66.6667
+
+wrote artefacts -> /home/flora/Eng_Pidgin_Edu/output_zeroshot_mt5_large

@@ -1,0 +1,91 @@
+================================================================================
+MODEL           : toucan (UBC-NLP/toucan-1.2B, 1.2B)
+OPTIMIZER       : adafactor
+WORLD SIZE      : 2 process(es)
+BATCH / GPU     : 2
+EVAL BATCH / GPU: 4
+BEAMS eval/test : 1 / 5
+TARGET COLUMN   : pcm_augmented
+GRAD ACCUM      : 4
+EFFECTIVE BATCH : 16
+OUTPUT DIR      : /home/flora/Eng_Pidgin_Edu/output_toucan
+================================================================================
+/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W821 10:00:53.901714344 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+NCCL version 2.29.3+cuda12.9
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/flora/Eng_Pidgin_Edu/train.py", line 564, in <module>
+[rank0]:     tokenizer = AutoTokenizer.from_pretrained(
+[rank0]:                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/models/auto/tokenization_auto.py", line 925, in from_pretrained
+[rank0]:     return tokenizer_class.from_pretrained(pretrained_model_name_or_path, *inputs, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 1736, in from_pretrained
+[rank0]:     return cls._from_pretrained(
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 1932, in _from_pretrained
+[rank0]:     tokenizer = cls(*init_inputs, **init_kwargs)
+[rank0]:                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/models/t5/tokenization_t5.py", line 113, in __init__
+[rank0]:     Unigram(
+[rank0]: TypeError: argument 'vocab': 'dict' object cannot be converted to 'Sequence'
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/home/flora/Eng_Pidgin_Edu/train.py", line 564, in <module>
+[rank1]:     tokenizer = AutoTokenizer.from_pretrained(
+[rank1]:                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/models/auto/tokenization_auto.py", line 925, in from_pretrained
+[rank1]:     return tokenizer_class.from_pretrained(pretrained_model_name_or_path, *inputs, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 1736, in from_pretrained
+[rank1]:     return cls._from_pretrained(
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/tokenization_utils_base.py", line 1932, in _from_pretrained
+[rank1]:     tokenizer = cls(*init_inputs, **init_kwargs)
+[rank1]:                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/models/t5/tokenization_t5.py", line 113, in __init__
+[rank1]:     Unigram(
+[rank1]: TypeError: argument 'vocab': 'dict' object cannot be converted to 'Sequence'
+[rank0]:[W821 10:00:59.041853503 ProcessGroupNCCL.cpp:1624] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+W0821 10:01:00.082000 290588 torch/distributed/elastic/multiprocessing/api.py:1028] Sending process 290602 closing signal SIGTERM
+E0821 10:01:00.197000 290588 torch/distributed/elastic/multiprocessing/api.py:1002] failed (exitcode: 1) local_rank: 0 (pid: 290601) of binary: /home/flora/env/bin/python3
+Traceback (most recent call last):
+  File "/home/flora/env/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 367, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/run.py", line 1028, in main
+    run(args)
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/run.py", line 1019, in run
+    elastic_launch(
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 194, in __call__
+    return launch_agent(
+           ^^^^^^^^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 383, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+train.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2026-08-21_10:01:00
+  host      : riftvm
+  rank      : 1 (local_rank: 1)
+  exitcode  : -15 (pid: 290602)  (SIGTERM)
+  error_file: <N/A>
+  traceback : Signal 15 (SIGTERM) received by PID 290602
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-08-21_10:01:00
+  host      : riftvm
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 290601) 
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

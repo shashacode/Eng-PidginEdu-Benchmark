@@ -1,0 +1,203 @@
+================================================================================
+MODEL           : cheetah (UBC-NLP/cheetah-1.2B, 1.2B)
+OPTIMIZER       : adafactor
+WORLD SIZE      : 2 process(es)
+BATCH / GPU     : 2
+EVAL BATCH / GPU: 4
+BEAMS eval/test : 1 / 5
+TARGET COLUMN   : pcm_augmented
+GRAD ACCUM      : 4
+EFFECTIVE BATCH : 16
+OUTPUT DIR      : /home/flora/Eng_Pidgin_Edu/output_cheetah
+================================================================================
+/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W821 10:00:33.160250701 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+NCCL version 2.29.3+cuda12.9
+[rank0]: httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://huggingface.co/UBC-NLP/cheetah-1.2B/resolve/main/config.json'
+[rank0]: For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+[rank0]: The above exception was the direct cause of the following exception:
+
+[rank0]: huggingface_hub.errors.GatedRepoError: 401 Client Error. (Request ID: Root=1-6a8821c2-1b59757a4a2b01303c564989;875f78fa-7fb1-40a1-af44-fb3c316f463a)
+
+[rank0]: Cannot access gated repo for url https://huggingface.co/UBC-NLP/cheetah-1.2B/resolve/main/config.json.
+[rank0]: Access to model UBC-NLP/cheetah-1.2B is restricted. You must have access to it and be authenticated to access it. Please log in.
+
+[rank0]: The above exception was the direct cause of the following exception:
+
+[rank0]: OSError: You are trying to access a gated repo.
+[rank0]: Make sure to have access to it at https://huggingface.co/UBC-NLP/cheetah-1.2B.
+[rank0]: 401 Client Error. (Request ID: Root=1-6a8821c2-1b59757a4a2b01303c564989;875f78fa-7fb1-40a1-af44-fb3c316f463a)
+
+[rank0]: Cannot access gated repo for url https://huggingface.co/UBC-NLP/cheetah-1.2B/resolve/main/config.json.
+[rank0]: Access to model UBC-NLP/cheetah-1.2B is restricted. You must have access to it and be authenticated to access it. Please log in.
+
+[rank0]: During handling of the above exception, another exception occurred:
+
+[rank0]: httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://huggingface.co/UBC-NLP/cheetah-1.2B/resolve/main/config.json'
+[rank0]: For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+[rank0]: The above exception was the direct cause of the following exception:
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/utils/hub.py", line 438, in cached_files
+[rank0]:     hf_hub_download(
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 88, in _inner_fn
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1019, in hf_hub_download
+[rank0]:     return _hf_hub_download_to_cache_dir(
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1166, in _hf_hub_download_to_cache_dir
+[rank0]:     _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1904, in _raise_on_head_call_error
+[rank0]:     raise head_call_error
+[rank0]: huggingface_hub.errors.GatedRepoError: 401 Client Error. (Request ID: Root=1-6a8821c2-68e1fcb16127b09b3758fef7;2d6c2a39-72de-4fe0-b240-bf66a0d83b47)
+
+[rank0]: Cannot access gated repo for url https://huggingface.co/UBC-NLP/cheetah-1.2B/resolve/main/config.json.
+[rank0]: Access to model UBC-NLP/cheetah-1.2B is restricted. You must have access to it and be authenticated to access it. Please log in.
+
+[rank0]: The above exception was the direct cause of the following exception:
+
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/flora/Eng_Pidgin_Edu/train.py", line 564, in <module>
+[rank0]:     tokenizer = AutoTokenizer.from_pretrained(
+[rank0]:                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/models/auto/tokenization_auto.py", line 772, in from_pretrained
+[rank0]:     config = PreTrainedConfig.from_pretrained(pretrained_model_name_or_path, **kwargs)
+[rank0]:              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/configuration_utils.py", line 704, in from_pretrained
+[rank0]:     config_dict, kwargs = cls.get_config_dict(pretrained_model_name_or_path, **kwargs)
+[rank0]:                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/configuration_utils.py", line 745, in get_config_dict
+[rank0]:     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+[rank0]:                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/configuration_utils.py", line 800, in _get_config_dict
+[rank0]:     resolved_config_file = cached_file(
+[rank0]:                            ^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/utils/hub.py", line 294, in cached_file
+[rank0]:     file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/utils/hub.py", line 511, in cached_files
+[rank0]:     raise OSError(
+[rank0]: OSError: You are trying to access a gated repo.
+[rank0]: Make sure to have access to it at https://huggingface.co/UBC-NLP/cheetah-1.2B.
+[rank0]: 401 Client Error. (Request ID: Root=1-6a8821c2-68e1fcb16127b09b3758fef7;2d6c2a39-72de-4fe0-b240-bf66a0d83b47)
+
+[rank0]: Cannot access gated repo for url https://huggingface.co/UBC-NLP/cheetah-1.2B/resolve/main/config.json.
+[rank0]: Access to model UBC-NLP/cheetah-1.2B is restricted. You must have access to it and be authenticated to access it. Please log in.
+[rank1]: httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://huggingface.co/UBC-NLP/cheetah-1.2B/resolve/main/config.json'
+[rank1]: For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+[rank1]: The above exception was the direct cause of the following exception:
+
+[rank1]: huggingface_hub.errors.GatedRepoError: 401 Client Error. (Request ID: Root=1-6a8821c2-32164172318ccb647975edb9;1c681b91-0641-4d0d-a893-5d210686657b)
+
+[rank1]: Cannot access gated repo for url https://huggingface.co/UBC-NLP/cheetah-1.2B/resolve/main/config.json.
+[rank1]: Access to model UBC-NLP/cheetah-1.2B is restricted. You must have access to it and be authenticated to access it. Please log in.
+
+[rank1]: The above exception was the direct cause of the following exception:
+
+[rank1]: OSError: You are trying to access a gated repo.
+[rank1]: Make sure to have access to it at https://huggingface.co/UBC-NLP/cheetah-1.2B.
+[rank1]: 401 Client Error. (Request ID: Root=1-6a8821c2-32164172318ccb647975edb9;1c681b91-0641-4d0d-a893-5d210686657b)
+
+[rank1]: Cannot access gated repo for url https://huggingface.co/UBC-NLP/cheetah-1.2B/resolve/main/config.json.
+[rank1]: Access to model UBC-NLP/cheetah-1.2B is restricted. You must have access to it and be authenticated to access it. Please log in.
+
+[rank1]: During handling of the above exception, another exception occurred:
+
+[rank1]: httpx.HTTPStatusError: Client error '401 Unauthorized' for url 'https://huggingface.co/UBC-NLP/cheetah-1.2B/resolve/main/config.json'
+[rank1]: For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/401
+
+[rank1]: The above exception was the direct cause of the following exception:
+
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/utils/hub.py", line 438, in cached_files
+[rank1]:     hf_hub_download(
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 88, in _inner_fn
+[rank1]:     return fn(*args, **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1019, in hf_hub_download
+[rank1]:     return _hf_hub_download_to_cache_dir(
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1166, in _hf_hub_download_to_cache_dir
+[rank1]:     _raise_on_head_call_error(head_call_error, force_download, local_files_only)
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1904, in _raise_on_head_call_error
+[rank1]:     raise head_call_error
+[rank1]: huggingface_hub.errors.GatedRepoError: 401 Client Error. (Request ID: Root=1-6a8821c2-2c5921650f1c0be1522cb7a1;da460a40-11ff-42a3-9fb2-2501f35a57f9)
+
+[rank1]: Cannot access gated repo for url https://huggingface.co/UBC-NLP/cheetah-1.2B/resolve/main/config.json.
+[rank1]: Access to model UBC-NLP/cheetah-1.2B is restricted. You must have access to it and be authenticated to access it. Please log in.
+
+[rank1]: The above exception was the direct cause of the following exception:
+
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/home/flora/Eng_Pidgin_Edu/train.py", line 564, in <module>
+[rank1]:     tokenizer = AutoTokenizer.from_pretrained(
+[rank1]:                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/models/auto/tokenization_auto.py", line 772, in from_pretrained
+[rank1]:     config = PreTrainedConfig.from_pretrained(pretrained_model_name_or_path, **kwargs)
+[rank1]:              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/configuration_utils.py", line 704, in from_pretrained
+[rank1]:     config_dict, kwargs = cls.get_config_dict(pretrained_model_name_or_path, **kwargs)
+[rank1]:                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/configuration_utils.py", line 745, in get_config_dict
+[rank1]:     config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+[rank1]:                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/configuration_utils.py", line 800, in _get_config_dict
+[rank1]:     resolved_config_file = cached_file(
+[rank1]:                            ^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/utils/hub.py", line 294, in cached_file
+[rank1]:     file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/utils/hub.py", line 511, in cached_files
+[rank1]:     raise OSError(
+[rank1]: OSError: You are trying to access a gated repo.
+[rank1]: Make sure to have access to it at https://huggingface.co/UBC-NLP/cheetah-1.2B.
+[rank1]: 401 Client Error. (Request ID: Root=1-6a8821c2-2c5921650f1c0be1522cb7a1;da460a40-11ff-42a3-9fb2-2501f35a57f9)
+
+[rank1]: Cannot access gated repo for url https://huggingface.co/UBC-NLP/cheetah-1.2B/resolve/main/config.json.
+[rank1]: Access to model UBC-NLP/cheetah-1.2B is restricted. You must have access to it and be authenticated to access it. Please log in.
+[rank0]:[W821 10:00:34.695569052 ProcessGroupNCCL.cpp:1624] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+W0821 10:00:35.564000 290471 torch/distributed/elastic/multiprocessing/api.py:1028] Sending process 290485 closing signal SIGTERM
+E0821 10:00:35.680000 290471 torch/distributed/elastic/multiprocessing/api.py:1002] failed (exitcode: 1) local_rank: 0 (pid: 290484) of binary: /home/flora/env/bin/python3
+Traceback (most recent call last):
+  File "/home/flora/env/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 367, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/run.py", line 1028, in main
+    run(args)
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/run.py", line 1019, in run
+    elastic_launch(
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 194, in __call__
+    return launch_agent(
+           ^^^^^^^^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 383, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+train.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2026-08-21_10:00:35
+  host      : riftvm
+  rank      : 1 (local_rank: 1)
+  exitcode  : -15 (pid: 290485)  (SIGTERM)
+  error_file: <N/A>
+  traceback : Signal 15 (SIGTERM) received by PID 290485
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-08-21_10:00:35
+  host      : riftvm
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 290484) 
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

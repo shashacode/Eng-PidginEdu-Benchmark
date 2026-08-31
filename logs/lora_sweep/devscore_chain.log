@@ -1,0 +1,24 @@
+Sun Aug 30 23:30:53 UTC 2026 launching dev-scoring m2m100 (gpu0)
+Sun Aug 30 23:30:53 UTC 2026 launching dev-scoring mt5_large (gpu1)
+Mon Aug 31 00:00:52 UTC 2026 m2m100: dev-scoring done
+Mon Aug 31 00:00:52 UTC 2026 mt5_large: dev-scoring done
+Mon Aug 31 00:00:52 UTC 2026 launching dev-scoring mt5 (gpu0)
+Mon Aug 31 00:00:52 UTC 2026 launching dev-scoring cheetah (gpu1)
+Mon Aug 31 00:17:35 UTC 2026 mt5: dev-scoring done
+Mon Aug 31 00:17:35 UTC 2026 cheetah: FAILED -- check /home/flora/Eng_Pidgin_Edu/logs/lora_sweep/devscore_cheetah.log
+Mon Aug 31 00:17:35 UTC 2026 launching dev-scoring afrimt5 (gpu0)
+Mon Aug 31 00:17:35 UTC 2026 launching dev-scoring toucan (gpu1)
+Mon Aug 31 00:33:32 UTC 2026 afrimt5: dev-scoring done
+Mon Aug 31 00:33:32 UTC 2026 toucan: FAILED -- check /home/flora/Eng_Pidgin_Edu/logs/lora_sweep/devscore_toucan.log
+Mon Aug 31 00:33:32 UTC 2026 launching dev-scoring nllb (gpu0)
+Mon Aug 31 00:33:33 UTC 2026 launching dev-scoring afriteva_v2_large (gpu1)
+Mon Aug 31 01:01:47 UTC 2026 nllb: dev-scoring done
+Mon Aug 31 01:01:47 UTC 2026 afriteva_v2_large: dev-scoring done
+Mon Aug 31 01:01:47 UTC 2026 launching dev-scoring mbart50 (gpu0)
+Mon Aug 31 01:01:47 UTC 2026 launching dev-scoring m2m100_1.2b (gpu1)
+Mon Aug 31 01:12:59 UTC 2026 mbart50: dev-scoring done
+Mon Aug 31 01:12:59 UTC 2026 m2m100_1.2b: dev-scoring done
+Mon Aug 31 01:12:59 UTC 2026 launching final model: seamless (solo, odd count out)
+Mon Aug 31 01:12:59 UTC 2026 launching dev-scoring seamless (gpu0)
+Mon Aug 31 01:25:46 UTC 2026 seamless: dev-scoring done
+Mon Aug 31 01:25:46 UTC 2026 validation-set scoring complete: all 12 full-FT models.

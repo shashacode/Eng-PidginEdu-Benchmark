@@ -1,0 +1,106 @@
+=== output_afrimt5 ===
+  africomet_stl : 70.8162
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_afrimt5/africomet_report.json
+=== output_afriteva ===
+  africomet_stl : 63.2107
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_afriteva/africomet_report.json
+=== output_afriteva_v2_large ===
+  africomet_stl : 71.6208
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_afriteva_v2_large/africomet_report.json
+=== output_cheetah ===
+  africomet_stl : 71.8412
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_cheetah/africomet_report.json
+=== output_m2m100 ===
+  africomet_stl : 71.2619
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_m2m100/africomet_report.json
+=== output_m2m100_1.2b ===
+  africomet_stl : 71.7596
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_m2m100_1.2b/africomet_report.json
+=== output_mbart50 ===
+  africomet_stl : 71.8005
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_mbart50/africomet_report.json
+=== output_mt5 ===
+  africomet_stl : 70.6303
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_mt5/africomet_report.json
+=== output_mt5_large ===
+  africomet_stl : 71.9378
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_mt5_large/africomet_report.json
+=== output_nllb ===
+  africomet_stl : 71.5017
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_nllb/africomet_report.json
+=== output_seamless ===
+  africomet_stl : 71.9248
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_seamless/africomet_report.json
+=== output_toucan ===
+  africomet_stl : 71.795
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_toucan/africomet_report.json
+=== output_zeroshot_afrimt5 ===
+  africomet_stl : 21.842
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_zeroshot_afrimt5/africomet_report.json
+=== output_zeroshot_afriteva ===
+  africomet_stl : 16.4248
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_zeroshot_afriteva/africomet_report.json
+=== output_zeroshot_afriteva_v2_large ===
+  africomet_stl : 21.7369
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_zeroshot_afriteva_v2_large/africomet_report.json
+=== output_zeroshot_cheetah ===
+  africomet_stl : 15.8503
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_zeroshot_cheetah/africomet_report.json
+=== output_zeroshot_m2m100 ===
+  africomet_stl : 58.326
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_zeroshot_m2m100/africomet_report.json
+=== output_zeroshot_m2m100_1.2b ===
+  africomet_stl : 59.4203
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_zeroshot_m2m100_1.2b/africomet_report.json
+=== output_zeroshot_madlad3b ===
+  africomet_stl : 32.1558
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_zeroshot_madlad3b/africomet_report.json
+=== output_zeroshot_mbart50 ===
+  africomet_stl : 41.2375
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_zeroshot_mbart50/africomet_report.json
+=== output_zeroshot_mt5 ===
+  africomet_stl : 18.3882
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_zeroshot_mt5/africomet_report.json
+=== output_zeroshot_mt5_large ===
+  africomet_stl : 25.7023
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_zeroshot_mt5_large/africomet_report.json
+=== output_zeroshot_nllb ===
+  africomet_stl : 23.5106
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_zeroshot_nllb/africomet_report.json
+=== output_zeroshot_seamless ===
+  africomet_stl : 58.5458
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_zeroshot_seamless/africomet_report.json
+=== output_zeroshot_t5v11xl ===
+  africomet_stl : 22.0899
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_zeroshot_t5v11xl/africomet_report.json
+=== output_zeroshot_toucan ===
+  africomet_stl : 50.4716
+  n_examples    : 2623
+  wrote -> /home/flora/Eng_Pidgin_Edu/output_zeroshot_toucan/africomet_report.json
+
+[exited with code 0]

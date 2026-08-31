@@ -1,0 +1,129 @@
+================================================================================
+MODEL           : madlad3b (google/madlad400-3b-mt, 2.9B)
+OPTIMIZER       : adafactor
+WORLD SIZE      : 2 process(es)
+BATCH / GPU     : 1
+EVAL BATCH / GPU: 2
+BEAMS eval/test : 1 / 5
+TARGET COLUMN   : pcm_augmented
+GRAD ACCUM      : 8
+EFFECTIVE BATCH : 16
+OUTPUT DIR      : /home/flora/Eng_Pidgin_Edu/output_madlad3b
+================================================================================
+/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+[rank0]:[W823 21:25:50.201625874 ProcessGroupNCCL.cpp:5276] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+NCCL version 2.29.3+cuda12.9
+Tokenizing (num_proc=4):   0%|          | 0/20986 [00:00<?, ? examples/s]Tokenizing (num_proc=4):   5%|▍         | 1000/20986 [00:00<00:09, 2165.42 examples/s]Tokenizing (num_proc=4):  24%|██▍       | 5000/20986 [00:00<00:01, 8407.57 examples/s]Tokenizing (num_proc=4):  43%|████▎     | 9000/20986 [00:00<00:01, 11786.90 examples/s]Tokenizing (num_proc=4):  62%|██████▏   | 13000/20986 [00:01<00:00, 13795.53 examples/s]Tokenizing (num_proc=4):  81%|████████  | 17000/20986 [00:01<00:00, 14871.95 examples/s]Tokenizing (num_proc=4): 100%|██████████| 20986/20986 [00:01<00:00, 17312.12 examples/s]Tokenizing (num_proc=4): 100%|██████████| 20986/20986 [00:01<00:00, 12358.71 examples/s]
+Tokenizing (num_proc=4):   0%|          | 0/2623 [00:00<?, ? examples/s]Tokenizing (num_proc=4):  25%|██▍       | 655/2623 [00:00<00:01, 1771.16 examples/s]Tokenizing (num_proc=4): 100%|██████████| 2623/2623 [00:00<00:00, 4893.27 examples/s]
+Tokenizing (num_proc=4):   0%|          | 0/2623 [00:00<?, ? examples/s]Tokenizing (num_proc=4):  25%|██▌       | 656/2623 [00:00<00:01, 1811.64 examples/s]Tokenizing (num_proc=4): 100%|██████████| 2623/2623 [00:00<00:00, 4905.53 examples/s]
+/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  return func(*args, **kwargs)
+VALIDATION      : 1000 of 2623 examples (seeded subsample)
+Loading weights:   0%|          | 0/742 [00:00<?, ?it/s]Loading weights:  45%|████▍     | 333/742 [00:00<00:00, 3321.15it/s]Loading weights: 100%|██████████| 742/742 [00:00<00:00, 3959.44it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie shared.weight to decoder.embed_tokens.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+Loading weights:   0%|          | 0/742 [00:00<?, ?it/s]Loading weights:  53%|█████▎    | 395/742 [00:00<00:00, 3947.24it/s]Loading weights: 100%|██████████| 742/742 [00:00<00:00, 4258.96it/s]
+[transformers] The tied weights mapping and config for this model specifies to tie shared.weight to decoder.embed_tokens.weight, but both are present in the checkpoints with different values, so we will NOT tie them. You should update the config with `tie_word_embeddings=False` to silence this warning.
+================================================================================
+STARTING TRAINING: madlad3b
+================================================================================
+  0%|          | 0/6560 [00:00<?, ?it/s]/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+  return func(*args, **kwargs)
+/home/flora/env/lib/python3.12/site-packages/torch/distributed/c10d_logger.py:83: FutureWarning: `torch.distributed.all_gather_into_tensor` is deprecated. Please use `torch.distributed.all_gather_single` instead.
+  return func(*args, **kwargs)
+[transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+[transformers] `use_cache=True` is incompatible with gradient checkpointing. Setting `use_cache=False`.
+[rank1]:[W823 21:26:17.382042798 CUDACachingAllocator.cpp:508] expandable_segments: memory mapping failed with OOM on device 1 while trying to map 20971520 bytes (free: 14942208, total: 34072559616).
+[rank1]:[W823 21:26:17.385198861 CUDACachingAllocator.cpp:508] expandable_segments: memory mapping failed with OOM on device 1 while trying to map 20971520 bytes (free: 6553600, total: 34072559616).
+[rank1]:[W823 21:26:17.385329672 CUDACachingAllocator.cpp:508] expandable_segments: memory mapping failed with OOM on device 1 while trying to map 20971520 bytes (free: 6553600, total: 34072559616).
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/home/flora/Eng_Pidgin_Edu/train.py", line 961, in <module>
+[rank1]:     trainer.train(resume_from_checkpoint=RESUME_FROM)
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/trainer.py", line 1449, in train
+[rank1]:     return inner_training_loop(
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/trainer.py", line 1531, in _inner_training_loop
+[rank1]:     self._run_epoch(
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/trainer.py", line 1759, in _run_epoch
+[rank1]:     tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+[rank1]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/trainer.py", line 1961, in training_step
+[rank1]:     self.accelerator.backward(loss, **kwargs)
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/accelerate/accelerator.py", line 2850, in backward
+[rank1]:     loss.backward(**kwargs)
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/torch/_tensor.py", line 623, in backward
+[rank1]:     torch.autograd.backward(
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/torch/autograd/__init__.py", line 395, in backward
+[rank1]:     _engine_run_backward(
+[rank1]:   File "/home/flora/env/lib/python3.12/site-packages/torch/autograd/graph.py", line 979, in _engine_run_backward
+[rank1]:     return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[rank1]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank1]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 1 has a total capacity of 31.73 GiB of which 6.25 MiB is free. Including non-PyTorch memory, this process has 31.72 GiB memory in use. Of the allocated memory 31.23 GiB is allocated by PyTorch, and 37.85 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+[rank0]:[W823 21:26:17.436025889 CUDACachingAllocator.cpp:508] expandable_segments: memory mapping failed with OOM on device 0 while trying to map 20971520 bytes (free: 23330816, total: 34072559616).
+[rank0]:[W823 21:26:17.439517027 CUDACachingAllocator.cpp:508] expandable_segments: memory mapping failed with OOM on device 0 while trying to map 20971520 bytes (free: 12845056, total: 34072559616).
+[rank0]:[W823 21:26:17.439661643 CUDACachingAllocator.cpp:508] expandable_segments: memory mapping failed with OOM on device 0 while trying to map 20971520 bytes (free: 12845056, total: 34072559616).
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/flora/Eng_Pidgin_Edu/train.py", line 961, in <module>
+[rank0]:     trainer.train(resume_from_checkpoint=RESUME_FROM)
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/trainer.py", line 1449, in train
+[rank0]:     return inner_training_loop(
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/trainer.py", line 1531, in _inner_training_loop
+[rank0]:     self._run_epoch(
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/trainer.py", line 1759, in _run_epoch
+[rank0]:     tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+[rank0]:                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/transformers/trainer.py", line 1961, in training_step
+[rank0]:     self.accelerator.backward(loss, **kwargs)
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/accelerate/accelerator.py", line 2850, in backward
+[rank0]:     loss.backward(**kwargs)
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/torch/_tensor.py", line 623, in backward
+[rank0]:     torch.autograd.backward(
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/torch/autograd/__init__.py", line 395, in backward
+[rank0]:     _engine_run_backward(
+[rank0]:   File "/home/flora/env/lib/python3.12/site-packages/torch/autograd/graph.py", line 979, in _engine_run_backward
+[rank0]:     return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+[rank0]:            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[rank0]: torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 31.73 GiB of which 12.25 MiB is free. Including non-PyTorch memory, this process has 31.72 GiB memory in use. Of the allocated memory 31.23 GiB is allocated by PyTorch, and 28.71 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+[rank0]:[W823 21:26:18.189638702 ProcessGroupNCCL.cpp:1624] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+  0%|          | 0/6560 [00:02<?, ?it/s]
+W0823 21:26:19.837000 372381 torch/distributed/elastic/multiprocessing/api.py:1028] Sending process 372400 closing signal SIGTERM
+E0823 21:26:19.954000 372381 torch/distributed/elastic/multiprocessing/api.py:1002] failed (exitcode: 1) local_rank: 1 (pid: 372401) of binary: /home/flora/env/bin/python3
+Traceback (most recent call last):
+  File "/home/flora/env/bin/torchrun", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 367, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/run.py", line 1028, in main
+    run(args)
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/run.py", line 1019, in run
+    elastic_launch(
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 194, in __call__
+    return launch_agent(
+           ^^^^^^^^^^^^^
+  File "/home/flora/env/lib/python3.12/site-packages/torch/distributed/launcher/api.py", line 383, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+train.py FAILED
+------------------------------------------------------------
+Failures:
+[1]:
+  time      : 2026-08-23_21:26:19
+  host      : riftvm
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 372400) 
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-08-23_21:26:19
+  host      : riftvm
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 372401) 
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

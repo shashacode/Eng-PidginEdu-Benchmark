@@ -1,0 +1,6 @@
+Wed Aug 26 08:07:46 UTC 2026 launching lora afriteva (gpu0)
+Wed Aug 26 08:07:46 UTC 2026 launching lora seamless (gpu1)
+Wed Aug 26 17:21:14 UTC 2026 afriteva: lora done
+Wed Aug 26 17:21:14 UTC 2026 seamless: lora done
+Wed Aug 26 17:21:14 UTC 2026 launching lora m2m100 (gpu0)
+Wed Aug 26 17:21:14 UTC 2026 launching lora mt5_large (gpu1)
