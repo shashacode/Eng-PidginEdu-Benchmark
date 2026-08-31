@@ -10,9 +10,12 @@ canonical record of this project; this README is a reproduction guide.
 **Research questions answered** (BENCHMARK_REPORT.md §13): zero-shot
 capability, the value of fine-tuning, which model adapts most
 efficiently under LoRA, full fine-tuning vs. parameter-efficient
-adaptation, model scale vs. performance, and whether the resulting
-flagship model (`mt5_large`, finalized in §9.5) is competitive against
-the other 13.
+adaptation, model scale vs. performance, and how the resulting
+flagship model compares against the other 13. `mt5_large` is the
+automated-metric leader (leads GlossF1/AfriCOMET/chrF++); the finalized
+PidginEdu-LLM is `toucan`, selected by the project author's qualitative
+judgment of translation quality over the automated-metric leader --
+see §9.5 for the full, disclosed reasoning behind that override.
 
 ## 1. What you need before starting
 

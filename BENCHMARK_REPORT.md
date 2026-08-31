@@ -21,11 +21,16 @@ models are now fully fine-tuned and scored** -- `seamless` and
 `m2m100_1.2b` (§9.6) both landed without needing correction, unlike
 `toucan`/`cheetah` before them. `madlad3b` and `t5-v1_1-xl` hit a
 genuine memory ceiling (§9.3) and are deferred to the LoRA phase, not
-abandoned. **`mt5_large` is finalized as PidginEdu-LLM** (§9.5) --
-leads 3 of 4 metrics among the 12 full-fine-tuned models (GlossF1,
-AfriCOMET, chrF++), close third on BLEU. Human evaluation was
-explicitly decided against as a deciding criterion; LoRA results
-explicitly do not compete for this designation (§11.4).
+abandoned. **`toucan` is finalized as PidginEdu-LLM** (§9.5) -- not
+the automated-metric leader (that is `mt5_large`, which leads 3 of 4
+metrics: GlossF1, AfriCOMET, chrF++), but selected by the project
+author's own qualitative judgment of translation quality after
+inspecting outputs from both, on the basis that `toucan`'s Pidgin
+reads more naturally and fluently despite scoring lower on every
+automated metric. This is an explicit, disclosed departure from the
+metrics-only selection criterion this benchmark originally committed
+to (§9.5/§12 item 8) -- documented as exactly that, not folded in as
+if it were always the plan.
 
 **AfriCOMET is now implemented** (§10) and has scored all 12 completed
 models -- the evaluation framework's four metrics (BLEU, chrF++,
@@ -781,11 +786,12 @@ fluent-shaped nonsense rather than a crash.
 
 **Blast radius**: this affects any future reload of these 6 saved
 checkpoints, which is to say every use beyond the original training
-run -- **including `mt5_large`, the finalized PidginEdu-LLM flagship
-model (§9.5)**. Uploading any of these 6 to HuggingFace, running them
-in the planned inference demo, or redistributing them as-is would all
-have silently produced garbage output. The original test-set numbers
-reported throughout this document for these 6 models are unaffected
+run -- **including both `toucan` (the finalized PidginEdu-LLM
+flagship, §9.5) and `mt5_large` (the automated-metric leader)**.
+Uploading any of these 6 to HuggingFace, running them in the planned
+inference demo, or redistributing them as-is would all have silently
+produced garbage output. The original test-set numbers reported
+throughout this document for these 6 models are unaffected
 (computed from the in-memory model during training, never a reload),
 but the saved artifacts backing those numbers were broken until fixed
 here.
@@ -1542,25 +1548,26 @@ whichever model in the completed fine-tuned roster scores best
 (glossary-augmented, evaluated against the full metric set), decided
 empirically once fine-tuning is done, not assumed in advance.
 
-**Finalized: `mt5_large` is PidginEdu-LLM.** All preconditions for
-this decision are now met -- the full-fine-tuning phase is complete
-(12 models, §7/§9), the zero-shot phase is complete (§9.7), and the
-LoRA/PEFT phase is complete (§11) but explicitly does not compete for
-this designation: full fine-tuning represents the best achievable
-quality for a given checkpoint, while LoRA answers a separate
-question (RQ4, cost/adaptability), a distinction confirmed directly
-rather than assumed. Human evaluation, listed as a candidate metric in
-early planning, was explicitly decided against -- automated metrics
-alone are the deciding criteria. Among the 12 full-fine-tuned models,
-`mt5_large` leads 3 of 4 metrics -- **GlossF1** (78.51, the
-benchmark's headline metric given its glossary-augmented framing),
+**`mt5_large` is the automated-metric leader among the 12
+full-fine-tuned models** -- leads 3 of 4 metrics: **GlossF1** (78.51,
+the benchmark's headline metric given its glossary-augmented framing),
 **AfriCOMET** (71.94), and **chrF++** (80.59) -- and is a close third
 on raw BLEU (66.92, versus `m2m100_1.2b`'s leading 68.50, a 1.6-point
 gap). No other model leads more than one metric. `madlad3b` and
-`t5-v1_1-xl` are not eligible candidates under this rule, since
-neither was ever fully fine-tuned (§9.3/§11.3, memory-ceiling
-excluded) -- their only result is LoRA, which does not count toward
-this decision.
+`t5-v1_1-xl` are not eligible candidates under the metrics-only rule
+below, since neither was ever fully fine-tuned (§9.3/§11.3,
+memory-ceiling excluded) -- their only result is LoRA.
+
+All preconditions for a metrics-only finalization were met -- the
+full-fine-tuning phase is complete (12 models, §7/§9), the zero-shot
+phase is complete (§9.7), and the LoRA/PEFT phase is complete (§11)
+but was excluded from competing for this designation on the grounds
+that full fine-tuning represents the best achievable quality for a
+given checkpoint while LoRA answers a separate question (RQ4,
+cost/adaptability). Human evaluation, listed as a candidate metric in
+early planning, was explicitly decided against as a *deciding
+criterion* at that point in the project -- automated metrics alone
+were meant to settle it.
 
 **Selection methodology correction, and independent confirmation.**
 The comparison above ranks models by their **test-set** scores. Doing
@@ -1607,8 +1614,47 @@ essentially identical to its own test-set 78.51) and dev chrF++
 (79.65), the same two metrics it led on test, with `mbart50` leading
 dev BLEU just as `m2m100_1.2b` led test BLEU. The ranking is stable
 across both splits, not an artifact of which one happened to be
-scored: **the PidginEdu-LLM decision is confirmed under the correct
-selection methodology, not just the original (flawed) one.**
+scored: **`mt5_large` is confirmed the automated-metric leader under
+the correct selection methodology, not just the original (flawed)
+one.**
+
+**Flagship override: `toucan` selected as PidginEdu-LLM instead of the
+automated-metric leader.** After the metrics-only process above was
+completed and validated, the project author reviewed generated
+translations from both `toucan` and `mt5_large` directly and judged
+`toucan`'s output to read as more natural, more fluent Nigerian Pidgin
+-- despite scoring lower on every automated metric in this benchmark.
+On that basis, **`toucan` is the finalized PidginEdu-LLM**, not
+`mt5_large`.
+
+This is stated plainly as what it is: a qualitative, single-reviewer
+judgment call by the project author, made *after* and *in spite of* a
+metrics-only process that had already been carefully built specifically
+to avoid exactly this kind of ad hoc override (§9.5's original
+framing, the validation-set correction earlier in this section). It is
+not a new evaluation protocol -- no sample size, no blind rating, no
+second rater, no defined rubric -- and should not be read as one. It
+is disclosed here rather than silently substituted, because the
+alternative (quietly replacing the metrics-selected model with the
+author-preferred one and leaving the metrics section reading as if it
+had produced this result) would misrepresent how the decision was
+actually made. Automated metrics and human perception of translation
+quality are well known in MT research to sometimes diverge; a rigorous
+resolution of that divergence would be a real, structured human
+evaluation study (sample of outputs, multiple blind raters, an
+inter-rater agreement figure) -- exactly the kind of study this
+benchmark decided at the outset not to build (§12 item 8's original
+form). This override does not retroactively become that study by
+being written down; it is one person's read of a handful of outputs,
+presented honestly as such.
+
+`mt5_large` remains fully documented in this report and its checkpoint
+remains a real, valid result of this benchmark -- the automated-metric
+leader among 12 fully fine-tuned models, confirmed on both test and
+validation splits. It was removed from public hosting at the project
+author's explicit request, a decision this document records but does
+not endorse or dispute on technical grounds -- there is no metric-based
+finding in this benchmark that argues for removing it.
 
 ### 9.6 seamless and m2m100_1.2B: both completed, both landed strong
 
@@ -1835,10 +1881,13 @@ also kept (`africomet_stl_raw`) for anyone who wants it.
 | mt5 | 70.63 |
 | afriteva | 63.21 |
 
-`mt5_large` leads on AfriCOMET too, one of the three metrics behind
-its finalized PidginEdu-LLM designation (§9.5) -- confirmed here
-across a fourth, independent metric family (neural quality estimation
-rather than n-gram overlap or the glossary-specific metric). One genuine
+`mt5_large` leads on AfriCOMET too, one of the three automated metrics
+it leads overall (§9.5) -- confirmed here across a fourth, independent
+metric family (neural quality estimation rather than n-gram overlap or
+the glossary-specific metric). `toucan`, the finalized PidginEdu-LLM
+(§9.5, selected on qualitative grounds rather than automated metrics),
+scores 71.80 here -- close behind, within the tight band described
+next. One genuine
 observation worth carrying into the paper: **AfriCOMET's spread across
 competent models is far tighter than BLEU's or GlossF1's** -- eleven
 of the twelve models fall within a 1.3-point band (70.6-71.9), while
@@ -2140,10 +2189,11 @@ now doubly confirmed by a failure mode BLEU could not see).
 `mt5_large`'s own LoRA result of 61.68 -- notably, `mt5_large`'s LoRA
 score is not even its own best result, full fine-tuning beats it by a
 wide margin, consistent with the base-tier-vs-larger split in §11.2
-not applying to it specifically, since it is a 1.2B model). The
-"PidginEdu-LLM" designation (§9.5) is confirmed a full-fine-tuning-only
-question, per the explicit decision that LoRA does not compete for it
--- **finalized as `mt5_large`**, not re-opened by these results.
+not applying to it specifically, since it is a 1.2B model). LoRA does
+not compete for the PidginEdu-LLM designation either way (§9.5), so
+none of this reopens that question on metric grounds -- it is settled
+as `toucan` regardless, per the qualitative override documented in
+§9.5, not because of anything in this section.
 
 ---
 
@@ -2194,27 +2244,40 @@ question, per the explicit decision that LoRA does not compete for it
    `t5-v1_1-xl` still carry the pre-fix `q,v`-only config (§11.3) since
    they already scored well before the bug was found -- a documented,
    deliberate inconsistency, not an oversight.
-8. ~~"PidginEdu-LLM" is not finalized~~ -- **done** (§9.5): `mt5_large`
-   is the finalized designation, decided empirically among the 12
-   full-fine-tuned models (leads GlossF1/AfriCOMET/chrF++, close third
-   on BLEU). Confirmed the deciding rule explicitly rather than
-   assuming it: LoRA results (§11) do not compete for this designation
-   -- full fine-tuning represents best-achievable quality, LoRA answers
-   a separate cost/adaptability question (RQ4) -- and human evaluation,
-   listed as a candidate metric in early planning (§9.5's diagram), was
-   explicitly decided against as a deciding criterion.
+8. ~~"PidginEdu-LLM" is not finalized~~ -- **done, with a disclosed
+   late change** (§9.5): the metrics-only process finalized `mt5_large`
+   (leads GlossF1/AfriCOMET/chrF++ among 12 full-fine-tuned models,
+   confirmed on both test and a corrected validation-set leaderboard).
+   LoRA results (§11) never competed for this designation -- full
+   fine-tuning represents best-achievable quality, LoRA answers a
+   separate cost/adaptability question (RQ4) -- and human evaluation,
+   listed as a candidate metric in early planning, was explicitly
+   decided against as a deciding criterion at that point. After that
+   process completed, the project author reviewed both models' outputs
+   directly and overrode it on qualitative grounds (`toucan`'s Pidgin
+   judged more natural/fluent) -- **`toucan` is the finalized
+   PidginEdu-LLM**, not `mt5_large`. Documented in §9.5 as exactly what
+   it is: a single-reviewer judgment call made after and in spite of a
+   metrics-only process built to avoid this, not a new evaluation
+   protocol. `mt5_large`'s HuggingFace checkpoint was removed at the
+   author's request; it remains fully documented here as the
+   automated-metric leader.
 9. ~~Model selection used test-set scores to pick the winner, a
    multiple-comparison/winner's-curse risk~~ -- **done** (§9.5): an
-   external methodology review caught that the original PidginEdu-LLM
-   selection ranked candidates by test-set performance rather than
-   validation performance. Built a full validation-set (dev split)
-   leaderboard at matching settings and confirmed `mt5_large` wins
-   there too (dev GlossF1/chrF++, same two metrics it led on test) --
-   the decision now rests on the methodologically correct basis, not
-   just the original one. This also surfaced and fixed §3.20 (6
-   checkpoints, including the flagship, silently corrupted on save and
-   unusable on reload) -- found only because a checkpoint reload was
-   actually attempted for this validation pass, which the original
+   external methodology review caught that the original automated
+   ranking used test-set performance rather than validation
+   performance to pick a leader. Built a full validation-set (dev
+   split) leaderboard at matching settings and confirmed `mt5_large`
+   wins there too (dev GlossF1/chrF++, same two metrics it led on
+   test) -- the automated-metric leader question rests on the
+   methodologically correct basis now, not just the original one (the
+   PidginEdu-LLM designation itself was subsequently overridden on
+   qualitative grounds to `toucan` regardless, item 8 above -- this
+   fix concerns the metrics-only ranking, not that later decision).
+   This also surfaced and fixed §3.20 (6 checkpoints, including both
+   `mt5_large` and `toucan`, silently corrupted on save and unusable on
+   reload) -- found only because a checkpoint reload was actually
+   attempted for this validation pass, which the original
    sweep never needed to do.
 10. ~~Reproducibility packaging is not yet done~~ -- **done**: added
     `requirements.txt` (pinned, verified via `pip check`, with the
@@ -2385,11 +2448,18 @@ parameters.**
 
 ### RQ6: Can PidginEdu-LLM establish a competitive specialized model for Nigerian Pidgin?
 
-**Answered for the internal comparison** -- §9.5, finalized: `mt5_large`
-(PidginEdu-LLM) leads 3 of 4 metrics (GlossF1 78.51, AfriCOMET 71.94,
-chrF++ 80.59) against the other 13 models in the roster, close third
-on BLEU (66.92 vs. the leading 68.50). This directly answers "vs the
-14 fine-tuned models" as scoped.
+**Answered for the internal comparison, with a caveat worth stating
+plainly** -- §9.5: the finalized PidginEdu-LLM is `toucan`, selected by
+the project author's qualitative judgment of translation quality, not
+by the automated metrics this benchmark otherwise uses throughout.
+`mt5_large` is the model that actually leads 3 of 4 automated metrics
+(GlossF1 78.51, AfriCOMET 71.94, chrF++ 80.59) against the other 13
+models in the roster. So this benchmark's own automated evidence
+answers "which model is most competitive against the other 14" with
+`mt5_large`; the "PidginEdu-LLM" label answers a related but distinct
+question -- which model the author chose to release as the flagship --
+and those two answers now point at different checkpoints, disclosed
+here rather than blended into one.
 
 **Not answered**: comparison against external, previously-published
 Nigerian Pidgin MT systems (i.e., "competitive" in the sense of the
