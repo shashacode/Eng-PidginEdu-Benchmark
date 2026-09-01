@@ -54,8 +54,11 @@ clean architecture split: every BART-style model (`seamless`, `nllb`,
 `mbart50`, `m2m100`, `m2m100_1.2b`) retained 95-103% of its full-FT
 glossary score under LoRA, while the base-tier T5-family models
 (`afriteva`, `afrimt5`, `mt5`) retained only 20-58% -- a genuine,
-unresolved finding, not an artifact (§11.4). Remaining open items
-(dataset release, terminology-annotation code, etc.) are in §12.
+unresolved finding, not an artifact (§11.4). **The terminology-
+annotation code that produced the glossary augmentation is now fully
+recovered and verified** (`glossary_augment.py`, §12 item 4) --
+reproduces the published dataset exactly, byte-for-byte, across all
+26,232 rows. Remaining open items (dataset expansion, etc.) are in §12.
 
 ---
 
@@ -2211,12 +2214,47 @@ as `toucan` regardless, per the qualitative override documented in
    as `africomet_metrics.py`, scored all 12 completed models. `pcm` is
    explicitly in its training language list, unlike almost every other
    multilingual resource used in this project.
-3. No HuggingFace dataset release, dataset card, or CC BY 4.0 licensing
-   artifacts yet.
-4. Terminology-annotation code (i.e., the process that produced
-   `Eng-PidginEdu_glossary_augmented.csv` from a plain parallel corpus)
-   is not in this repository and is not documented here, since it
-   predates this benchmarking work.
+3. ~~No HuggingFace dataset release, dataset card, or CC BY 4.0
+   licensing artifacts yet~~ -- **partially done**: a dataset release
+   already exists at
+   [huggingface.co/datasets/coderGit/Eng_PidginEdu](https://huggingface.co/datasets/coderGit/Eng_PidginEdu)
+   (CC BY 4.0, proper dataset card with statistics/splits/methodology/
+   ethics section/full author citation) -- predates this benchmarking
+   work rather than being produced by it, discovered while investigating
+   item 4 below. Still open: it has not been expanded past the original
+   26,232 pairs (the "v2" the original deliverables specified), which
+   needs new data collection, not something derivable from what already
+   exists.
+4. ~~Terminology-annotation code... is not in this repository... since
+   it predates this benchmarking work~~ -- **done, fully recovered**:
+   the project author supplied the original `glossary_augment.py`. It
+   was not usable as-is against this repository's files without real
+   verification work, not just a drop-in copy -- its expected input
+   filenames/column names didn't match the canonically hosted glossary
+   table (`Technical_terms`/`Literal meaning`/`pidgin meaning`, not the
+   script's original `word`/`pidgin_meaning`), and a first attempt at
+   adapting it reproduced only 64.8% of `Eng-PidginEdu_glossary_augmented.csv`
+   exactly. Two real bugs in that reproduction, found only by testing
+   against the actual published output rather than trusting the
+   algorithm on sight: (1) the glossary table has multiple rows for
+   some terms (e.g. three for "domain"), and the correct rule -- first
+   occurrence decides a term's fate, full stop, no fallback to a later
+   duplicate even if the first was itself rejected by the content
+   filters -- had to be reverse-engineered by testing against the
+   real data, not assumed; (2) the table also contains a literal
+   `Technical_terms` value of `"None"` (a garbage placeholder row,
+   immediately before the real lowercase `"none"` entry), and pandas'
+   default NA-string handling silently drops that row as a missing
+   value -- which is what the original pipeline evidently relied on,
+   since loading via plain `csv.DictReader` instead (which keeps
+   `"None"` as a literal 4-letter term) reproduces only 99.88% of rows,
+   not 100%. `glossary_augment.py` is now in this repository, and
+   running it against `Eng-PidginEdu_Dataset.csv` and
+   `academic_glossary.csv` (both added alongside it, sourced from the
+   HF dataset release in item 3) reproduces all 26,232 rows of
+   `Eng-PidginEdu_glossary_augmented.csv` exactly -- `pcm_augmented`,
+   `glossed_terms`, and `n_glosses` all byte-for-byte, confirmed
+   directly, not asserted.
 5. The NLLB/mBART/M2M-100/MADLAD/SeamlessM4T proxy-language-token
    substitution (§3.12, §9.2) is a genuine confound relative to the
    T5-family models, which see no equivalent identity conflation --

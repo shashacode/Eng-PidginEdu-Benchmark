@@ -78,7 +78,8 @@ sudo apt install python3-dev   # or your distro's equivalent
 worthy of acceptance...)`) is included in this repo, already split
 80/10/10 into `train.json` (20,986) / `dev.json` (2,623) /
 `test.json` (2,623) -- report §2 has the full breakdown by subject and
-gloss statistics.
+gloss statistics. The canonical hosted release (CC BY 4.0) is at
+[huggingface.co/datasets/coderGit/Eng_PidginEdu](https://huggingface.co/datasets/coderGit/Eng_PidginEdu).
 
 If you ever need to rebuild the split files from the CSV (they're
 already here, so you shouldn't need to):
@@ -86,6 +87,21 @@ already here, so you shouldn't need to):
 ```bash
 python prepare_data.py
 ```
+
+To rebuild the glossary-augmented CSV itself from the raw parallel
+corpus (`Eng-PidginEdu_Dataset.csv`) and the standalone terminology
+table (`academic_glossary.csv`), both also included here:
+
+```bash
+python glossary_augment.py
+```
+
+Verified to reproduce `Eng-PidginEdu_glossary_augmented.csv` exactly,
+byte-for-byte across all 26,232 rows -- report §12 item 4 has the full
+verification, including two non-obvious behaviors that had to be
+reverse-engineered (a first-occurrence-only rule for duplicate glossary
+entries, and a pandas NA-string quirk affecting one row) rather than
+assumed from reading the algorithm alone.
 
 ## 4. Reproducing results
 
@@ -237,6 +253,7 @@ it's failing when it's actually working as designed:
 train.py                 Full fine-tuning + LoRA (--lora flag)
 evaluate_model.py         Zero-shot and re-scoring of saved checkpoints
 glossary_metrics.py       The glossary-accuracy metric (report §4)
+glossary_augment.py       Terminology-annotation preprocessing (report §12 item 4)
 africomet_metrics.py      AfriCOMET scoring (report §10)
 aggregate_results.py      Leaderboard builder
 prepare_data.py           Rebuilds train/dev/test.json from the CSV
