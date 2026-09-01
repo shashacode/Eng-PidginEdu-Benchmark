@@ -2215,16 +2215,23 @@ as `toucan` regardless, per the qualitative override documented in
    explicitly in its training language list, unlike almost every other
    multilingual resource used in this project.
 3. ~~No HuggingFace dataset release, dataset card, or CC BY 4.0
-   licensing artifacts yet~~ -- **partially done**: a dataset release
-   already exists at
+   licensing artifacts yet~~ -- **done**: a dataset release already
+   exists at
    [huggingface.co/datasets/coderGit/Eng_PidginEdu](https://huggingface.co/datasets/coderGit/Eng_PidginEdu)
    (CC BY 4.0, proper dataset card with statistics/splits/methodology/
    ethics section/full author citation) -- predates this benchmarking
    work rather than being produced by it, discovered while investigating
-   item 4 below. Still open: it has not been expanded past the original
-   26,232 pairs (the "v2" the original deliverables specified), which
-   needs new data collection, not something derivable from what already
-   exists.
+   item 4 below. "v2" in the original deliverables specification refers
+   to the glossary-integrated file (`Eng-PidginEdu_glossary_augmented.csv`,
+   the parallel corpus merged with the glossary, not a larger corpus) --
+   clarified directly by the project author rather than assumed. That
+   file already existed in the same dataset repository but was
+   undocumented there; added a full section to the dataset card
+   describing it (columns, augmentation statistics, a real verified
+   example, and a link to `glossary_augment.py`, item 4 below, for
+   reproducing it) so the "v2" the repo actually already contained is
+   now discoverable rather than a bare, unexplained file among the
+   repo's siblings.
 4. ~~Terminology-annotation code... is not in this repository... since
    it predates this benchmarking work~~ -- **done, fully recovered**:
    the project author supplied the original `glossary_augment.py`. It
