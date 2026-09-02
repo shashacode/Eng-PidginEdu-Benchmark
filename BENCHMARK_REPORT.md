@@ -2482,25 +2482,35 @@ as `toucan` regardless, per the qualitative override documented in
     reviewer's read of a handful of outputs, explicitly flagged
     throughout this report and `PAPER_DRAFT.md` §7 as not a substitute
     for a real study. A blind pairwise evaluation tool was built to
-    close that gap: 122 test-set sentences (stratified by subject and
-    by whether the reference expects a gloss, `human_eval/` in this
-    repository, not yet pushed -- see below), each shown with
-    `toucan`'s and `mt5_large`'s predictions labeled only A/B
-    (assignment randomized once and fixed, `human_eval/unblind_key.json`,
-    kept out of the rater-facing tool entirely), collecting a
-    preference judgment (A/B/tie) and, where a gloss is expected, a
-    judgment of gloss accuracy for each side. `human_eval/analyze.py`
-    unblinds returned rater files, reports pooled preference and gloss
-    judgment breakdowns, and computes pairwise Cohen's kappa once 2+
-    raters have responded -- verified against synthetic random data
-    before trusting it on anything real (kappa correctly near zero for
-    two independent random raters). **Not yet run**: raters (native
-    Nigerian Pidgin speakers, independent of the project) have not yet
-    been recruited or completed the study. `human_eval/` is
-    deliberately not yet pushed to the public repository -- publishing
-    `unblind_key.json` before data collection finishes would let any
-    reader unblind the study early, defeating the point. It will be
-    published alongside the results once collection is complete.
+    close that gap: 50 test-set sentences (reduced from an initial 122
+    specifically to keep the task short enough for a volunteer rater to
+    complete in one sitting; stratified by subject and by whether the
+    reference expects a gloss, `human_eval/` in this repository, not
+    yet pushed -- see below), each shown with `toucan`'s and
+    `mt5_large`'s predictions labeled only A/B (assignment randomized
+    once and fixed, `human_eval/unblind_key.json`, kept out of the
+    rater-facing tool entirely), collecting a preference judgment
+    (A/B/tie) and, where a gloss is expected, a judgment of gloss
+    accuracy for each side. Word-level diff highlighting was added to
+    the tool after early testing showed 13 of the 50 sampled sentences
+    have byte-identical predictions from both models (a real, expected
+    rate of agreement between two models fine-tuned on the same data,
+    not a bug) and at least one pair differed by a single easy-to-miss
+    character -- both cases were confusing without a visual cue.
+    `human_eval/analyze.py` (terminal) and a browser-based results
+    viewer (drag in rater files, unblinds and aggregates client-side,
+    no data leaves the machine) both unblind returned rater files,
+    report pooled preference and gloss judgment breakdowns, and compute
+    pairwise Cohen's kappa once 2+ raters have responded -- verified
+    against synthetic random data before trusting either on anything
+    real (kappa correctly near zero for two independent random raters).
+    **Not yet run**: raters (native Nigerian Pidgin speakers,
+    independent of the project) have not yet been recruited or
+    completed the study. `human_eval/` is deliberately not yet pushed
+    to the public repository -- publishing `unblind_key.json` before
+    data collection finishes would let any reader unblind the study
+    early, defeating the point. It will be published alongside the
+    results once collection is complete.
 
 ---
 
