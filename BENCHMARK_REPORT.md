@@ -2348,11 +2348,29 @@ as `toucan` regardless, per the qualitative override documented in
     correct `PROJECT_DIR`/`OUTPUT_DIR` resolution, correct data
     loading, successful `torchrun` launch, real training loss logged,
     zero errors. `.gitignore` (added earlier) still covers
-    `output_*/`/`baseline_runs/`/`external/`; `git init` and the first
-    commit have not been run yet, pending your go-ahead. No checkpoint
-    has been uploaded to HuggingFace yet (deliverable #1) --
-    `output_mt5_large/` is the first verified-correct artifact to
-    upload once that happens (§3.20 fixed it).
+    `output_*/`/`baseline_runs/`/`external/`. **Fully executed since**:
+    the repository is live at
+    [github.com/shashacode/Eng-PidginEdu-Benchmark](https://github.com/shashacode/Eng-PidginEdu-Benchmark),
+    and both `toucan` (PidginEdu-LLM) and `mt5_large`'s checkpoints were
+    uploaded to HuggingFace (`mt5_large`'s was later removed at the
+    author's request, §9.5/§12 item 8) -- deliverable #1 is done.
+11. A research paper draft exists (`PAPER_DRAFT.md`, this repository) --
+    restructured from this report into standard paper form (abstract,
+    related work, methodology, results by research question,
+    limitations, references, reproducibility appendix), not a copy of
+    this report's engineering-log prose. Explicitly marked **not**
+    submission-ready: no venue template applied, no page limit
+    enforced, the *Related Work* section is deliberately left thin and
+    flagged in-line, since a literature search beyond what this project
+    directly encountered (via model cards and package documentation
+    while building the benchmark) was not performed and should not be
+    assumed done, and every reference listed is flagged as needing an
+    independent citation-accuracy check (exact page numbers/DOIs) before
+    submission. Every number in the draft was checked against this
+    report or recomputed directly from `benchmark_results.csv` rather
+    than copied from memory -- one such check caught and corrected an
+    error in the draft itself (`toucan`'s rank among the 12 fully
+    fine-tuned models by GlossF1 is 7th, not 6th, as first written).
 
 ---
 

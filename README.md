@@ -260,6 +260,8 @@ prepare_data.py           Rebuilds train/dev/test.json from the CSV
 run_train.sh               Single-model launcher (handles GPU detection)
 run_benchmark.sh          Full 12-model full-fine-tune sweep
 BENCHMARK_REPORT.md       Full methodology, every result, every bug found
+PAPER_DRAFT.md            Research paper draft (not submission-ready -- see its
+                          own status note)
 ```
 
 ## License
