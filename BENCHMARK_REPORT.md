@@ -2492,11 +2492,20 @@ as `toucan` regardless, per the qualitative override documented in
     rater-facing tool entirely), collecting a preference judgment
     (A/B/tie) and, where a gloss is expected, a judgment of gloss
     accuracy for each side. Word-level diff highlighting was added to
-    the tool after early testing showed 13 of the 50 sampled sentences
-    have byte-identical predictions from both models (a real, expected
-    rate of agreement between two models fine-tuned on the same data,
-    not a bug) and at least one pair differed by a single easy-to-miss
-    character -- both cases were confusing without a visual cue.
+    the tool after early testing showed roughly 28% of eligible
+    sentences have byte-identical predictions from both models (a real,
+    expected rate of agreement between two models fine-tuned on the
+    same data, not a bug) and at least one pair differed by a single
+    easy-to-miss character -- both cases were confusing without a
+    visual cue. Simply resampling to a smaller N did not change that
+    28% rate (a property of the two models' actual behavior, not of
+    sample size), so the sampling pool now excludes identical-output
+    rows entirely before stratifying -- a row where both options are
+    word-for-word the same cannot carry a preference signal, so
+    including it only cost rater time. All 50 sampled sentences now
+    have genuinely different predictions on at least one side; the
+    28% agreement rate itself remains a real, separately-notable
+    finding, just not sampled into this study.
     `human_eval/analyze.py` (terminal) and a browser-based results
     viewer (drag in rater files, unblinds and aggregates client-side,
     no data leaves the machine) both unblind returned rater files,
