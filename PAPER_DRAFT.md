@@ -107,11 +107,21 @@ textbook footnote compressed into the sentence.
 et al., 2021), M2M-100 (Fan et al., 2021), NLLB-200 (NLLB Team et al.,
 2022), mBART-50 (Tang et al., 2020; Liu et al., 2020), MADLAD-400
 (Kudugunta et al., 2023), SeamlessM4T v2 (Barrault et al., 2023), and
-T5 v1.1 (Raffel et al., 2020), alongside two checkpoints pretrained
+T5 v1.1 (Raffel et al., 2020), alongside checkpoints pretrained
 specifically for African languages: AfriTeVa (Jude Ogundepo et al.,
-2022) and Cheetah/Toucan (Adebara et al., 2024), the latter evaluated
-directly on Toucan's own held-out benchmark, AfroLingu-MT, in its
-original paper.
+2022), AfriMT5 (Adelani et al., 2022), and Cheetah/Toucan (Adebara
+et al., 2024; Elmadany et al., 2024). Toucan is evaluated in its
+original paper on its own held-out benchmark, AfroLingu-MT, which
+includes a general-domain, non-glossed `eng-pcm` slice roughly 12x
+smaller than our education-domain corpus (§3.3).
+
+**African NLP more broadly.** Adebara and Abdul-Mageed (2022) survey
+the state of Afrocentric NLP and identify data scarcity and skewed
+domain coverage (heavy reliance on religious-text corpora) as
+recurring constraints across African-language MT work -- both apply to
+Nigerian Pidgin specifically, and motivate our choice to build a
+new, education-domain corpus rather than repurpose an existing
+general-domain one.
 
 **Parameter-efficient fine-tuning.** We use LoRA (Hu et al., 2021) as
 implemented in the HuggingFace `peft` library, which freezes the base
@@ -124,14 +134,17 @@ a COMET-style neural metric fine-tuned for African-language MT
 evaluation that explicitly includes Pidgin in its training language
 set -- notable because none of the multilingual MT systems above do.
 
-*[Placeholder for the author: this section should be expanded with
-prior work specifically on Nigerian Pidgin MT and on terminology-
-constrained / glossary-aware MT more broadly. One candidate system,
-Pidgin-UNMT, was investigated during this project (see
-`BENCHMARK_REPORT.md` §9.1) but could not be run as a baseline -- its
-linked pretrained checkpoint was no longer retrievable. A literature
-search beyond what was directly encountered during this project's own
-experimentation has not been performed and should not be assumed done.]*
+*[Placeholder for the author: this section should still be expanded
+with prior work specifically on Nigerian Pidgin MT and on
+terminology-constrained / glossary-aware MT more broadly -- neither
+has a citation here yet. One candidate Pidgin MT system, Pidgin-UNMT,
+was investigated during this project (see `BENCHMARK_REPORT.md` §9.1)
+but could not be run as a baseline -- its linked pretrained checkpoint
+was no longer retrievable, and this is now stated as a limitation
+(§7). A literature search beyond what was directly encountered during
+this project's own experimentation, or verified against the AfroLingu-
+MT paper's own reference list while researching §3.3, has not been
+performed and should not be assumed done.]*
 
 ## 3. The Eng-PidginEdu Dataset
 
@@ -182,6 +195,19 @@ PCM: Teachers and students fit get the materials for free.
 AUG: Teachers and students fit get the materials (tins wey dem use
      for teaching) for free.
 ```
+
+### 3.3 Eng-PidginEdu in comparison to existing English-Pidgin resources
+
+The only other published benchmark we are aware of that includes an
+English-Nigerian-Pidgin (`eng-pcm`) pair is AfroLingu-MT (Elmadany
+et al., 2024), a 46-language, 156-pair benchmark in which `eng-pcm` is
+allotted 1,681 train / 50 dev / 105 test examples -- a general-domain
+slice with no terminology-glossing structure. Eng-PidginEdu is, to our
+knowledge, the first education-domain resource for this pair and the
+first with inline terminology glossing for any Pidgin or Creole
+language, and is over 12x larger for this specific pair (20,986 vs.
+1,681 training examples). We report this as a direct comparison
+between two public sets of numbers, not an estimate.
 
 ## 4. The Glossary-Accuracy Metric
 
@@ -323,6 +349,27 @@ the feed-forward layers, which were left frozen. Extending
 (`wi`,`wo` for T5-family checkpoints; `fc1`,`fc2` for BART-style ones)
 recovered most of this gap.
 
+**A concrete instance, from AfriTeVa's actual test-set predictions**
+(source: `judicial salaries cannot be reduced ... congress approved a
+cost-of-living increase for judges`):
+
+```
+Reference:        Di supreme court tok say states no regulate motor
+                   vehicle (motor / machine to carry load) safety
+                   (safe condition / no wahala) standards.
+Full fine-tune:    I supreme court tok say state no regulate motor
+                   vehicle (motor / machine to carry load) safety
+                   (safe condition / no wahala) standards.
+Attention-only LoRA: Di supreme court tok say states no regulate motor
+                   vehicle safety standards.
+```
+
+Both glosses are present and correct under full fine-tuning; under
+attention-only LoRA, the sentence-level translation is fluent and
+faithful, but both glosses are simply absent -- the qualitative
+signature of the content-injection failure described above, not
+degraded or garbled output.
+
 The corrected, final picture across all 14 models is a clean
 architecture split, not noise:
 
@@ -386,6 +433,26 @@ which checkpoint gets called the flagship, on a dataset and metric
 suite built specifically to measure the thing (terminology fidelity)
 that the losing-by-the-numbers model was chosen for.
 
+**A concrete instance**, from the actual test-set predictions
+(source: `although judicial salaries cannot be reduced, years have
+passed since congress approved a cost-of-living increase for
+judges`):
+
+```
+Reference:  Di congress don approve cost-of-living increase for judges.
+mt5_large:  Di congress donapprove cost-of-living increase for judges.
+toucan:     Di judicial salaries no dey reduce, years don pass since
+            congress approve cost-of-living increase for judges.
+```
+
+`mt5_large`'s output drops the entire first clause and contains a
+detokenization artifact (`donapprove`, a missing word boundary);
+`toucan`'s output is longer and not a closer match to the reference
+string (which is itself a compressed paraphrase), but it renders as a
+complete, fluent sentence with no artifacts -- illustrative of the kind
+of gap n-gram-overlap metrics under-penalize and a human reader
+notices immediately.
+
 ## 7. Limitations
 
 - **No formal human evaluation.** §6.5's flagship decision is
@@ -405,8 +472,67 @@ that the losing-by-the-numbers model was chosen for.
   unexplained -- we have not run the follow-up ablations (higher rank,
   more epochs) that would distinguish our capacity hypothesis from
   alternative explanations.
+- **No external Nigerian Pidgin MT system as a baseline.** Every
+  number in §6 compares checkpoints fine-tuned on our own data against
+  each other and against their own zero-shot starting point, not
+  against an independently-trained Pidgin MT system. Pidgin-UNMT, the
+  one candidate we identified, was investigated but could not be run:
+  its linked pretrained checkpoint is no longer retrievable
+  (`BENCHMARK_REPORT.md` §9.1). We do not know how this benchmark's
+  results compare to prior Pidgin-specific MT work, only to
+  general-purpose multilingual models fine-tuned on our data.
+- **Translation quality validation was not formally audited.** The
+  underlying Pidgin translations (§3.1) were produced by draft MT plus
+  human correction; we do not report how many validators were
+  involved, their vetting criteria beyond being native speakers, an
+  inter-annotator agreement figure, or a sampled post-hoc quality
+  audit of the corrected data. We treat the corpus as reliable based
+  on the correction step existing, not on a measured error rate.
 
-## 8. Conclusion
+## 8. Ethics Statement and Broader Impact
+
+**Motivation and beneficiaries.** This work targets Nigerian
+secondary-school students who are more comfortable receiving technical
+explanation in Pidgin than in English, and who need to retain
+English-language technical vocabulary (for exams, textbooks, and
+further study) rather than have it paraphrased away. The
+glossary-augmented output format is a deliberate design choice toward
+that use case rather than toward general-purpose translation fluency.
+
+**Data provenance.** The underlying English text is drawn from
+Nigerian secondary-school educational materials; the Pidgin
+translations and glosses were produced by draft MT followed by human
+correction from native Pidgin speakers (§3.1). We do not have a formal
+audit of this correction process (§7) and note that as an open
+question rather than a settled guarantee of quality.
+
+**Single-reviewer flagship selection.** §6.5's flagship override is a
+qualitative judgment made by one project author, not a structured,
+multi-rater human evaluation. We disclose this plainly (rather than
+letting the automated-metrics section read as if it had produced the
+final choice) specifically because an undisclosed override would
+misrepresent how the decision was made -- readers who weigh automated
+metrics differently than we did have the full metrics table (§6.5) to
+reach a different conclusion from the same evidence.
+
+**Intended use and misuse.** PidginEdu-LLM is intended as an
+educational aid, not a substitute for professional translation or for
+Pidgin-speaking educators. It has not been evaluated on
+safety-sensitive content, medical or legal translation (despite some
+source material touching legal topics, §3.1), or any domain outside
+the eight academic subjects in Eng-PidginEdu. It should not be
+deployed for high-stakes translation without further, domain-specific
+evaluation.
+
+**Nigerian Pidgin's status.** Nigerian Pidgin is spoken by tens of
+millions of people but remains under-served in NLP relative to its
+speaker population (§1) -- consistent with the general pattern Adebara
+and Abdul-Mageed (2022) document for African languages. We hope this
+benchmark's release of code, data, and checkpoints under an open
+license lowers the barrier for further work on this and related
+Pidgin/Creole languages, rather than being a one-off result.
+
+## 9. Conclusion
 
 Eng-PidginEdu contributes a glossary-augmented parallel corpus, a
 metric designed specifically to measure terminology fidelity rather
@@ -433,10 +559,27 @@ independently verified and must be checked before submission -- treat
 every entry below as needing a final citation-accuracy pass, not as
 submission-ready.*
 
-- Adebara, I. et al. (2024). Toucan: Many-to-Many Translation for 150
-  African Language Pairs. *Findings of ACL 2024.*
+- Adebara, I., Elmadany, A., and Abdul-Mageed, M. (2024). Cheetah:
+  Natural Language Generation for 517 African Languages.
+- Adebara, I. and Abdul-Mageed, M. (2022). Towards Afrocentric NLP for
+  African Languages: Where We Are and Where We Can Go. In
+  *Proceedings of the 60th Annual Meeting of the Association for
+  Computational Linguistics (Volume 1: Long Papers)*, pages
+  3814-3841, Dublin, Ireland. ACL.
+- Adelani, D. et al. (2022). A Few Thousand Translations Go a Long
+  Way! Leveraging Pre-trained Models for African News Translation. In
+  *Proceedings of the 2022 Conference of the North American Chapter
+  of the Association for Computational Linguistics: Human Language
+  Technologies*, pages 3053-3070, Seattle, United States. ACL.
+  (Introduces AfriMT5 and AfriMBART, both evaluated in this work.)
+- Elmadany, A., Adebara, I., and Abdul-Mageed, M. (2024). Toucan:
+  Many-to-Many Translation for 150 African Language Pairs. In
+  *Findings of the Association for Computational Linguistics: ACL
+  2024*, pages 13189-13206.
 - Fan, A. et al. (2021). Beyond English-Centric Multilingual Machine
   Translation. (M2M-100)
+- Goyal, N. et al. (2021). The FLORES-101 Evaluation Benchmark for
+  Low-Resource and Multilingual Machine Translation.
 - Hu, E. et al. (2021). LoRA: Low-Rank Adaptation of Large Language
   Models.
 - Kudugunta, S. et al. (2023). MADLAD-400: A Multilingual And

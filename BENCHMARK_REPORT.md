@@ -143,6 +143,20 @@ models are the glossary-augmented condition. `pcm_clean` (gloss-free) is
 retained in the splits for ablation and for scoring standard-comparable MT
 metrics (§4.3).
 
+**Eng-PidginEdu in comparison to existing English-Pidgin resources.**
+The only other published benchmark with an English-Nigerian-Pidgin
+(`eng-pcm`) pair we are aware of is AfroLingu-MT (Elmadany et al.,
+2024, the Toucan paper), where `eng-pcm` is one of 156 language pairs
+in a 46-language benchmark and is allotted 1,681 train / 50 dev / 105
+test examples (Table C.2 of that paper) -- a general-domain slice, not
+education-domain, and without any terminology-glossing structure.
+Eng-PidginEdu is, to our knowledge, over 12x larger for this specific
+language pair (20,986 train examples vs. 1,681), the first
+education-domain resource for it, and the first with inline
+terminology glossing for this or any Pidgin/Creole pair. This is a
+direct, checkable comparison (both papers' numbers are public), not an
+estimate.
+
 ---
 
 ## 3. Infrastructure work and bugs found
