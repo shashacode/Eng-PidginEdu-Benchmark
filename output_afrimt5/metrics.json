@@ -1,0 +1,11 @@
+{
+  "test_loss": 0.5097604393959045,
+  "test_bleu": 62.6386,
+  "test_chrf": 74.8383,
+  "test_chrf++": 73.461,
+  "test_ter": 42.1283,
+  "test_gen_len": 93.628,
+  "test_runtime": 516.7289,
+  "test_samples_per_second": 5.076,
+  "test_steps_per_second": 0.317
+}

@@ -1,0 +1,71 @@
+{
+  "n_examples": 2623,
+  "augmented_reference": {
+    "bleu": 70.1788,
+    "chrf": 80.5911,
+    "chrf++": 79.3532,
+    "ter": 33.2441
+  },
+  "clean_reference": {
+    "bleu": 67.1678,
+    "chrf": 81.2236,
+    "chrf++": 79.5879,
+    "ter": 32.6733
+  },
+  "glossary": {
+    "gloss_presence_rate": 75.9612,
+    "gloss_accuracy": 75.5133,
+    "gloss_precision": 74.8428,
+    "gloss_f1": 75.1766,
+    "term_mention_rate": 86.9354,
+    "over_glossing_rate": 24.7133,
+    "expected_glosses": 2679,
+    "produced_glosses": 2703,
+    "present_glosses": 2035,
+    "correct_glosses": 2023,
+    "unscorable_glosses": 135,
+    "gloss_threshold": 50.0,
+    "by_subject": {
+      "Biology": {
+        "expected": 145,
+        "gloss_presence_rate": 75.8621,
+        "gloss_accuracy": 75.1724
+      },
+      "Business study": {
+        "expected": 744,
+        "gloss_presence_rate": 74.328,
+        "gloss_accuracy": 74.1935
+      },
+      "Computer science": {
+        "expected": 692,
+        "gloss_presence_rate": 80.2023,
+        "gloss_accuracy": 79.9133
+      },
+      "English Language": {
+        "expected": 173,
+        "gloss_presence_rate": 69.9422,
+        "gloss_accuracy": 68.7861
+      },
+      "Government": {
+        "expected": 637,
+        "gloss_presence_rate": 79.1209,
+        "gloss_accuracy": 78.3359
+      },
+      "History": {
+        "expected": 60,
+        "gloss_presence_rate": 66.6667,
+        "gloss_accuracy": 66.6667
+      },
+      "Social studies": {
+        "expected": 228,
+        "gloss_presence_rate": 66.6667,
+        "gloss_accuracy": 66.2281
+      }
+    }
+  },
+  "model": "seamless",
+  "model_name": "facebook/seamless-m4t-v2-large",
+  "num_beams": 5,
+  "scored_by": "evaluate_model.py",
+  "zero_shot": false
+}
