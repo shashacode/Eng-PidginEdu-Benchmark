@@ -64,10 +64,28 @@ def collect(data_dir):
             with open(africomet_path) as handle:
                 africomet = json.load(handle)
 
+        dir_name = os.path.basename(output_dir)
+
+        # The model name alone is not enough to tell rows apart -- the
+        # same model appears once per condition (full fine-tune, LoRA,
+        # zero-shot, and occasionally a validation-split re-score), each
+        # with its own row here. Derived from the directory naming
+        # convention rather than a field in the report itself, since
+        # zero-shot/re-score runs don't consistently write one.
+        if dir_name.startswith("output_lora_"):
+            condition = "LoRA"
+        elif dir_name.startswith("output_zeroshot_"):
+            condition = "Zero-shot"
+        elif dir_name.endswith("_dev"):
+            condition = "Full fine-tune (dev-split re-score)"
+        else:
+            condition = "Full fine-tune"
+
         rows.append({
-            "model":          report.get("model", os.path.basename(output_dir).replace("output_", "")),
+            "model":          report.get("model", dir_name.replace("output_", "")),
+            "condition":      condition,
             "checkpoint":     report.get("model_name", ""),
-            "target_column":  report.get("target_column", ""),
+            "target_column":  report.get("target_column", "") or "pcm_augmented",
             "n_examples":     report.get("n_examples"),
 
             # Standard-comparable MT scores.
@@ -101,6 +119,7 @@ def to_markdown(frame):
 
     columns = [
         ("model", "Model"),
+        ("condition", "Condition"),
         ("checkpoint", "Checkpoint"),
         ("bleu", "BLEU"),
         ("chrf++", "chrF++"),
@@ -159,6 +178,15 @@ def main():
         handle.write("MT scores are against **clean references** "
                      "(glosses stripped from both sides), so they are "
                      "comparable to standard English-Pidgin MT results.\n\n")
+        handle.write("The same model name can appear more than once -- "
+                     "the **Condition** column is what distinguishes a "
+                     "full fine-tune, a LoRA run, a zero-shot evaluation, "
+                     "and (rare) a re-score against the dev split for the "
+                     "same model. All runs train against and are scored "
+                     "against the `pcm_augmented` column of the dataset; "
+                     "`benchmark_results.csv` also has a raw `output_dir` "
+                     "column if you need the exact directory a row came "
+                     "from.\n\n")
         handle.write(markdown + "\n")
 
     print(f"{len(frame)} run(s)\n")

@@ -210,9 +210,12 @@ python aggregate_results.py
 Writes `benchmark_results.csv` / `benchmark_results.md`, sorted by
 GlossF1 by default (`--sort <column>` to change it). This scans
 *every* `output_*/glossary_report.json` it can find, so full-FT,
-LoRA, and zero-shot results all land in one table together,
-distinguished by the `output_dir` column -- filter on that if you want
-just one condition.
+LoRA, zero-shot, and dev-split re-score results all land in one table
+together for the same model -- the `Condition` column in
+`benchmark_results.md` (derived from the directory naming convention,
+since not every run type writes it to its own report) says which is
+which; filter on it, or on the raw `output_dir` column in the CSV, if
+you want just one condition.
 
 ## 5. What to expect
 

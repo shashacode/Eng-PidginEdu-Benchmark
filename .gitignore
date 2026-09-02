@@ -1,6 +1,16 @@
-# Model checkpoints and predictions -- large binaries, not code.
-# Flagship model release goes to HuggingFace (deliverable #1), not GitHub.
-output_*/
+# Model checkpoints -- large binaries, not results. Flagship model
+# release goes to HuggingFace (deliverable #1), not GitHub. The small
+# per-model RESULT files (predictions, glossary/AfriCOMET reports,
+# metrics) are tracked -- only the model weights/tokenizer/config
+# artifacts inside each output_*/ directory are excluded, via the
+# negation patterns below.
+output_*/*
+!output_*/test_predictions.csv
+!output_*/predictions.csv
+!output_*/glossary_report.json
+!output_*/metrics.json
+!output_*/per_term_glosses.csv
+!output_*/africomet_report.json
 baseline_runs/
 output/
 
