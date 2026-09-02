@@ -110,13 +110,14 @@ Every command below writes to `output_<model>/` (full fine-tune),
 (zero-shot) -- each a self-contained result: `test_predictions.csv`,
 `glossary_report.json` (BLEU/chrF++/TER/glossary-accuracy), and
 `metrics.json`. **These `output_*` directories are the actual results
-this report cites.** If you also see directories named
-`results_baseline_*/` or `baseline_runs/`, those are superseded,
-pre-fix runs kept only as before/after evidence for the incidents in
-report §3/§5/§7 (a wrong learning rate, a wrong prefix, an invalidated
-language token) -- never the number actually reported for that model.
-Report §8 has the full mapping from each baseline directory to which
-incident it documents.
+this report cites, and the only ones published in this repository.**
+Report §3/§5/§7 also describe several superseded, pre-fix runs (a
+wrong learning rate, a wrong prefix, an invalidated language token) as
+before/after evidence for those incidents -- those prediction files
+exist only on the author's own machine, deliberately excluded from
+version control, so you will not find them by cloning this repo; the
+incidents themselves are still fully documented in report §3/§5/§7/§8
+even though the raw files aren't included.
 
 **Model keys** (pass to `--model`): `afriteva`, `m2m100`, `mt5`,
 `afrimt5`, `nllb`, `mbart50`, `afriteva_v2_large`, `mt5_large`,

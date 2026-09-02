@@ -1354,11 +1354,18 @@ and `output_zeroshot_<model>/` (zero-shot) -- each containing
 `metrics.json`. Anything named `results_baseline_*/` or
 `baseline_runs/` is a **superseded, pre-fix run kept only as
 before/after evidence** -- never the number this report actually cites
-for that model. This distinction matters enough to repeat rather than
-assume a reader will find it buried in the table below: opening
-`results_baseline_lr1e3/cheetah/predictions.csv` directly, for
-instance, shows the run that failed at learning rate 1e-3 (§3.19), not
-`cheetah`'s real result (in `output_cheetah/`).
+for that model. **Neither is published to the public GitHub
+repository** -- only actual results are; the failed/superseded runs
+exist solely on the author's own machine, `.gitignore`'d out of
+version control deliberately, so this section documents what they were
+and what they showed (real project history, referenced throughout §3/
+§5/§7) without those specific prediction files being something a
+reader who clones this repository will find. Table paths below are
+therefore local-only references, not paths in the published repo. This
+distinction matters enough to repeat rather than assume a reader will
+find it buried in the table below: `cheetah`'s real result is in
+`output_cheetah/` (published); its failed attempt at learning rate
+1e-3 (§3.19) is not published anywhere, only described.
 
 | File | Purpose |
 |---|---|

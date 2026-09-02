@@ -4,6 +4,12 @@ output_*/
 baseline_runs/
 output/
 
+# Superseded, pre-fix runs (wrong LR/prefix/language-token). Real
+# project history, kept locally, but only actual results belong on
+# GitHub -- the incidents themselves stay documented in
+# BENCHMARK_REPORT.md regardless.
+results_baseline_*/
+
 # Third-party clone from the Pidgin-UNMT investigation (§9.1) -- not
 # this project's own code.
 external/
