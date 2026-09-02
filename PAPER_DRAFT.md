@@ -257,6 +257,16 @@ explicitly rather than treat it as a detail (`BENCHMARK_REPORT.md`
   unblocks both models excluded from full fine-tuning, since the
   memory bottleneck there is optimizer state, not model capacity.
 
+We also report one **evaluation-only** variant, not a fifth training
+regime: for the 12 fully fine-tuned models, the same checkpoint used
+for full fine-tuning is additionally re-scored against the held-out
+validation (dev) split rather than test, at the same beam-5 setting.
+This exists solely to build an independent validation-set leaderboard
+for the selection-methodology correction in §6.5 (test-set-only model
+selection among several candidates is a multiple-comparison risk); it
+is not an independent result and is not treated as one anywhere in
+this paper. Full detail in `BENCHMARK_REPORT.md` §9.5.
+
 Full hyperparameters for every model under every regime, and the
 wall-clock/compute cost of each run, are in `BENCHMARK_REPORT.md` §6,
 §7.4, and §11.1.

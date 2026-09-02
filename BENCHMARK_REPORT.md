@@ -1346,11 +1346,40 @@ see §12 for what remains open.
 
 ## 8. Artifacts and reproducibility
 
+**Every result in this project falls into exactly four conditions.**
+Stated here as one table because the directory names are the only
+thing that distinguishes them -- `aggregate_results.py` derives a
+`Condition` column from these same naming patterns, so this table and
+that script's output are meant to match exactly:
+
+| Condition | Directory pattern | Split scored | Decoding | Full methodology |
+|---|---|---|---|---|
+| Full fine-tuning | `output_<model>/` | test (2,623) | beam-5 | §6, §7 |
+| Full fine-tuning, dev-split re-score | `output_<model>_dev/` | dev (2,623) | beam-5 | §9.5 |
+| Zero-shot | `output_zeroshot_<model>/` | test (2,623) | greedy (beam-1) | §9.7 |
+| LoRA/PEFT | `output_lora_<model>/` | test (2,623) | beam-5 | §11 |
+
+The dev-split re-score is **not a separate training run** -- it takes
+the same already-fine-tuned checkpoint used for the first row and
+re-scores it against the held-out dev split instead of test, solely to
+build an independent validation-set leaderboard for the winner's-curse
+correction described in §9.5 (only the 12 fully fine-tuned models have
+this condition; there is no dev-split re-score for LoRA or zero-shot
+runs). All four conditions score against the same
+`pcm_augmented`-target dataset and the same metric set (§4); every run
+in `benchmark_results.csv`'s `target_column` field is `pcm_augmented`
+for this reason, whether or not the individual run's own
+`glossary_report.json` happened to record it -- only the full
+fine-tuning and LoRA code paths wrote this field; the dev-split
+re-score and zero-shot paths did not, a reporting gap rather than a
+real difference between conditions, fixed in `aggregate_results.py`
+alongside the `Condition` column.
+
 **Where the actual results are, stated plainly before anything else in
-this table**: every number reported in this document comes from
-`output_<model>/` (full fine-tuning), `output_lora_<model>/` (LoRA),
-and `output_zeroshot_<model>/` (zero-shot) -- each containing
-`test_predictions.csv`, `glossary_report.json` (all four metrics), and
+this table**: every number reported in this document comes from one of
+the four `output_*` directory patterns above -- each containing
+`test_predictions.csv` (or `predictions.csv` for the dev-split
+condition), `glossary_report.json` (all four metrics), and
 `metrics.json`. Anything named `results_baseline_*/` or
 `baseline_runs/` is a **superseded, pre-fix run kept only as
 before/after evidence** -- never the number this report actually cites
@@ -1369,8 +1398,8 @@ find it buried in the table below: `cheetah`'s real result is in
 
 | File | Purpose |
 |---|---|
-| `output_<model>/`, `output_lora_<model>/`, `output_zeroshot_<model>/` | **The actual results** -- test predictions, all four metrics, per model, per condition |
-| `benchmark_results.csv` / `.md` | Current leaderboard aggregating all of the above (regenerate with `aggregate_results.py`) |
+| `output_<model>/`, `output_lora_<model>/`, `output_zeroshot_<model>/`, `output_<model>_dev/` | **The actual results** -- test (or dev) predictions, all four metrics, per model, per condition (table above) |
+| `benchmark_results.csv` / `.md` | Current leaderboard aggregating all of the above, with a `Condition` column distinguishing the four rows a given model can have (regenerate with `aggregate_results.py`) |
 | `prepare_data.py` | Rebuilds train/dev/test.json with glossary metadata from the source CSV |
 | `train.py` | Single-model training entry point (`torchrun`-compatible, DDP) |
 | `run_train.sh` | Launch wrapper: GPU auto-detection, CPATH fix (§3.7), clean process-group shutdown on interrupt |
