@@ -2507,12 +2507,28 @@ as `toucan` regardless, per the qualitative override documented in
     28% agreement rate itself remains a real, separately-notable
     finding, just not sampled into this study.
     `human_eval/analyze.py` (terminal) and a browser-based results
-    viewer (drag in rater files, unblinds and aggregates client-side,
-    no data leaves the machine) both unblind returned rater files,
-    report pooled preference and gloss judgment breakdowns, and compute
-    pairwise Cohen's kappa once 2+ raters have responded -- verified
-    against synthetic random data before trusting either on anything
-    real (kappa correctly near zero for two independent random raters).
+    viewer (drag in rater files or paste text, unblinds and aggregates
+    client-side, no data leaves the machine) both unblind returned
+    rater responses, report pooled preference and gloss judgment
+    breakdowns, and compute pairwise Cohen's kappa once 2+ raters have
+    responded -- verified against synthetic random data before trusting
+    either on anything real (kappa correctly near zero for two
+    independent random raters).
+
+    **A platform constraint found during setup, not a bug in this
+    project's own code**: the rating tool was first built with a
+    "Download my ratings" button (the `downloads` capability). This
+    silently blocks the artifact from being shared with anyone but the
+    owner at all -- Claude's own share dialog disables "Anyone with the
+    link" for any artifact using file downloads, with no workaround.
+    Since raters need a plain link with no Claude account or explicit
+    invite required, the export flow was rebuilt around copy-to-
+    clipboard instead (no special capability, so public link-sharing
+    stays available): the rating tool's last screen now shows the
+    rater's results as text with a "Copy my results" button, and the
+    results viewer accepts either a pasted paragraph or an uploaded
+    file as equivalent input.
+
     **Not yet run**: raters (native Nigerian Pidgin speakers,
     independent of the project) have not yet been recruited or
     completed the study. `human_eval/` is deliberately not yet pushed
