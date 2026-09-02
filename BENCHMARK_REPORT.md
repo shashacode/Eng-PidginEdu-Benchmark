@@ -2477,6 +2477,30 @@ as `toucan` regardless, per the qualitative override documented in
     than copied from memory -- one such check caught and corrected an
     error in the draft itself (`toucan`'s rank among the 12 fully
     fine-tuned models by GlossF1 is 7th, not 6th, as first written).
+12. **Formal human evaluation -- tooling built, data collection not yet
+    started.** §9.5/§12 item 8's flagship override rests on a single
+    reviewer's read of a handful of outputs, explicitly flagged
+    throughout this report and `PAPER_DRAFT.md` §7 as not a substitute
+    for a real study. A blind pairwise evaluation tool was built to
+    close that gap: 122 test-set sentences (stratified by subject and
+    by whether the reference expects a gloss, `human_eval/` in this
+    repository, not yet pushed -- see below), each shown with
+    `toucan`'s and `mt5_large`'s predictions labeled only A/B
+    (assignment randomized once and fixed, `human_eval/unblind_key.json`,
+    kept out of the rater-facing tool entirely), collecting a
+    preference judgment (A/B/tie) and, where a gloss is expected, a
+    judgment of gloss accuracy for each side. `human_eval/analyze.py`
+    unblinds returned rater files, reports pooled preference and gloss
+    judgment breakdowns, and computes pairwise Cohen's kappa once 2+
+    raters have responded -- verified against synthetic random data
+    before trusting it on anything real (kappa correctly near zero for
+    two independent random raters). **Not yet run**: raters (native
+    Nigerian Pidgin speakers, independent of the project) have not yet
+    been recruited or completed the study. `human_eval/` is
+    deliberately not yet pushed to the public repository -- publishing
+    `unblind_key.json` before data collection finishes would let any
+    reader unblind the study early, defeating the point. It will be
+    published alongside the results once collection is complete.
 
 ---
 
