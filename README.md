@@ -109,7 +109,14 @@ Every command below writes to `output_<model>/` (full fine-tune),
 `output_lora_<model>/` (LoRA), or `output_zeroshot_<model>/`
 (zero-shot) -- each a self-contained result: `test_predictions.csv`,
 `glossary_report.json` (BLEU/chrF++/TER/glossary-accuracy), and
-`metrics.json`.
+`metrics.json`. **These `output_*` directories are the actual results
+this report cites.** If you also see directories named
+`results_baseline_*/` or `baseline_runs/`, those are superseded,
+pre-fix runs kept only as before/after evidence for the incidents in
+report §3/§5/§7 (a wrong learning rate, a wrong prefix, an invalidated
+language token) -- never the number actually reported for that model.
+Report §8 has the full mapping from each baseline directory to which
+incident it documents.
 
 **Model keys** (pass to `--model`): `afriteva`, `m2m100`, `mt5`,
 `afrimt5`, `nllb`, `mbart50`, `afriteva_v2_large`, `mt5_large`,

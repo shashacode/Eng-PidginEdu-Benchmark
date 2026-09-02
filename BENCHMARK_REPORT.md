@@ -1346,8 +1346,24 @@ see §12 for what remains open.
 
 ## 8. Artifacts and reproducibility
 
+**Where the actual results are, stated plainly before anything else in
+this table**: every number reported in this document comes from
+`output_<model>/` (full fine-tuning), `output_lora_<model>/` (LoRA),
+and `output_zeroshot_<model>/` (zero-shot) -- each containing
+`test_predictions.csv`, `glossary_report.json` (all four metrics), and
+`metrics.json`. Anything named `results_baseline_*/` or
+`baseline_runs/` is a **superseded, pre-fix run kept only as
+before/after evidence** -- never the number this report actually cites
+for that model. This distinction matters enough to repeat rather than
+assume a reader will find it buried in the table below: opening
+`results_baseline_lr1e3/cheetah/predictions.csv` directly, for
+instance, shows the run that failed at learning rate 1e-3 (§3.19), not
+`cheetah`'s real result (in `output_cheetah/`).
+
 | File | Purpose |
 |---|---|
+| `output_<model>/`, `output_lora_<model>/`, `output_zeroshot_<model>/` | **The actual results** -- test predictions, all four metrics, per model, per condition |
+| `benchmark_results.csv` / `.md` | Current leaderboard aggregating all of the above (regenerate with `aggregate_results.py`) |
 | `prepare_data.py` | Rebuilds train/dev/test.json with glossary metadata from the source CSV |
 | `train.py` | Single-model training entry point (`torchrun`-compatible, DDP) |
 | `run_train.sh` | Launch wrapper: GPU auto-detection, CPATH fix (§3.7), clean process-group shutdown on interrupt |
@@ -1356,11 +1372,12 @@ see §12 for what remains open.
 | `run_benchmark.sh` | Full sweep runner -- skips already-completed models, continues past a failed one |
 | `aggregate_results.py` | Collects all `output_*/glossary_report.json` into one leaderboard |
 | `rerun_mt5_pair.sh` | The §5 re-run script (kept for the record / reproducibility) |
-| `results_baseline_lr3e5/` | Pre-fix mt5/afrimt5 metrics only (§5) -- full weights in `baseline_runs/output_{mt5,afrimt5}/` |
-| `results_baseline_lr1e5/nllb/` | Pre-fix nllb metrics only (§7.2) -- full weights in `baseline_runs/output_nllb/` |
-| `results_baseline_wrong_lang_token/m2m100/` | Invalidated first m2m100 run's metrics (§3.11/§7.1) -- full weights in `baseline_runs/output_m2m100/` |
-| `baseline_runs/` | Full model weights + checkpoints for every superseded run above |
-| `benchmark_results.csv` / `.md` | Current leaderboard (regenerate with `aggregate_results.py`) |
+| `results_baseline_lr3e5/` | **Superseded, not a real result.** Pre-fix mt5/afrimt5 metrics only (§5) -- full weights in `baseline_runs/output_{mt5,afrimt5}/` |
+| `results_baseline_lr1e5/nllb/` | **Superseded, not a real result.** Pre-fix nllb metrics only (§7.2) -- full weights in `baseline_runs/output_nllb/` |
+| `results_baseline_wrong_lang_token/m2m100/` | **Superseded, not a real result.** Invalidated first m2m100 run's metrics (§3.11/§7.1) -- full weights in `baseline_runs/output_m2m100/` |
+| `results_baseline_lr1e3/cheetah/` | **Superseded, not a real result.** Cheetah's failed 1e-3 attempt (§3.19) -- predictions only, no full weights preserved |
+| `results_baseline_wrong_prefix_lr1e3/toucan/` | **Superseded, not a real result.** Toucan's failed original-prefix-plus-1e-3 attempt (§3.17) -- predictions only, no full weights preserved |
+| `baseline_runs/` | Full model weights + checkpoints for the three superseded runs that kept them (mt5, afrimt5, nllb, m2m100) |
 | `BENCHMARK_REPORT.md` | This document |
 
 Every run seeds Python/NumPy/PyTorch at 42; the dev-subsample used during
