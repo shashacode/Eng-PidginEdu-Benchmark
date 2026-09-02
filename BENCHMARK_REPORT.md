@@ -2221,6 +2221,45 @@ in `logs/lora_sweep/` (per-model `lora_<model>.log`, plus
 `lora_chain.log` for pair-level progress); the discarded pre-fix
 attempt is preserved as `lora_chain_qv_only.log` rather than deleted.
 
+**Per-model LoRA training time** (each `train_runtime` from its own
+`lora_<model>.log`, single GPU per model -- unlike full fine-tuning,
+LoRA training here is never DDP'd across both GPUs; a pair shares the
+two GPUs one model each, not one model across both):
+
+| Model | Params | LoRA time | Full-FT time (§7.4) | LoRA / full-FT |
+|---|---|---|---|---|
+| m2m100 | 418M | 1h33m | 3h03m | 0.51x |
+| afriteva | 229M | 2h07m | 1h26m | 1.48x |
+| mbart50 | 680M | 2h30m | 2h18m | 1.09x |
+| nllb | 600M | 2h37m | 3h44m | 0.70x |
+| afrimt5 | 580M | 3h20m | 2h41m | 1.24x |
+| mt5 | 580M | 3h21m | 2h40m | 1.26x |
+| t5v11xl | 2.85B | 6h24m | n/a (OOM, §9.3) | n/a |
+| madlad3b | 3B | 8h30m | n/a (OOM, §9.3) | n/a |
+| m2m100_1.2b | 1.24B | 8h50m | 5h52m | 1.51x |
+| seamless | 1.37B | 10h37m | 6h51m | 1.55x |
+| afriteva_v2_large | 1B | 11h32m | 7h09m | 1.61x |
+| toucan | 1.2B | 11h35m | 7h26m | 1.56x |
+| cheetah | 1.2B | 11h52m | 7h45m | 1.53x |
+| mt5_large | 1.2B | 11h59m | 8h11m | 1.46x |
+
+Sanity check against the aggregate figure above: summing the slower
+model in each of the 6 chained pairs gives ~66.5 wall-clock hours,
+close to the ~71 hours actually observed (the remainder is inter-pair
+scoring/setup overhead between chain steps, not unaccounted training
+time). **For every model at 1B+ parameters, LoRA takes 1.5-1.6x
+*longer* in wall-clock time than full fine-tuning of the same
+model**, despite updating under 1% of the parameters -- because full
+fine-tuning of the 1B+ tier runs DDP across both GPUs (§6) while these
+LoRA runs are single-GPU each, not because LoRA's per-step compute is
+more expensive. Below 1B, the picture is mixed: `m2m100` and `nllb`
+are faster under LoRA (both were also DDP'd for full-FT and had
+`ddp_find_unused_parameters=True`-related overhead, §3.9), while
+`afriteva`/`mt5`/`afrimt5` are moderately slower. LoRA's real benefit
+in this project is memory (§11.3), not wall-clock time, exactly as
+already stated in `README.md` §5 -- this table replaces that section's
+previous 9-13 hour estimate with the exact per-model figures.
+
 **Full 14-model LoRA results** (test-set, beam-5, same scoring as
 every full-FT/zero-shot table in this report):
 

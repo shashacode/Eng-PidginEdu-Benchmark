@@ -221,11 +221,16 @@ you want just one condition.
 
 Full fine-tuning: roughly 1.5–8 hours per model on 2×V100-32GB
 depending on size and optimizer tier (report §7.4 has the exact
-per-model wall-clock table). LoRA runs on the same hardware took
-roughly 9–13 hours per model in this project's own runs (single GPU
-each, report §11.4) -- LoRA does not reduce wall-clock time here, only
-trainable-parameter count and therefore GPU memory; it does not speed
-up the forward/backward pass through the frozen base model.
+per-model wall-clock table). LoRA runs on the same hardware, single
+GPU each, ranged from 1h33m (m2m100) to 11h59m (mt5_large) per model
+in this project's own runs -- report §11.4 has the exact per-model
+table, including a direct LoRA-vs-full-FT ratio per model. LoRA does
+not reduce wall-clock time for this project's largest models (every
+1B+ model took 1.5-1.6x *longer* under LoRA than under full
+fine-tuning, because full fine-tuning of that tier runs DDP across
+both GPUs while these LoRA runs are single-GPU each) -- LoRA's benefit
+here is memory, not wall-clock time; it does not speed up the
+forward/backward pass through the frozen base model.
 
 **Determinism**: `SEED = 42` is fixed for Python/NumPy/PyTorch
 throughout (`train.py`), so results should be close to exactly

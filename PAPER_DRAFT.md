@@ -295,7 +295,8 @@ this paper. Full detail in `BENCHMARK_REPORT.md` §9.5.
 
 Full hyperparameters for every model under every regime, and the
 wall-clock/compute cost of each run, are in `BENCHMARK_REPORT.md` §6,
-§7.4, and §11.1.
+§7.4 (full fine-tuning), and §11.1/§11.4 (LoRA, including an exact
+per-model LoRA-vs-full-FT time ratio).
 
 ## 6. Results
 
