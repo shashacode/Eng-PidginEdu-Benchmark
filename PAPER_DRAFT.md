@@ -550,6 +550,13 @@ document a flagship-selection decision that departed from our own
 metrics in enough detail that a reader can agree or disagree with it
 on the same evidence we had.
 
+## Acknowledgments
+
+Training and evaluation compute for this project (2x NVIDIA V100
+32GB GPUs, 1,344 GPU-hours over a 4-week allocation) was provided by
+[OpenToken](https://opentoken.global/) and
+[CloudRift.ai](https://www.cloudrift.ai/).
+
 ## References
 
 *Only works whose titles/authors/venues were directly encountered and

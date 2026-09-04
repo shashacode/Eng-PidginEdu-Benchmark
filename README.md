@@ -280,6 +280,13 @@ PAPER_DRAFT.md            Research paper draft (not submission-ready -- see its
                           own status note)
 ```
 
+## Acknowledgments
+
+Training and evaluation compute for this project (2x NVIDIA V100
+32GB GPUs, 1,344 GPU-hours over a 4-week allocation) was provided by
+[OpenToken](https://opentoken.global/) and
+[CloudRift.ai](https://www.cloudrift.ai/).
+
 ## License
 
 MIT -- see [`LICENSE`](LICENSE).
