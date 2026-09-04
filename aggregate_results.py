@@ -30,6 +30,14 @@ import pandas as pd
 
 DATA_DIR = os.path.dirname(os.path.abspath(__file__))
 
+# Pretrained specifically on African languages (AfriTeVa/AfriTeVa-v2,
+# AfriMT5, Cheetah, Toucan) vs. general-purpose multilingual models with
+# no African-language specialization. Used only for the report's
+# African-vs-general comparison (report section 9.5/13, RQ6) -- not a
+# claim about architecture family, which is a separate axis (T5-style
+# vs. BART-style, already covered elsewhere).
+AFRICA_SPECIFIC_MODELS = {"afriteva", "afriteva_v2_large", "afrimt5", "cheetah", "toucan"}
+
 
 def collect(data_dir):
     """One row per finished run."""
@@ -81,8 +89,11 @@ def collect(data_dir):
         else:
             condition = "Full fine-tune"
 
+        model_key = report.get("model", dir_name.replace("output_", ""))
+
         rows.append({
-            "model":          report.get("model", dir_name.replace("output_", "")),
+            "model":          model_key,
+            "model_type":     "Africa-specific" if model_key in AFRICA_SPECIFIC_MODELS else "General multilingual",
             "condition":      condition,
             "checkpoint":     report.get("model_name", ""),
             "target_column":  report.get("target_column", "") or "pcm_augmented",
@@ -119,6 +130,7 @@ def to_markdown(frame):
 
     columns = [
         ("model", "Model"),
+        ("model_type", "Type"),
         ("condition", "Condition"),
         ("checkpoint", "Checkpoint"),
         ("bleu", "BLEU"),
