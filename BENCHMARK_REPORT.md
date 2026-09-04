@@ -2531,11 +2531,44 @@ as `toucan` regardless, per the qualitative override documented in
 
     **Not yet run**: raters (native Nigerian Pidgin speakers,
     independent of the project) have not yet been recruited or
-    completed the study. `human_eval/` is deliberately not yet pushed
-    to the public repository -- publishing `unblind_key.json` before
-    data collection finishes would let any reader unblind the study
-    early, defeating the point. It will be published alongside the
-    results once collection is complete.
+    completed the study. `human_eval/` was originally held back from
+    the public repository (publishing `unblind_key.json` before data
+    collection finishes would let a reader unblind the study early),
+    but was pushed anyway once the hosting deprovisioning notice below
+    made data-loss risk the bigger concern -- it is on GitHub now,
+    unblind key included.
+13. **Compute instance deprovisioning (2026-09-07): all local-only
+    artifacts backed up off-server.** The project's hosting notified
+    that the disk wipes in 3 days. Audited everything not already on
+    GitHub/HuggingFace against that deadline:
+    - `logs/` (23MB) -- already tracked on GitHub, no action needed
+      (confirmed directly against `origin/main`, not assumed from memory).
+    - `human_eval/` -- pushed (item 12, immediately above).
+    - **The real gap: 11 full-fine-tuned models' and 14 LoRA adapters'
+      weights had never been uploaded anywhere.** `toucan` (flagship)
+      was already public on HuggingFace; `mt5_large` had been hard-deleted
+      from HuggingFace per the author's earlier request (§9.5) and existed
+      only on this server. Discovered each `output_<model>/` directory's
+      apparent size (6-17GB) was mostly `checkpoint-*/` subdirectories --
+      Trainer's intermediate snapshots for resuming interrupted training,
+      irrelevant now that every run finished -- and the actually-needed
+      model weights are a fraction of that: 34.5GB across the 11 full-FT
+      models and 0.7GB across the 14 LoRA adapters, 35.2GB total rather
+      than the ~170GB the raw directory sizes suggested.
+    - Backed up all 25 (11 full-FT + 14 LoRA, `checkpoint-*/` excluded)
+      to private HuggingFace repos (`coderGit/eng-pidginedu-backup-<model>`
+      and `coderGit/eng-pidginedu-backup-lora-<model>`) via
+      `backup_checkpoints.py`. One transient HuggingFace 503 during the
+      batch run left two repos (`lora-t5v11xl`, `lora-toucan`) unfinished;
+      both retried individually and confirmed. **Every one of the 25
+      repos verified afterward** (not just assumed from a clean exit
+      code) -- private, non-empty, contains actual weight files.
+    - `baseline_runs/` (78GB, superseded pre-fix checkpoints for
+      mt5/afrimt5/nllb/m2m100) deliberately **not** backed up, per the
+      author's explicit decision -- these are failed/superseded weights
+      already excluded from GitHub by the author's own request (§8), and
+      the incidents themselves remain fully documented in this report's
+      prose regardless of whether the raw weights survive the wipe.
 
 ---
 
