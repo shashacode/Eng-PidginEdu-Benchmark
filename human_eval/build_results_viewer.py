@@ -99,8 +99,8 @@ TEMPLATE = r'''<title>PidginEdu Results Viewer</title>
   .bar-label .val { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
   .bar-track { height: 12px; background: var(--border-soft); border-radius: 999px; overflow: hidden; }
   .bar-fill { height: 100%; border-radius: 999px; }
-  .bar-fill.toucan { background: var(--accent); }
-  .bar-fill.mt5_large { background: var(--warm); }
+  .bar-fill.africa { background: var(--accent); }
+  .bar-fill.general { background: var(--warm); }
   .bar-fill.tie { background: var(--tie); }
 
   table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
@@ -110,8 +110,8 @@ TEMPLATE = r'''<title>PidginEdu Results Viewer</title>
   .table-wrap { overflow-x: auto; }
 
   .pill { display: inline-block; font-size: 0.76rem; font-weight: 700; padding: 2px 9px; border-radius: 999px; }
-  .pill.toucan { background: var(--accent-soft); color: var(--accent); }
-  .pill.mt5_large { background: var(--warm-soft); color: var(--warm); }
+  .pill.africa { background: var(--accent-soft); color: var(--accent); }
+  .pill.general { background: var(--warm-soft); color: var(--warm); }
   .pill.tie { background: var(--tie-soft); color: var(--tie); }
 
   .notes-list { display: flex; flex-direction: column; gap: 10px; }
@@ -164,10 +164,22 @@ TEMPLATE = r'''<title>PidginEdu Results Viewer</title>
     </div>
 
     <div class="card panel">
-      <h2>Preference by subject</h2>
+      <h2>Preference by matchup</h2>
+      <p class="hint" style="margin-top:-8px; margin-bottom:14px;">Each row is one Africa-specific model paired against one general multilingual model at the same rank tier.</p>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Subject</th><th>toucan</th><th>mt5_large</th><th>tie</th><th>n</th></tr></thead>
+          <thead><tr><th>Matchup</th><th>Africa-specific wins</th><th>General wins</th><th>Tie</th><th>n</th></tr></thead>
+          <tbody id="matchupTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card panel">
+      <h2>Preference by subject</h2>
+      <p class="hint" style="margin-top:-8px; margin-bottom:14px;">Pooled across all five matchups.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Subject</th><th>Africa-specific wins</th><th>General wins</th><th>Tie</th><th>n</th></tr></thead>
           <tbody id="subjectTable"></tbody>
         </table>
       </div>
@@ -199,6 +211,9 @@ TEMPLATE = r'''<title>PidginEdu Results Viewer</title>
   var KEY = JSON.parse(document.getElementById("analysisKey").textContent);
   var KEY_BY_ID = {};
   KEY.forEach(function (r) { KEY_BY_ID[r.id] = r; });
+
+  var AFRICA_SPECIFIC = { afriteva: 1, afriteva_v2_large: 1, afrimt5: 1, cheetah: 1, toucan: 1 };
+  function isAfrica(model) { return !!AFRICA_SPECIFIC[model]; }
 
   var raters = []; // { name, unblinded: { row_id: {choice, gloss, note} } }
 
@@ -259,11 +274,21 @@ TEMPLATE = r'''<title>PidginEdu Results Viewer</title>
     (payload.ratings || []).forEach(function (row) {
       var key = KEY_BY_ID[row.row_id];
       if (!key) return;
-      var choice = row.choice === "tie" ? "tie" : (row.choice === "a" ? key.a_model : (row.choice === "b" ? key.b_model : null));
-      var gloss = row.gloss_judgment;
-      if (gloss === "a_only") gloss = key.a_model + "_only";
-      else if (gloss === "b_only") gloss = key.b_model + "_only";
-      unblinded[row.row_id] = { choice: choice, gloss: gloss, note: row.note || "", subject: key.subject };
+      var choiceModel = row.choice === "a" ? key.a_model : (row.choice === "b" ? key.b_model : null);
+      var choiceSide = row.choice === "tie" ? "tie" : (choiceModel === null ? null : (isAfrica(choiceModel) ? "africa" : "general"));
+
+      var glossSide = row.gloss_judgment;
+      if (glossSide === "a_only") glossSide = isAfrica(key.a_model) ? "africa_only" : "general_only";
+      else if (glossSide === "b_only") glossSide = isAfrica(key.b_model) ? "africa_only" : "general_only";
+
+      unblinded[row.row_id] = {
+        choice: choiceSide,
+        choiceModel: choiceModel,
+        gloss: glossSide,
+        note: row.note || "",
+        subject: key.subject,
+        pairLabel: key.pair_label,
+      };
     });
     raters.push({ name: name, unblinded: unblinded });
     renderChips();
@@ -320,9 +345,10 @@ TEMPLATE = r'''<title>PidginEdu Results Viewer</title>
     }
     resultsSection.classList.add("visible");
 
-    var prefCounts = { toucan: 0, mt5_large: 0, tie: 0 };
+    var prefCounts = { africa: 0, general: 0, tie: 0 };
     var glossCounts = {};
-    var subjectCounts = {}; // subject -> {toucan, mt5_large, tie, n}
+    var subjectCounts = {}; // subject -> {africa, general, tie, n}
+    var matchupCounts = {}; // pairLabel -> {africa, general, tie, n}
     var totalJudgments = 0;
     var notes = [];
 
@@ -332,10 +358,16 @@ TEMPLATE = r'''<title>PidginEdu Results Viewer</title>
         if (row.choice) {
           prefCounts[row.choice] = (prefCounts[row.choice] || 0) + 1;
           totalJudgments++;
+
           var subj = row.subject || "Unknown";
-          if (!subjectCounts[subj]) subjectCounts[subj] = { toucan: 0, mt5_large: 0, tie: 0, n: 0 };
-          subjectCounts[subj][row.choice] = (subjectCounts[subj][row.choice] || 0) + 1;
+          if (!subjectCounts[subj]) subjectCounts[subj] = { africa: 0, general: 0, tie: 0, n: 0 };
+          subjectCounts[subj][row.choice]++;
           subjectCounts[subj].n++;
+
+          var pl = row.pairLabel || "Unknown matchup";
+          if (!matchupCounts[pl]) matchupCounts[pl] = { africa: 0, general: 0, tie: 0, n: 0 };
+          matchupCounts[pl][row.choice]++;
+          matchupCounts[pl].n++;
         }
         if (row.gloss && row.gloss !== "na") {
           glossCounts[row.gloss] = (glossCounts[row.gloss] || 0) + 1;
@@ -350,17 +382,28 @@ TEMPLATE = r'''<title>PidginEdu Results Viewer</title>
     document.getElementById("statJudgments").textContent = totalJudgments;
 
     // preference bars
-    var prefTotal = prefCounts.toucan + prefCounts.mt5_large + prefCounts.tie;
+    var prefTotal = prefCounts.africa + prefCounts.general + prefCounts.tie;
     var prefBars = document.getElementById("prefBars");
     prefBars.innerHTML = "";
-    [["toucan", "toucan"], ["mt5_large", "mt5_large"], ["tie", "tie"]].forEach(function (pair) {
+    [["africa", "Africa-specific"], ["general", "General multilingual"], ["tie", "tie"]].forEach(function (pair) {
       var key = pair[0], label = pair[1];
       var n = prefCounts[key] || 0;
+      var barClass = key;
       var row = document.createElement("div");
       row.className = "bar-row";
       row.innerHTML = "<div class='bar-label'><span class='name'>" + label + "</span><span class='val'>" + n + " (" + fmtPct(n, prefTotal) + ")</span></div>" +
-        "<div class='bar-track'><div class='bar-fill " + key + "' style='width:" + (prefTotal ? (100 * n / prefTotal) : 0) + "%'></div></div>";
+        "<div class='bar-track'><div class='bar-fill " + barClass + "' style='width:" + (prefTotal ? (100 * n / prefTotal) : 0) + "%'></div></div>";
       prefBars.appendChild(row);
+    });
+
+    // matchup table
+    var matchupTable = document.getElementById("matchupTable");
+    matchupTable.innerHTML = "";
+    Object.keys(matchupCounts).sort().forEach(function (pl) {
+      var c = matchupCounts[pl];
+      var tr = document.createElement("tr");
+      tr.innerHTML = "<td>" + pl + "</td><td>" + c.africa + "</td><td>" + c.general + "</td><td>" + c.tie + "</td><td>" + c.n + "</td>";
+      matchupTable.appendChild(tr);
     });
 
     // gloss bars
@@ -372,12 +415,14 @@ TEMPLATE = r'''<title>PidginEdu Results Viewer</title>
       glossEmpty.hidden = false;
     } else {
       glossEmpty.hidden = true;
+      var GLOSS_LABELS = { both_good: "Both good", neither: "Neither good", africa_only: "Only Africa-specific side good", general_only: "Only general side good" };
       Object.keys(glossCounts).sort(function (a, b) { return glossCounts[b] - glossCounts[a]; }).forEach(function (label) {
         var n = glossCounts[label];
-        var barClass = label.indexOf("toucan") === 0 ? "toucan" : (label.indexOf("mt5_large") === 0 ? "mt5_large" : "tie");
+        var barClass = label === "africa_only" ? "africa" : (label === "general_only" ? "general" : "tie");
+        var displayLabel = GLOSS_LABELS[label] || label;
         var row = document.createElement("div");
         row.className = "bar-row";
-        row.innerHTML = "<div class='bar-label'><span class='name'>" + label + "</span><span class='val'>" + n + " (" + fmtPct(n, glossTotal) + ")</span></div>" +
+        row.innerHTML = "<div class='bar-label'><span class='name'>" + displayLabel + "</span><span class='val'>" + n + " (" + fmtPct(n, glossTotal) + ")</span></div>" +
           "<div class='bar-track'><div class='bar-fill " + barClass + "' style='width:" + (100 * n / glossTotal) + "%'></div></div>";
         glossBars.appendChild(row);
       });
@@ -389,7 +434,7 @@ TEMPLATE = r'''<title>PidginEdu Results Viewer</title>
     Object.keys(subjectCounts).sort(function (a, b) { return subjectCounts[b].n - subjectCounts[a].n; }).forEach(function (subj) {
       var c = subjectCounts[subj];
       var tr = document.createElement("tr");
-      tr.innerHTML = "<td>" + subj + "</td><td>" + (c.toucan || 0) + "</td><td>" + (c.mt5_large || 0) + "</td><td>" + (c.tie || 0) + "</td><td>" + c.n + "</td>";
+      tr.innerHTML = "<td>" + subj + "</td><td>" + (c.africa || 0) + "</td><td>" + (c.general || 0) + "</td><td>" + (c.tie || 0) + "</td><td>" + c.n + "</td>";
       subjectTable.appendChild(tr);
     });
 

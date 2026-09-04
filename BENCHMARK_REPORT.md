@@ -2529,6 +2529,27 @@ as `toucan` regardless, per the qualitative override documented in
     results viewer accepts either a pasted paragraph or an uploaded
     file as equivalent input.
 
+    **Redesigned from a single comparison to five, per the author's
+    explicit direction**: the study originally compared only `toucan`
+    vs. `mt5_large` (the flagship decision). The author instead wanted
+    the study to speak to RQ6's broader finding (general multilingual
+    models outperforming Africa-specific ones on automated metrics,
+    §13) -- rebuilt as **5 matchups, 10 sentences each**, each pairing
+    one of the 5 Africa-specific models against one of the 5 general
+    multilingual models at the *same rank tier* by full-fine-tune
+    GlossF1 (1st-vs-1st, 2nd-vs-2nd, ...): `afriteva_v2_large` vs.
+    `mt5_large`, `toucan` vs. `m2m100_1.2b`, `cheetah` vs. `mbart50`,
+    `afrimt5` vs. `nllb`, `afriteva` vs. `seamless`. This is a genuine
+    trade-off, stated plainly: it drops the original toucan-vs-mt5_large
+    flagship comparison as its own dedicated block (toucan is now
+    compared against `m2m100_1.2b`, not `mt5_large`), in exchange for
+    a study that speaks to the Africa-specific-vs-general question
+    directly rather than only the flagship question. Both the rating
+    tool and the results viewer (matchup-level breakdown, not just
+    overall/by-subject) were rebuilt for this; the 50-sentence sampling
+    excludes identical-output rows per matchup, as established above,
+    rather than globally.
+
     **Not yet run**: raters (native Nigerian Pidgin speakers,
     independent of the project) have not yet been recruited or
     completed the study. `human_eval/` was originally held back from

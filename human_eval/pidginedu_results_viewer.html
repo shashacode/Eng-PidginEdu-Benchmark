@@ -92,8 +92,8 @@
   .bar-label .val { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
   .bar-track { height: 12px; background: var(--border-soft); border-radius: 999px; overflow: hidden; }
   .bar-fill { height: 100%; border-radius: 999px; }
-  .bar-fill.toucan { background: var(--accent); }
-  .bar-fill.mt5_large { background: var(--warm); }
+  .bar-fill.africa { background: var(--accent); }
+  .bar-fill.general { background: var(--warm); }
   .bar-fill.tie { background: var(--tie); }
 
   table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
@@ -103,8 +103,8 @@
   .table-wrap { overflow-x: auto; }
 
   .pill { display: inline-block; font-size: 0.76rem; font-weight: 700; padding: 2px 9px; border-radius: 999px; }
-  .pill.toucan { background: var(--accent-soft); color: var(--accent); }
-  .pill.mt5_large { background: var(--warm-soft); color: var(--warm); }
+  .pill.africa { background: var(--accent-soft); color: var(--accent); }
+  .pill.general { background: var(--warm-soft); color: var(--warm); }
   .pill.tie { background: var(--tie-soft); color: var(--tie); }
 
   .notes-list { display: flex; flex-direction: column; gap: 10px; }
@@ -157,10 +157,22 @@
     </div>
 
     <div class="card panel">
-      <h2>Preference by subject</h2>
+      <h2>Preference by matchup</h2>
+      <p class="hint" style="margin-top:-8px; margin-bottom:14px;">Each row is one Africa-specific model paired against one general multilingual model at the same rank tier.</p>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Subject</th><th>toucan</th><th>mt5_large</th><th>tie</th><th>n</th></tr></thead>
+          <thead><tr><th>Matchup</th><th>Africa-specific wins</th><th>General wins</th><th>Tie</th><th>n</th></tr></thead>
+          <tbody id="matchupTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card panel">
+      <h2>Preference by subject</h2>
+      <p class="hint" style="margin-top:-8px; margin-bottom:14px;">Pooled across all five matchups.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Subject</th><th>Africa-specific wins</th><th>General wins</th><th>Tie</th><th>n</th></tr></thead>
           <tbody id="subjectTable"></tbody>
         </table>
       </div>
@@ -183,7 +195,7 @@
   </section>
 </div>
 
-<script type="application/json" id="analysisKey">[{"id": "r001", "source_id": "engpidginedu-07994", "subject": "Business study", "has_gloss": false, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r002", "source_id": "engpidginedu-20422", "subject": "Computer science", "has_gloss": true, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r003", "source_id": "engpidginedu-23087", "subject": "Computer science", "has_gloss": false, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r004", "source_id": "engpidginedu-25729", "subject": "Biology", "has_gloss": false, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r005", "source_id": "engpidginedu-19827", "subject": "Computer science", "has_gloss": true, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r006", "source_id": "engpidginedu-15420", "subject": "Computer science", "has_gloss": true, "a_model": "toucan", "b_model": "mt5_large"}, {"id": "r007", "source_id": "engpidginedu-01069", "subject": "Government", "has_gloss": true, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r008", "source_id": "engpidginedu-24270", "subject": "Computer science", "has_gloss": false, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r009", "source_id": "engpidginedu-00683", "subject": "Government", "has_gloss": true, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r010", "source_id": "engpidginedu-08763", "subject": "Business study", "has_gloss": true, "a_model": "toucan", "b_model": "mt5_large"}, {"id": "r011", "source_id": "engpidginedu-17386", "subject": "Computer science", "has_gloss": false, "a_model": "toucan", "b_model": "mt5_large"}, {"id": "r012", "source_id": "engpidginedu-13252", "subject": "Social studies", "has_gloss": true, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r013", "source_id": "engpidginedu-16565", "subject": "Computer science", "has_gloss": true, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r014", "source_id": "engpidginedu-22532", "subject": "Computer science", "has_gloss": true, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r015", "source_id": "engpidginedu-05801", "subject": "Business study", "has_gloss": false, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r016", "source_id": "engpidginedu-08322", "subject": "Business study", "has_gloss": true, "a_model": "toucan", "b_model": "mt5_large"}, {"id": "r017", "source_id": "engpidginedu-11904", "subject": "Social studies", "has_gloss": false, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r018", "source_id": "engpidginedu-02674", "subject": "Government", "has_gloss": true, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r019", "source_id": "engpidginedu-13777", "subject": "History", "has_gloss": true, "a_model": "toucan", "b_model": "mt5_large"}, {"id": "r020", "source_id": "engpidginedu-17891", "subject": "Computer science", "has_gloss": false, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r021", "source_id": "engpidginedu-05804", "subject": "Business study", "has_gloss": false, "a_model": "toucan", "b_model": "mt5_large"}, {"id": "r022", "source_id": "engpidginedu-19726", "subject": "Computer science", "has_gloss": true, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r023", "source_id": "engpidginedu-23325", "subject": "Computer science", "has_gloss": true, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r024", "source_id": "engpidginedu-21993", "subject": "Computer science", "has_gloss": true, "a_model": "toucan", "b_model": "mt5_large"}, {"id": "r025", "source_id": "engpidginedu-24637", "subject": "Computer science", "has_gloss": true, "a_model": "toucan", "b_model": "mt5_large"}, {"id": "r026", "source_id": "engpidginedu-07908", "subject": "Business study", "has_gloss": true, "a_model": "toucan", "b_model": "mt5_large"}, {"id": "r027", "source_id": "engpidginedu-25141", "subject": "Biology", "has_gloss": true, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r028", "source_id": "engpidginedu-24202", "subject": "Computer science", "has_gloss": false, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r029", "source_id": "engpidginedu-20480", "subject": "Computer science", "has_gloss": false, "a_model": "toucan", "b_model": "mt5_large"}, {"id": "r030", "source_id": "engpidginedu-10746", "subject": "English Language", "has_gloss": false, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r031", "source_id": "engpidginedu-12794", "subject": "Social studies", "has_gloss": true, "a_model": "toucan", "b_model": "mt5_large"}, {"id": "r032", "source_id": "engpidginedu-15989", "subject": "Computer science", "has_gloss": true, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r033", "source_id": "engpidginedu-01491", "subject": "Government", "has_gloss": false, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r034", "source_id": "engpidginedu-11063", "subject": "English Language", "has_gloss": true, "a_model": "toucan", "b_model": "mt5_large"}, {"id": "r035", "source_id": "engpidginedu-25793", "subject": "Biology", "has_gloss": true, "a_model": "toucan", "b_model": "mt5_large"}, {"id": "r036", "source_id": "engpidginedu-05717", "subject": "Business study", "has_gloss": true, "a_model": "toucan", "b_model": "mt5_large"}, {"id": "r037", "source_id": "engpidginedu-14083", "subject": "Computer science", "has_gloss": false, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r038", "source_id": "engpidginedu-25087", "subject": "Biology", "has_gloss": false, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r039", "source_id": "engpidginedu-00307", "subject": "Government", "has_gloss": false, "a_model": "toucan", "b_model": "mt5_large"}, {"id": "r040", "source_id": "engpidginedu-16928", "subject": "Computer science", "has_gloss": true, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r041", "source_id": "engpidginedu-18308", "subject": "Computer science", "has_gloss": false, "a_model": "toucan", "b_model": "mt5_large"}, {"id": "r042", "source_id": "engpidginedu-13510", "subject": "History", "has_gloss": false, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r043", "source_id": "engpidginedu-06913", "subject": "Business study", "has_gloss": true, "a_model": "toucan", "b_model": "mt5_large"}, {"id": "r044", "source_id": "engpidginedu-19260", "subject": "Computer science", "has_gloss": false, "a_model": "toucan", "b_model": "mt5_large"}, {"id": "r045", "source_id": "engpidginedu-13942", "subject": "Computer science", "has_gloss": true, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r046", "source_id": "engpidginedu-13858", "subject": "Computer science", "has_gloss": true, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r047", "source_id": "engpidginedu-08943", "subject": "Business study", "has_gloss": false, "a_model": "toucan", "b_model": "mt5_large"}, {"id": "r048", "source_id": "engpidginedu-16327", "subject": "Computer science", "has_gloss": false, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r049", "source_id": "engpidginedu-15540", "subject": "Computer science", "has_gloss": true, "a_model": "mt5_large", "b_model": "toucan"}, {"id": "r050", "source_id": "engpidginedu-20552", "subject": "Computer science", "has_gloss": true, "a_model": "toucan", "b_model": "mt5_large"}]</script>
+<script type="application/json" id="analysisKey">[{"id": "r001", "source_id": "engpidginedu-01302", "subject": "Government", "has_gloss": false, "a_model": "cheetah", "b_model": "mbart50", "pair_label": "cheetah vs mbart50"}, {"id": "r002", "source_id": "engpidginedu-19339", "subject": "Computer science", "has_gloss": false, "a_model": "toucan", "b_model": "m2m100_1.2b", "pair_label": "toucan vs m2m100_1.2b"}, {"id": "r003", "source_id": "engpidginedu-14433", "subject": "Computer science", "has_gloss": false, "a_model": "m2m100_1.2b", "b_model": "toucan", "pair_label": "toucan vs m2m100_1.2b"}, {"id": "r004", "source_id": "engpidginedu-09779", "subject": "Business study", "has_gloss": true, "a_model": "cheetah", "b_model": "mbart50", "pair_label": "cheetah vs mbart50"}, {"id": "r005", "source_id": "engpidginedu-15405", "subject": "Computer science", "has_gloss": false, "a_model": "afrimt5", "b_model": "nllb", "pair_label": "afrimt5 vs nllb"}, {"id": "r006", "source_id": "engpidginedu-19553", "subject": "Computer science", "has_gloss": true, "a_model": "afriteva_v2_large", "b_model": "mt5_large", "pair_label": "afriteva_v2_large vs mt5_large"}, {"id": "r007", "source_id": "engpidginedu-21222", "subject": "Computer science", "has_gloss": false, "a_model": "toucan", "b_model": "m2m100_1.2b", "pair_label": "toucan vs m2m100_1.2b"}, {"id": "r008", "source_id": "engpidginedu-16428", "subject": "Computer science", "has_gloss": false, "a_model": "nllb", "b_model": "afrimt5", "pair_label": "afrimt5 vs nllb"}, {"id": "r009", "source_id": "engpidginedu-17404", "subject": "Computer science", "has_gloss": false, "a_model": "mbart50", "b_model": "cheetah", "pair_label": "cheetah vs mbart50"}, {"id": "r010", "source_id": "engpidginedu-21717", "subject": "Computer science", "has_gloss": false, "a_model": "seamless", "b_model": "afriteva", "pair_label": "afriteva vs seamless"}, {"id": "r011", "source_id": "engpidginedu-07908", "subject": "Business study", "has_gloss": true, "a_model": "nllb", "b_model": "afrimt5", "pair_label": "afrimt5 vs nllb"}, {"id": "r012", "source_id": "engpidginedu-19067", "subject": "Computer science", "has_gloss": false, "a_model": "afriteva_v2_large", "b_model": "mt5_large", "pair_label": "afriteva_v2_large vs mt5_large"}, {"id": "r013", "source_id": "engpidginedu-17687", "subject": "Computer science", "has_gloss": true, "a_model": "afriteva_v2_large", "b_model": "mt5_large", "pair_label": "afriteva_v2_large vs mt5_large"}, {"id": "r014", "source_id": "engpidginedu-19016", "subject": "Computer science", "has_gloss": true, "a_model": "afrimt5", "b_model": "nllb", "pair_label": "afrimt5 vs nllb"}, {"id": "r015", "source_id": "engpidginedu-12929", "subject": "Social studies", "has_gloss": false, "a_model": "mt5_large", "b_model": "afriteva_v2_large", "pair_label": "afriteva_v2_large vs mt5_large"}, {"id": "r016", "source_id": "engpidginedu-25224", "subject": "Biology", "has_gloss": true, "a_model": "cheetah", "b_model": "mbart50", "pair_label": "cheetah vs mbart50"}, {"id": "r017", "source_id": "engpidginedu-09139", "subject": "Business study", "has_gloss": true, "a_model": "mbart50", "b_model": "cheetah", "pair_label": "cheetah vs mbart50"}, {"id": "r018", "source_id": "engpidginedu-16259", "subject": "Computer science", "has_gloss": true, "a_model": "afrimt5", "b_model": "nllb", "pair_label": "afrimt5 vs nllb"}, {"id": "r019", "source_id": "engpidginedu-07164", "subject": "Business study", "has_gloss": true, "a_model": "mt5_large", "b_model": "afriteva_v2_large", "pair_label": "afriteva_v2_large vs mt5_large"}, {"id": "r020", "source_id": "engpidginedu-26063", "subject": "Biology", "has_gloss": false, "a_model": "afriteva", "b_model": "seamless", "pair_label": "afriteva vs seamless"}, {"id": "r021", "source_id": "engpidginedu-16008", "subject": "Computer science", "has_gloss": true, "a_model": "mt5_large", "b_model": "afriteva_v2_large", "pair_label": "afriteva_v2_large vs mt5_large"}, {"id": "r022", "source_id": "engpidginedu-21149", "subject": "Computer science", "has_gloss": false, "a_model": "cheetah", "b_model": "mbart50", "pair_label": "cheetah vs mbart50"}, {"id": "r023", "source_id": "engpidginedu-07648", "subject": "Business study", "has_gloss": false, "a_model": "afriteva_v2_large", "b_model": "mt5_large", "pair_label": "afriteva_v2_large vs mt5_large"}, {"id": "r024", "source_id": "engpidginedu-24086", "subject": "Computer science", "has_gloss": false, "a_model": "afrimt5", "b_model": "nllb", "pair_label": "afrimt5 vs nllb"}, {"id": "r025", "source_id": "engpidginedu-19238", "subject": "Computer science", "has_gloss": true, "a_model": "m2m100_1.2b", "b_model": "toucan", "pair_label": "toucan vs m2m100_1.2b"}, {"id": "r026", "source_id": "engpidginedu-19971", "subject": "Computer science", "has_gloss": true, "a_model": "seamless", "b_model": "afriteva", "pair_label": "afriteva vs seamless"}, {"id": "r027", "source_id": "engpidginedu-25794", "subject": "Biology", "has_gloss": true, "a_model": "nllb", "b_model": "afrimt5", "pair_label": "afrimt5 vs nllb"}, {"id": "r028", "source_id": "engpidginedu-09268", "subject": "Business study", "has_gloss": true, "a_model": "m2m100_1.2b", "b_model": "toucan", "pair_label": "toucan vs m2m100_1.2b"}, {"id": "r029", "source_id": "engpidginedu-23859", "subject": "Computer science", "has_gloss": true, "a_model": "afriteva", "b_model": "seamless", "pair_label": "afriteva vs seamless"}, {"id": "r030", "source_id": "engpidginedu-22620", "subject": "Computer science", "has_gloss": true, "a_model": "m2m100_1.2b", "b_model": "toucan", "pair_label": "toucan vs m2m100_1.2b"}, {"id": "r031", "source_id": "engpidginedu-05954", "subject": "Business study", "has_gloss": false, "a_model": "afriteva", "b_model": "seamless", "pair_label": "afriteva vs seamless"}, {"id": "r032", "source_id": "engpidginedu-23463", "subject": "Computer science", "has_gloss": false, "a_model": "mbart50", "b_model": "cheetah", "pair_label": "cheetah vs mbart50"}, {"id": "r033", "source_id": "engpidginedu-25294", "subject": "Biology", "has_gloss": true, "a_model": "cheetah", "b_model": "mbart50", "pair_label": "cheetah vs mbart50"}, {"id": "r034", "source_id": "engpidginedu-18736", "subject": "Computer science", "has_gloss": true, "a_model": "nllb", "b_model": "afrimt5", "pair_label": "afrimt5 vs nllb"}, {"id": "r035", "source_id": "engpidginedu-00635", "subject": "Government", "has_gloss": true, "a_model": "toucan", "b_model": "m2m100_1.2b", "pair_label": "toucan vs m2m100_1.2b"}, {"id": "r036", "source_id": "engpidginedu-24604", "subject": "Computer science", "has_gloss": true, "a_model": "mt5_large", "b_model": "afriteva_v2_large", "pair_label": "afriteva_v2_large vs mt5_large"}, {"id": "r037", "source_id": "engpidginedu-14812", "subject": "Computer science", "has_gloss": false, "a_model": "nllb", "b_model": "afrimt5", "pair_label": "afrimt5 vs nllb"}, {"id": "r038", "source_id": "engpidginedu-15384", "subject": "Computer science", "has_gloss": false, "a_model": "m2m100_1.2b", "b_model": "toucan", "pair_label": "toucan vs m2m100_1.2b"}, {"id": "r039", "source_id": "engpidginedu-21487", "subject": "Computer science", "has_gloss": true, "a_model": "seamless", "b_model": "afriteva", "pair_label": "afriteva vs seamless"}, {"id": "r040", "source_id": "engpidginedu-02584", "subject": "Government", "has_gloss": true, "a_model": "mt5_large", "b_model": "afriteva_v2_large", "pair_label": "afriteva_v2_large vs mt5_large"}, {"id": "r041", "source_id": "engpidginedu-06222", "subject": "Business study", "has_gloss": true, "a_model": "afriteva", "b_model": "seamless", "pair_label": "afriteva vs seamless"}, {"id": "r042", "source_id": "engpidginedu-06482", "subject": "Business study", "has_gloss": true, "a_model": "toucan", "b_model": "m2m100_1.2b", "pair_label": "toucan vs m2m100_1.2b"}, {"id": "r043", "source_id": "engpidginedu-21745", "subject": "Computer science", "has_gloss": false, "a_model": "afriteva", "b_model": "seamless", "pair_label": "afriteva vs seamless"}, {"id": "r044", "source_id": "engpidginedu-00502", "subject": "Government", "has_gloss": true, "a_model": "seamless", "b_model": "afriteva", "pair_label": "afriteva vs seamless"}, {"id": "r045", "source_id": "engpidginedu-03246", "subject": "Government", "has_gloss": true, "a_model": "afrimt5", "b_model": "nllb", "pair_label": "afrimt5 vs nllb"}, {"id": "r046", "source_id": "engpidginedu-18988", "subject": "Computer science", "has_gloss": true, "a_model": "cheetah", "b_model": "mbart50", "pair_label": "cheetah vs mbart50"}, {"id": "r047", "source_id": "engpidginedu-22532", "subject": "Computer science", "has_gloss": true, "a_model": "afriteva", "b_model": "seamless", "pair_label": "afriteva vs seamless"}, {"id": "r048", "source_id": "engpidginedu-13825", "subject": "Computer science", "has_gloss": true, "a_model": "cheetah", "b_model": "mbart50", "pair_label": "cheetah vs mbart50"}, {"id": "r049", "source_id": "engpidginedu-01072", "subject": "Government", "has_gloss": true, "a_model": "m2m100_1.2b", "b_model": "toucan", "pair_label": "toucan vs m2m100_1.2b"}, {"id": "r050", "source_id": "engpidginedu-20679", "subject": "Computer science", "has_gloss": false, "a_model": "afriteva_v2_large", "b_model": "mt5_large", "pair_label": "afriteva_v2_large vs mt5_large"}]</script>
 
 <script>
 (function () {
@@ -192,6 +204,9 @@
   var KEY = JSON.parse(document.getElementById("analysisKey").textContent);
   var KEY_BY_ID = {};
   KEY.forEach(function (r) { KEY_BY_ID[r.id] = r; });
+
+  var AFRICA_SPECIFIC = { afriteva: 1, afriteva_v2_large: 1, afrimt5: 1, cheetah: 1, toucan: 1 };
+  function isAfrica(model) { return !!AFRICA_SPECIFIC[model]; }
 
   var raters = []; // { name, unblinded: { row_id: {choice, gloss, note} } }
 
@@ -252,11 +267,21 @@
     (payload.ratings || []).forEach(function (row) {
       var key = KEY_BY_ID[row.row_id];
       if (!key) return;
-      var choice = row.choice === "tie" ? "tie" : (row.choice === "a" ? key.a_model : (row.choice === "b" ? key.b_model : null));
-      var gloss = row.gloss_judgment;
-      if (gloss === "a_only") gloss = key.a_model + "_only";
-      else if (gloss === "b_only") gloss = key.b_model + "_only";
-      unblinded[row.row_id] = { choice: choice, gloss: gloss, note: row.note || "", subject: key.subject };
+      var choiceModel = row.choice === "a" ? key.a_model : (row.choice === "b" ? key.b_model : null);
+      var choiceSide = row.choice === "tie" ? "tie" : (choiceModel === null ? null : (isAfrica(choiceModel) ? "africa" : "general"));
+
+      var glossSide = row.gloss_judgment;
+      if (glossSide === "a_only") glossSide = isAfrica(key.a_model) ? "africa_only" : "general_only";
+      else if (glossSide === "b_only") glossSide = isAfrica(key.b_model) ? "africa_only" : "general_only";
+
+      unblinded[row.row_id] = {
+        choice: choiceSide,
+        choiceModel: choiceModel,
+        gloss: glossSide,
+        note: row.note || "",
+        subject: key.subject,
+        pairLabel: key.pair_label,
+      };
     });
     raters.push({ name: name, unblinded: unblinded });
     renderChips();
@@ -313,9 +338,10 @@
     }
     resultsSection.classList.add("visible");
 
-    var prefCounts = { toucan: 0, mt5_large: 0, tie: 0 };
+    var prefCounts = { africa: 0, general: 0, tie: 0 };
     var glossCounts = {};
-    var subjectCounts = {}; // subject -> {toucan, mt5_large, tie, n}
+    var subjectCounts = {}; // subject -> {africa, general, tie, n}
+    var matchupCounts = {}; // pairLabel -> {africa, general, tie, n}
     var totalJudgments = 0;
     var notes = [];
 
@@ -325,10 +351,16 @@
         if (row.choice) {
           prefCounts[row.choice] = (prefCounts[row.choice] || 0) + 1;
           totalJudgments++;
+
           var subj = row.subject || "Unknown";
-          if (!subjectCounts[subj]) subjectCounts[subj] = { toucan: 0, mt5_large: 0, tie: 0, n: 0 };
-          subjectCounts[subj][row.choice] = (subjectCounts[subj][row.choice] || 0) + 1;
+          if (!subjectCounts[subj]) subjectCounts[subj] = { africa: 0, general: 0, tie: 0, n: 0 };
+          subjectCounts[subj][row.choice]++;
           subjectCounts[subj].n++;
+
+          var pl = row.pairLabel || "Unknown matchup";
+          if (!matchupCounts[pl]) matchupCounts[pl] = { africa: 0, general: 0, tie: 0, n: 0 };
+          matchupCounts[pl][row.choice]++;
+          matchupCounts[pl].n++;
         }
         if (row.gloss && row.gloss !== "na") {
           glossCounts[row.gloss] = (glossCounts[row.gloss] || 0) + 1;
@@ -343,17 +375,28 @@
     document.getElementById("statJudgments").textContent = totalJudgments;
 
     // preference bars
-    var prefTotal = prefCounts.toucan + prefCounts.mt5_large + prefCounts.tie;
+    var prefTotal = prefCounts.africa + prefCounts.general + prefCounts.tie;
     var prefBars = document.getElementById("prefBars");
     prefBars.innerHTML = "";
-    [["toucan", "toucan"], ["mt5_large", "mt5_large"], ["tie", "tie"]].forEach(function (pair) {
+    [["africa", "Africa-specific"], ["general", "General multilingual"], ["tie", "tie"]].forEach(function (pair) {
       var key = pair[0], label = pair[1];
       var n = prefCounts[key] || 0;
+      var barClass = key;
       var row = document.createElement("div");
       row.className = "bar-row";
       row.innerHTML = "<div class='bar-label'><span class='name'>" + label + "</span><span class='val'>" + n + " (" + fmtPct(n, prefTotal) + ")</span></div>" +
-        "<div class='bar-track'><div class='bar-fill " + key + "' style='width:" + (prefTotal ? (100 * n / prefTotal) : 0) + "%'></div></div>";
+        "<div class='bar-track'><div class='bar-fill " + barClass + "' style='width:" + (prefTotal ? (100 * n / prefTotal) : 0) + "%'></div></div>";
       prefBars.appendChild(row);
+    });
+
+    // matchup table
+    var matchupTable = document.getElementById("matchupTable");
+    matchupTable.innerHTML = "";
+    Object.keys(matchupCounts).sort().forEach(function (pl) {
+      var c = matchupCounts[pl];
+      var tr = document.createElement("tr");
+      tr.innerHTML = "<td>" + pl + "</td><td>" + c.africa + "</td><td>" + c.general + "</td><td>" + c.tie + "</td><td>" + c.n + "</td>";
+      matchupTable.appendChild(tr);
     });
 
     // gloss bars
@@ -365,12 +408,14 @@
       glossEmpty.hidden = false;
     } else {
       glossEmpty.hidden = true;
+      var GLOSS_LABELS = { both_good: "Both good", neither: "Neither good", africa_only: "Only Africa-specific side good", general_only: "Only general side good" };
       Object.keys(glossCounts).sort(function (a, b) { return glossCounts[b] - glossCounts[a]; }).forEach(function (label) {
         var n = glossCounts[label];
-        var barClass = label.indexOf("toucan") === 0 ? "toucan" : (label.indexOf("mt5_large") === 0 ? "mt5_large" : "tie");
+        var barClass = label === "africa_only" ? "africa" : (label === "general_only" ? "general" : "tie");
+        var displayLabel = GLOSS_LABELS[label] || label;
         var row = document.createElement("div");
         row.className = "bar-row";
-        row.innerHTML = "<div class='bar-label'><span class='name'>" + label + "</span><span class='val'>" + n + " (" + fmtPct(n, glossTotal) + ")</span></div>" +
+        row.innerHTML = "<div class='bar-label'><span class='name'>" + displayLabel + "</span><span class='val'>" + n + " (" + fmtPct(n, glossTotal) + ")</span></div>" +
           "<div class='bar-track'><div class='bar-fill " + barClass + "' style='width:" + (100 * n / glossTotal) + "%'></div></div>";
         glossBars.appendChild(row);
       });
@@ -382,7 +427,7 @@
     Object.keys(subjectCounts).sort(function (a, b) { return subjectCounts[b].n - subjectCounts[a].n; }).forEach(function (subj) {
       var c = subjectCounts[subj];
       var tr = document.createElement("tr");
-      tr.innerHTML = "<td>" + subj + "</td><td>" + (c.toucan || 0) + "</td><td>" + (c.mt5_large || 0) + "</td><td>" + (c.tie || 0) + "</td><td>" + c.n + "</td>";
+      tr.innerHTML = "<td>" + subj + "</td><td>" + (c.africa || 0) + "</td><td>" + (c.general || 0) + "</td><td>" + (c.tie || 0) + "</td><td>" + c.n + "</td>";
       subjectTable.appendChild(tr);
     });
 

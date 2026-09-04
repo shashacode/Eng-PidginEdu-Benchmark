@@ -1,302 +1,352 @@
 [
  {
   "id": "r001",
-  "source_id": "engpidginedu-07994",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-01302",
+  "a_model": "cheetah",
+  "b_model": "mbart50",
+  "pair_label": "cheetah vs mbart50"
  },
  {
   "id": "r002",
-  "source_id": "engpidginedu-20422",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-19339",
+  "a_model": "toucan",
+  "b_model": "m2m100_1.2b",
+  "pair_label": "toucan vs m2m100_1.2b"
  },
  {
   "id": "r003",
-  "source_id": "engpidginedu-23087",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-14433",
+  "a_model": "m2m100_1.2b",
+  "b_model": "toucan",
+  "pair_label": "toucan vs m2m100_1.2b"
  },
  {
   "id": "r004",
-  "source_id": "engpidginedu-25729",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-09779",
+  "a_model": "cheetah",
+  "b_model": "mbart50",
+  "pair_label": "cheetah vs mbart50"
  },
  {
   "id": "r005",
-  "source_id": "engpidginedu-19827",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-15405",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb"
  },
  {
   "id": "r006",
-  "source_id": "engpidginedu-15420",
-  "a_model": "toucan",
-  "b_model": "mt5_large"
+  "source_id": "engpidginedu-19553",
+  "a_model": "afriteva_v2_large",
+  "b_model": "mt5_large",
+  "pair_label": "afriteva_v2_large vs mt5_large"
  },
  {
   "id": "r007",
-  "source_id": "engpidginedu-01069",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-21222",
+  "a_model": "toucan",
+  "b_model": "m2m100_1.2b",
+  "pair_label": "toucan vs m2m100_1.2b"
  },
  {
   "id": "r008",
-  "source_id": "engpidginedu-24270",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-16428",
+  "a_model": "nllb",
+  "b_model": "afrimt5",
+  "pair_label": "afrimt5 vs nllb"
  },
  {
   "id": "r009",
-  "source_id": "engpidginedu-00683",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-17404",
+  "a_model": "mbart50",
+  "b_model": "cheetah",
+  "pair_label": "cheetah vs mbart50"
  },
  {
   "id": "r010",
-  "source_id": "engpidginedu-08763",
-  "a_model": "toucan",
-  "b_model": "mt5_large"
+  "source_id": "engpidginedu-21717",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless"
  },
  {
   "id": "r011",
-  "source_id": "engpidginedu-17386",
-  "a_model": "toucan",
-  "b_model": "mt5_large"
+  "source_id": "engpidginedu-07908",
+  "a_model": "nllb",
+  "b_model": "afrimt5",
+  "pair_label": "afrimt5 vs nllb"
  },
  {
   "id": "r012",
-  "source_id": "engpidginedu-13252",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-19067",
+  "a_model": "afriteva_v2_large",
+  "b_model": "mt5_large",
+  "pair_label": "afriteva_v2_large vs mt5_large"
  },
  {
   "id": "r013",
-  "source_id": "engpidginedu-16565",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-17687",
+  "a_model": "afriteva_v2_large",
+  "b_model": "mt5_large",
+  "pair_label": "afriteva_v2_large vs mt5_large"
  },
  {
   "id": "r014",
-  "source_id": "engpidginedu-22532",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-19016",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb"
  },
  {
   "id": "r015",
-  "source_id": "engpidginedu-05801",
+  "source_id": "engpidginedu-12929",
   "a_model": "mt5_large",
-  "b_model": "toucan"
+  "b_model": "afriteva_v2_large",
+  "pair_label": "afriteva_v2_large vs mt5_large"
  },
  {
   "id": "r016",
-  "source_id": "engpidginedu-08322",
-  "a_model": "toucan",
-  "b_model": "mt5_large"
+  "source_id": "engpidginedu-25224",
+  "a_model": "cheetah",
+  "b_model": "mbart50",
+  "pair_label": "cheetah vs mbart50"
  },
  {
   "id": "r017",
-  "source_id": "engpidginedu-11904",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-09139",
+  "a_model": "mbart50",
+  "b_model": "cheetah",
+  "pair_label": "cheetah vs mbart50"
  },
  {
   "id": "r018",
-  "source_id": "engpidginedu-02674",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-16259",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb"
  },
  {
   "id": "r019",
-  "source_id": "engpidginedu-13777",
-  "a_model": "toucan",
-  "b_model": "mt5_large"
+  "source_id": "engpidginedu-07164",
+  "a_model": "mt5_large",
+  "b_model": "afriteva_v2_large",
+  "pair_label": "afriteva_v2_large vs mt5_large"
  },
  {
   "id": "r020",
-  "source_id": "engpidginedu-17891",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-26063",
+  "a_model": "afriteva",
+  "b_model": "seamless",
+  "pair_label": "afriteva vs seamless"
  },
  {
   "id": "r021",
-  "source_id": "engpidginedu-05804",
-  "a_model": "toucan",
-  "b_model": "mt5_large"
+  "source_id": "engpidginedu-16008",
+  "a_model": "mt5_large",
+  "b_model": "afriteva_v2_large",
+  "pair_label": "afriteva_v2_large vs mt5_large"
  },
  {
   "id": "r022",
-  "source_id": "engpidginedu-19726",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-21149",
+  "a_model": "cheetah",
+  "b_model": "mbart50",
+  "pair_label": "cheetah vs mbart50"
  },
  {
   "id": "r023",
-  "source_id": "engpidginedu-23325",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-07648",
+  "a_model": "afriteva_v2_large",
+  "b_model": "mt5_large",
+  "pair_label": "afriteva_v2_large vs mt5_large"
  },
  {
   "id": "r024",
-  "source_id": "engpidginedu-21993",
-  "a_model": "toucan",
-  "b_model": "mt5_large"
+  "source_id": "engpidginedu-24086",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb"
  },
  {
   "id": "r025",
-  "source_id": "engpidginedu-24637",
-  "a_model": "toucan",
-  "b_model": "mt5_large"
+  "source_id": "engpidginedu-19238",
+  "a_model": "m2m100_1.2b",
+  "b_model": "toucan",
+  "pair_label": "toucan vs m2m100_1.2b"
  },
  {
   "id": "r026",
-  "source_id": "engpidginedu-07908",
-  "a_model": "toucan",
-  "b_model": "mt5_large"
+  "source_id": "engpidginedu-19971",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless"
  },
  {
   "id": "r027",
-  "source_id": "engpidginedu-25141",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-25794",
+  "a_model": "nllb",
+  "b_model": "afrimt5",
+  "pair_label": "afrimt5 vs nllb"
  },
  {
   "id": "r028",
-  "source_id": "engpidginedu-24202",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-09268",
+  "a_model": "m2m100_1.2b",
+  "b_model": "toucan",
+  "pair_label": "toucan vs m2m100_1.2b"
  },
  {
   "id": "r029",
-  "source_id": "engpidginedu-20480",
-  "a_model": "toucan",
-  "b_model": "mt5_large"
+  "source_id": "engpidginedu-23859",
+  "a_model": "afriteva",
+  "b_model": "seamless",
+  "pair_label": "afriteva vs seamless"
  },
  {
   "id": "r030",
-  "source_id": "engpidginedu-10746",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-22620",
+  "a_model": "m2m100_1.2b",
+  "b_model": "toucan",
+  "pair_label": "toucan vs m2m100_1.2b"
  },
  {
   "id": "r031",
-  "source_id": "engpidginedu-12794",
-  "a_model": "toucan",
-  "b_model": "mt5_large"
+  "source_id": "engpidginedu-05954",
+  "a_model": "afriteva",
+  "b_model": "seamless",
+  "pair_label": "afriteva vs seamless"
  },
  {
   "id": "r032",
-  "source_id": "engpidginedu-15989",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-23463",
+  "a_model": "mbart50",
+  "b_model": "cheetah",
+  "pair_label": "cheetah vs mbart50"
  },
  {
   "id": "r033",
-  "source_id": "engpidginedu-01491",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-25294",
+  "a_model": "cheetah",
+  "b_model": "mbart50",
+  "pair_label": "cheetah vs mbart50"
  },
  {
   "id": "r034",
-  "source_id": "engpidginedu-11063",
-  "a_model": "toucan",
-  "b_model": "mt5_large"
+  "source_id": "engpidginedu-18736",
+  "a_model": "nllb",
+  "b_model": "afrimt5",
+  "pair_label": "afrimt5 vs nllb"
  },
  {
   "id": "r035",
-  "source_id": "engpidginedu-25793",
+  "source_id": "engpidginedu-00635",
   "a_model": "toucan",
-  "b_model": "mt5_large"
+  "b_model": "m2m100_1.2b",
+  "pair_label": "toucan vs m2m100_1.2b"
  },
  {
   "id": "r036",
-  "source_id": "engpidginedu-05717",
-  "a_model": "toucan",
-  "b_model": "mt5_large"
+  "source_id": "engpidginedu-24604",
+  "a_model": "mt5_large",
+  "b_model": "afriteva_v2_large",
+  "pair_label": "afriteva_v2_large vs mt5_large"
  },
  {
   "id": "r037",
-  "source_id": "engpidginedu-14083",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-14812",
+  "a_model": "nllb",
+  "b_model": "afrimt5",
+  "pair_label": "afrimt5 vs nllb"
  },
  {
   "id": "r038",
-  "source_id": "engpidginedu-25087",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-15384",
+  "a_model": "m2m100_1.2b",
+  "b_model": "toucan",
+  "pair_label": "toucan vs m2m100_1.2b"
  },
  {
   "id": "r039",
-  "source_id": "engpidginedu-00307",
-  "a_model": "toucan",
-  "b_model": "mt5_large"
+  "source_id": "engpidginedu-21487",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless"
  },
  {
   "id": "r040",
-  "source_id": "engpidginedu-16928",
+  "source_id": "engpidginedu-02584",
   "a_model": "mt5_large",
-  "b_model": "toucan"
+  "b_model": "afriteva_v2_large",
+  "pair_label": "afriteva_v2_large vs mt5_large"
  },
  {
   "id": "r041",
-  "source_id": "engpidginedu-18308",
-  "a_model": "toucan",
-  "b_model": "mt5_large"
+  "source_id": "engpidginedu-06222",
+  "a_model": "afriteva",
+  "b_model": "seamless",
+  "pair_label": "afriteva vs seamless"
  },
  {
   "id": "r042",
-  "source_id": "engpidginedu-13510",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-06482",
+  "a_model": "toucan",
+  "b_model": "m2m100_1.2b",
+  "pair_label": "toucan vs m2m100_1.2b"
  },
  {
   "id": "r043",
-  "source_id": "engpidginedu-06913",
-  "a_model": "toucan",
-  "b_model": "mt5_large"
+  "source_id": "engpidginedu-21745",
+  "a_model": "afriteva",
+  "b_model": "seamless",
+  "pair_label": "afriteva vs seamless"
  },
  {
   "id": "r044",
-  "source_id": "engpidginedu-19260",
-  "a_model": "toucan",
-  "b_model": "mt5_large"
+  "source_id": "engpidginedu-00502",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless"
  },
  {
   "id": "r045",
-  "source_id": "engpidginedu-13942",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-03246",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb"
  },
  {
   "id": "r046",
-  "source_id": "engpidginedu-13858",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-18988",
+  "a_model": "cheetah",
+  "b_model": "mbart50",
+  "pair_label": "cheetah vs mbart50"
  },
  {
   "id": "r047",
-  "source_id": "engpidginedu-08943",
-  "a_model": "toucan",
-  "b_model": "mt5_large"
+  "source_id": "engpidginedu-22532",
+  "a_model": "afriteva",
+  "b_model": "seamless",
+  "pair_label": "afriteva vs seamless"
  },
  {
   "id": "r048",
-  "source_id": "engpidginedu-16327",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-13825",
+  "a_model": "cheetah",
+  "b_model": "mbart50",
+  "pair_label": "cheetah vs mbart50"
  },
  {
   "id": "r049",
-  "source_id": "engpidginedu-15540",
-  "a_model": "mt5_large",
-  "b_model": "toucan"
+  "source_id": "engpidginedu-01072",
+  "a_model": "m2m100_1.2b",
+  "b_model": "toucan",
+  "pair_label": "toucan vs m2m100_1.2b"
  },
  {
   "id": "r050",
-  "source_id": "engpidginedu-20552",
-  "a_model": "toucan",
-  "b_model": "mt5_large"
+  "source_id": "engpidginedu-20679",
+  "a_model": "afriteva_v2_large",
+  "b_model": "mt5_large",
+  "pair_label": "afriteva_v2_large vs mt5_large"
  }
 ]
