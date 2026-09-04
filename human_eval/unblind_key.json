@@ -1,352 +1,1042 @@
 [
  {
-  "id": "r001",
-  "source_id": "engpidginedu-01302",
-  "a_model": "cheetah",
-  "b_model": "mbart50",
-  "pair_label": "cheetah vs mbart50"
- },
- {
-  "id": "r002",
-  "source_id": "engpidginedu-19339",
-  "a_model": "toucan",
-  "b_model": "m2m100_1.2b",
-  "pair_label": "toucan vs m2m100_1.2b"
- },
- {
-  "id": "r003",
-  "source_id": "engpidginedu-14433",
-  "a_model": "m2m100_1.2b",
-  "b_model": "toucan",
-  "pair_label": "toucan vs m2m100_1.2b"
- },
- {
-  "id": "r004",
-  "source_id": "engpidginedu-09779",
-  "a_model": "cheetah",
-  "b_model": "mbart50",
-  "pair_label": "cheetah vs mbart50"
- },
- {
-  "id": "r005",
-  "source_id": "engpidginedu-15405",
-  "a_model": "afrimt5",
-  "b_model": "nllb",
-  "pair_label": "afrimt5 vs nllb"
- },
- {
-  "id": "r006",
-  "source_id": "engpidginedu-19553",
-  "a_model": "afriteva_v2_large",
-  "b_model": "mt5_large",
-  "pair_label": "afriteva_v2_large vs mt5_large"
- },
- {
-  "id": "r007",
-  "source_id": "engpidginedu-21222",
-  "a_model": "toucan",
-  "b_model": "m2m100_1.2b",
-  "pair_label": "toucan vs m2m100_1.2b"
- },
- {
-  "id": "r008",
-  "source_id": "engpidginedu-16428",
-  "a_model": "nllb",
-  "b_model": "afrimt5",
-  "pair_label": "afrimt5 vs nllb"
- },
- {
-  "id": "r009",
-  "source_id": "engpidginedu-17404",
-  "a_model": "mbart50",
-  "b_model": "cheetah",
-  "pair_label": "cheetah vs mbart50"
- },
- {
-  "id": "r010",
-  "source_id": "engpidginedu-21717",
-  "a_model": "seamless",
-  "b_model": "afriteva",
-  "pair_label": "afriteva vs seamless"
- },
- {
-  "id": "r011",
-  "source_id": "engpidginedu-07908",
-  "a_model": "nllb",
-  "b_model": "afrimt5",
-  "pair_label": "afrimt5 vs nllb"
- },
- {
-  "id": "r012",
-  "source_id": "engpidginedu-19067",
-  "a_model": "afriteva_v2_large",
-  "b_model": "mt5_large",
-  "pair_label": "afriteva_v2_large vs mt5_large"
- },
- {
-  "id": "r013",
-  "source_id": "engpidginedu-17687",
-  "a_model": "afriteva_v2_large",
-  "b_model": "mt5_large",
-  "pair_label": "afriteva_v2_large vs mt5_large"
- },
- {
-  "id": "r014",
-  "source_id": "engpidginedu-19016",
-  "a_model": "afrimt5",
-  "b_model": "nllb",
-  "pair_label": "afrimt5 vs nllb"
- },
- {
-  "id": "r015",
-  "source_id": "engpidginedu-12929",
-  "a_model": "mt5_large",
-  "b_model": "afriteva_v2_large",
-  "pair_label": "afriteva_v2_large vs mt5_large"
- },
- {
-  "id": "r016",
-  "source_id": "engpidginedu-25224",
-  "a_model": "cheetah",
-  "b_model": "mbart50",
-  "pair_label": "cheetah vs mbart50"
- },
- {
-  "id": "r017",
-  "source_id": "engpidginedu-09139",
-  "a_model": "mbart50",
-  "b_model": "cheetah",
-  "pair_label": "cheetah vs mbart50"
- },
- {
-  "id": "r018",
-  "source_id": "engpidginedu-16259",
-  "a_model": "afrimt5",
-  "b_model": "nllb",
-  "pair_label": "afrimt5 vs nllb"
- },
- {
-  "id": "r019",
-  "source_id": "engpidginedu-07164",
-  "a_model": "mt5_large",
-  "b_model": "afriteva_v2_large",
-  "pair_label": "afriteva_v2_large vs mt5_large"
- },
- {
-  "id": "r020",
-  "source_id": "engpidginedu-26063",
-  "a_model": "afriteva",
-  "b_model": "seamless",
-  "pair_label": "afriteva vs seamless"
- },
- {
-  "id": "r021",
-  "source_id": "engpidginedu-16008",
-  "a_model": "mt5_large",
-  "b_model": "afriteva_v2_large",
-  "pair_label": "afriteva_v2_large vs mt5_large"
- },
- {
-  "id": "r022",
-  "source_id": "engpidginedu-21149",
-  "a_model": "cheetah",
-  "b_model": "mbart50",
-  "pair_label": "cheetah vs mbart50"
- },
- {
-  "id": "r023",
-  "source_id": "engpidginedu-07648",
-  "a_model": "afriteva_v2_large",
-  "b_model": "mt5_large",
-  "pair_label": "afriteva_v2_large vs mt5_large"
- },
- {
-  "id": "r024",
-  "source_id": "engpidginedu-24086",
-  "a_model": "afrimt5",
-  "b_model": "nllb",
-  "pair_label": "afrimt5 vs nllb"
- },
- {
-  "id": "r025",
-  "source_id": "engpidginedu-19238",
-  "a_model": "m2m100_1.2b",
-  "b_model": "toucan",
-  "pair_label": "toucan vs m2m100_1.2b"
- },
- {
-  "id": "r026",
-  "source_id": "engpidginedu-19971",
-  "a_model": "seamless",
-  "b_model": "afriteva",
-  "pair_label": "afriteva vs seamless"
- },
- {
-  "id": "r027",
-  "source_id": "engpidginedu-25794",
-  "a_model": "nllb",
-  "b_model": "afrimt5",
-  "pair_label": "afrimt5 vs nllb"
- },
- {
-  "id": "r028",
-  "source_id": "engpidginedu-09268",
-  "a_model": "m2m100_1.2b",
-  "b_model": "toucan",
-  "pair_label": "toucan vs m2m100_1.2b"
- },
- {
-  "id": "r029",
-  "source_id": "engpidginedu-23859",
-  "a_model": "afriteva",
-  "b_model": "seamless",
-  "pair_label": "afriteva vs seamless"
- },
- {
-  "id": "r030",
-  "source_id": "engpidginedu-22620",
-  "a_model": "m2m100_1.2b",
-  "b_model": "toucan",
-  "pair_label": "toucan vs m2m100_1.2b"
- },
- {
-  "id": "r031",
-  "source_id": "engpidginedu-05954",
-  "a_model": "afriteva",
-  "b_model": "seamless",
-  "pair_label": "afriteva vs seamless"
- },
- {
-  "id": "r032",
-  "source_id": "engpidginedu-23463",
-  "a_model": "mbart50",
-  "b_model": "cheetah",
-  "pair_label": "cheetah vs mbart50"
- },
- {
-  "id": "r033",
-  "source_id": "engpidginedu-25294",
-  "a_model": "cheetah",
-  "b_model": "mbart50",
-  "pair_label": "cheetah vs mbart50"
- },
- {
-  "id": "r034",
-  "source_id": "engpidginedu-18736",
-  "a_model": "nllb",
-  "b_model": "afrimt5",
-  "pair_label": "afrimt5 vs nllb"
- },
- {
-  "id": "r035",
-  "source_id": "engpidginedu-00635",
-  "a_model": "toucan",
-  "b_model": "m2m100_1.2b",
-  "pair_label": "toucan vs m2m100_1.2b"
- },
- {
-  "id": "r036",
-  "source_id": "engpidginedu-24604",
-  "a_model": "mt5_large",
-  "b_model": "afriteva_v2_large",
-  "pair_label": "afriteva_v2_large vs mt5_large"
- },
- {
-  "id": "r037",
-  "source_id": "engpidginedu-14812",
-  "a_model": "nllb",
-  "b_model": "afrimt5",
-  "pair_label": "afrimt5 vs nllb"
- },
- {
-  "id": "r038",
-  "source_id": "engpidginedu-15384",
-  "a_model": "m2m100_1.2b",
-  "b_model": "toucan",
-  "pair_label": "toucan vs m2m100_1.2b"
- },
- {
-  "id": "r039",
-  "source_id": "engpidginedu-21487",
-  "a_model": "seamless",
-  "b_model": "afriteva",
-  "pair_label": "afriteva vs seamless"
- },
- {
-  "id": "r040",
-  "source_id": "engpidginedu-02584",
-  "a_model": "mt5_large",
-  "b_model": "afriteva_v2_large",
-  "pair_label": "afriteva_v2_large vs mt5_large"
- },
- {
-  "id": "r041",
-  "source_id": "engpidginedu-06222",
-  "a_model": "afriteva",
-  "b_model": "seamless",
-  "pair_label": "afriteva vs seamless"
- },
- {
-  "id": "r042",
-  "source_id": "engpidginedu-06482",
-  "a_model": "toucan",
-  "b_model": "m2m100_1.2b",
-  "pair_label": "toucan vs m2m100_1.2b"
- },
- {
-  "id": "r043",
-  "source_id": "engpidginedu-21745",
-  "a_model": "afriteva",
-  "b_model": "seamless",
-  "pair_label": "afriteva vs seamless"
- },
- {
-  "id": "r044",
-  "source_id": "engpidginedu-00502",
-  "a_model": "seamless",
-  "b_model": "afriteva",
-  "pair_label": "afriteva vs seamless"
- },
- {
-  "id": "r045",
-  "source_id": "engpidginedu-03246",
-  "a_model": "afrimt5",
-  "b_model": "nllb",
-  "pair_label": "afrimt5 vs nllb"
- },
- {
-  "id": "r046",
-  "source_id": "engpidginedu-18988",
-  "a_model": "cheetah",
-  "b_model": "mbart50",
-  "pair_label": "cheetah vs mbart50"
- },
- {
-  "id": "r047",
-  "source_id": "engpidginedu-22532",
-  "a_model": "afriteva",
-  "b_model": "seamless",
-  "pair_label": "afriteva vs seamless"
- },
- {
-  "id": "r048",
-  "source_id": "engpidginedu-13825",
-  "a_model": "cheetah",
-  "b_model": "mbart50",
-  "pair_label": "cheetah vs mbart50"
- },
- {
-  "id": "r049",
-  "source_id": "engpidginedu-01072",
-  "a_model": "m2m100_1.2b",
-  "b_model": "toucan",
-  "pair_label": "toucan vs m2m100_1.2b"
- },
- {
-  "id": "r050",
+  "id": "m001",
   "source_id": "engpidginedu-20679",
   "a_model": "afriteva_v2_large",
   "b_model": "mt5_large",
-  "pair_label": "afriteva_v2_large vs mt5_large"
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": true
+ },
+ {
+  "id": "m002",
+  "source_id": "engpidginedu-18160",
+  "a_model": "afriteva_v2_large",
+  "b_model": "mt5_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": true
+ },
+ {
+  "id": "m003",
+  "source_id": "engpidginedu-18262",
+  "a_model": "mt5_large",
+  "b_model": "afriteva_v2_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": true
+ },
+ {
+  "id": "m004",
+  "source_id": "engpidginedu-00456",
+  "a_model": "afriteva_v2_large",
+  "b_model": "mt5_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": true
+ },
+ {
+  "id": "m005",
+  "source_id": "engpidginedu-12929",
+  "a_model": "afriteva_v2_large",
+  "b_model": "mt5_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": true
+ },
+ {
+  "id": "m006",
+  "source_id": "engpidginedu-26039",
+  "a_model": "afriteva_v2_large",
+  "b_model": "mt5_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": true
+ },
+ {
+  "id": "m007",
+  "source_id": "engpidginedu-19253",
+  "a_model": "afriteva_v2_large",
+  "b_model": "mt5_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": false
+ },
+ {
+  "id": "m008",
+  "source_id": "engpidginedu-18381",
+  "a_model": "mt5_large",
+  "b_model": "afriteva_v2_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": false
+ },
+ {
+  "id": "m009",
+  "source_id": "engpidginedu-19284",
+  "a_model": "mt5_large",
+  "b_model": "afriteva_v2_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": false
+ },
+ {
+  "id": "m010",
+  "source_id": "engpidginedu-07164",
+  "a_model": "mt5_large",
+  "b_model": "afriteva_v2_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": false
+ },
+ {
+  "id": "m011",
+  "source_id": "engpidginedu-16008",
+  "a_model": "mt5_large",
+  "b_model": "afriteva_v2_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": false
+ },
+ {
+  "id": "m012",
+  "source_id": "engpidginedu-02584",
+  "a_model": "afriteva_v2_large",
+  "b_model": "mt5_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": false
+ },
+ {
+  "id": "m013",
+  "source_id": "engpidginedu-19553",
+  "a_model": "afriteva_v2_large",
+  "b_model": "mt5_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": false
+ },
+ {
+  "id": "m014",
+  "source_id": "engpidginedu-19591",
+  "a_model": "afriteva_v2_large",
+  "b_model": "mt5_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": false
+ },
+ {
+  "id": "m015",
+  "source_id": "engpidginedu-07648",
+  "a_model": "mt5_large",
+  "b_model": "afriteva_v2_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": false
+ },
+ {
+  "id": "m016",
+  "source_id": "engpidginedu-20337",
+  "a_model": "afriteva_v2_large",
+  "b_model": "mt5_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": false
+ },
+ {
+  "id": "m017",
+  "source_id": "engpidginedu-17687",
+  "a_model": "mt5_large",
+  "b_model": "afriteva_v2_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": false
+ },
+ {
+  "id": "m018",
+  "source_id": "engpidginedu-24846",
+  "a_model": "afriteva_v2_large",
+  "b_model": "mt5_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": false
+ },
+ {
+  "id": "m019",
+  "source_id": "engpidginedu-07395",
+  "a_model": "mt5_large",
+  "b_model": "afriteva_v2_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": false
+ },
+ {
+  "id": "m020",
+  "source_id": "engpidginedu-12252",
+  "a_model": "afriteva_v2_large",
+  "b_model": "mt5_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": false
+ },
+ {
+  "id": "m021",
+  "source_id": "engpidginedu-17086",
+  "a_model": "mt5_large",
+  "b_model": "afriteva_v2_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": false
+ },
+ {
+  "id": "m022",
+  "source_id": "engpidginedu-21069",
+  "a_model": "afriteva_v2_large",
+  "b_model": "mt5_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": false
+ },
+ {
+  "id": "m023",
+  "source_id": "engpidginedu-09899",
+  "a_model": "afriteva_v2_large",
+  "b_model": "mt5_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": false
+ },
+ {
+  "id": "m024",
+  "source_id": "engpidginedu-19395",
+  "a_model": "afriteva_v2_large",
+  "b_model": "mt5_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": false
+ },
+ {
+  "id": "m025",
+  "source_id": "engpidginedu-24604",
+  "a_model": "mt5_large",
+  "b_model": "afriteva_v2_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": false
+ },
+ {
+  "id": "m026",
+  "source_id": "engpidginedu-19067",
+  "a_model": "mt5_large",
+  "b_model": "afriteva_v2_large",
+  "pair_label": "afriteva_v2_large vs mt5_large",
+  "is_core": false
+ },
+ {
+  "id": "m027",
+  "source_id": "engpidginedu-21222",
+  "a_model": "m2m100_1.2b",
+  "b_model": "toucan",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": true
+ },
+ {
+  "id": "m028",
+  "source_id": "engpidginedu-23834",
+  "a_model": "m2m100_1.2b",
+  "b_model": "toucan",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": true
+ },
+ {
+  "id": "m029",
+  "source_id": "engpidginedu-06482",
+  "a_model": "toucan",
+  "b_model": "m2m100_1.2b",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": true
+ },
+ {
+  "id": "m030",
+  "source_id": "engpidginedu-16988",
+  "a_model": "m2m100_1.2b",
+  "b_model": "toucan",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": true
+ },
+ {
+  "id": "m031",
+  "source_id": "engpidginedu-09268",
+  "a_model": "toucan",
+  "b_model": "m2m100_1.2b",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": true
+ },
+ {
+  "id": "m032",
+  "source_id": "engpidginedu-22997",
+  "a_model": "m2m100_1.2b",
+  "b_model": "toucan",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": true
+ },
+ {
+  "id": "m033",
+  "source_id": "engpidginedu-22855",
+  "a_model": "toucan",
+  "b_model": "m2m100_1.2b",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": false
+ },
+ {
+  "id": "m034",
+  "source_id": "engpidginedu-18732",
+  "a_model": "m2m100_1.2b",
+  "b_model": "toucan",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": false
+ },
+ {
+  "id": "m035",
+  "source_id": "engpidginedu-11991",
+  "a_model": "toucan",
+  "b_model": "m2m100_1.2b",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": false
+ },
+ {
+  "id": "m036",
+  "source_id": "engpidginedu-19115",
+  "a_model": "m2m100_1.2b",
+  "b_model": "toucan",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": false
+ },
+ {
+  "id": "m037",
+  "source_id": "engpidginedu-24781",
+  "a_model": "m2m100_1.2b",
+  "b_model": "toucan",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": false
+ },
+ {
+  "id": "m038",
+  "source_id": "engpidginedu-19238",
+  "a_model": "m2m100_1.2b",
+  "b_model": "toucan",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": false
+ },
+ {
+  "id": "m039",
+  "source_id": "engpidginedu-00037",
+  "a_model": "m2m100_1.2b",
+  "b_model": "toucan",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": false
+ },
+ {
+  "id": "m040",
+  "source_id": "engpidginedu-19087",
+  "a_model": "m2m100_1.2b",
+  "b_model": "toucan",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": false
+ },
+ {
+  "id": "m041",
+  "source_id": "engpidginedu-15384",
+  "a_model": "toucan",
+  "b_model": "m2m100_1.2b",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": false
+ },
+ {
+  "id": "m042",
+  "source_id": "engpidginedu-14982",
+  "a_model": "toucan",
+  "b_model": "m2m100_1.2b",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": false
+ },
+ {
+  "id": "m043",
+  "source_id": "engpidginedu-19339",
+  "a_model": "toucan",
+  "b_model": "m2m100_1.2b",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": false
+ },
+ {
+  "id": "m044",
+  "source_id": "engpidginedu-10705",
+  "a_model": "m2m100_1.2b",
+  "b_model": "toucan",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": false
+ },
+ {
+  "id": "m045",
+  "source_id": "engpidginedu-00635",
+  "a_model": "toucan",
+  "b_model": "m2m100_1.2b",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": false
+ },
+ {
+  "id": "m046",
+  "source_id": "engpidginedu-15934",
+  "a_model": "toucan",
+  "b_model": "m2m100_1.2b",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": false
+ },
+ {
+  "id": "m047",
+  "source_id": "engpidginedu-21624",
+  "a_model": "toucan",
+  "b_model": "m2m100_1.2b",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": false
+ },
+ {
+  "id": "m048",
+  "source_id": "engpidginedu-14433",
+  "a_model": "toucan",
+  "b_model": "m2m100_1.2b",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": false
+ },
+ {
+  "id": "m049",
+  "source_id": "engpidginedu-22620",
+  "a_model": "m2m100_1.2b",
+  "b_model": "toucan",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": false
+ },
+ {
+  "id": "m050",
+  "source_id": "engpidginedu-08952",
+  "a_model": "toucan",
+  "b_model": "m2m100_1.2b",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": false
+ },
+ {
+  "id": "m051",
+  "source_id": "engpidginedu-01072",
+  "a_model": "m2m100_1.2b",
+  "b_model": "toucan",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": false
+ },
+ {
+  "id": "m052",
+  "source_id": "engpidginedu-22493",
+  "a_model": "toucan",
+  "b_model": "m2m100_1.2b",
+  "pair_label": "toucan vs m2m100_1.2b",
+  "is_core": false
+ },
+ {
+  "id": "m053",
+  "source_id": "engpidginedu-17404",
+  "a_model": "mbart50",
+  "b_model": "cheetah",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": true
+ },
+ {
+  "id": "m054",
+  "source_id": "engpidginedu-01543",
+  "a_model": "cheetah",
+  "b_model": "mbart50",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": true
+ },
+ {
+  "id": "m055",
+  "source_id": "engpidginedu-21359",
+  "a_model": "cheetah",
+  "b_model": "mbart50",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": true
+ },
+ {
+  "id": "m056",
+  "source_id": "engpidginedu-17081",
+  "a_model": "mbart50",
+  "b_model": "cheetah",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": true
+ },
+ {
+  "id": "m057",
+  "source_id": "engpidginedu-21149",
+  "a_model": "cheetah",
+  "b_model": "mbart50",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": true
+ },
+ {
+  "id": "m058",
+  "source_id": "engpidginedu-15423",
+  "a_model": "cheetah",
+  "b_model": "mbart50",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": true
+ },
+ {
+  "id": "m059",
+  "source_id": "engpidginedu-02213",
+  "a_model": "cheetah",
+  "b_model": "mbart50",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": false
+ },
+ {
+  "id": "m060",
+  "source_id": "engpidginedu-18988",
+  "a_model": "cheetah",
+  "b_model": "mbart50",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": false
+ },
+ {
+  "id": "m061",
+  "source_id": "engpidginedu-25294",
+  "a_model": "cheetah",
+  "b_model": "mbart50",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": false
+ },
+ {
+  "id": "m062",
+  "source_id": "engpidginedu-09139",
+  "a_model": "cheetah",
+  "b_model": "mbart50",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": false
+ },
+ {
+  "id": "m063",
+  "source_id": "engpidginedu-02386",
+  "a_model": "mbart50",
+  "b_model": "cheetah",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": false
+ },
+ {
+  "id": "m064",
+  "source_id": "engpidginedu-01302",
+  "a_model": "mbart50",
+  "b_model": "cheetah",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": false
+ },
+ {
+  "id": "m065",
+  "source_id": "engpidginedu-16533",
+  "a_model": "mbart50",
+  "b_model": "cheetah",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": false
+ },
+ {
+  "id": "m066",
+  "source_id": "engpidginedu-17573",
+  "a_model": "mbart50",
+  "b_model": "cheetah",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": false
+ },
+ {
+  "id": "m067",
+  "source_id": "engpidginedu-18893",
+  "a_model": "mbart50",
+  "b_model": "cheetah",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": false
+ },
+ {
+  "id": "m068",
+  "source_id": "engpidginedu-10807",
+  "a_model": "mbart50",
+  "b_model": "cheetah",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": false
+ },
+ {
+  "id": "m069",
+  "source_id": "engpidginedu-03244",
+  "a_model": "mbart50",
+  "b_model": "cheetah",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": false
+ },
+ {
+  "id": "m070",
+  "source_id": "engpidginedu-17675",
+  "a_model": "mbart50",
+  "b_model": "cheetah",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": false
+ },
+ {
+  "id": "m071",
+  "source_id": "engpidginedu-10923",
+  "a_model": "cheetah",
+  "b_model": "mbart50",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": false
+ },
+ {
+  "id": "m072",
+  "source_id": "engpidginedu-23463",
+  "a_model": "mbart50",
+  "b_model": "cheetah",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": false
+ },
+ {
+  "id": "m073",
+  "source_id": "engpidginedu-09268",
+  "a_model": "cheetah",
+  "b_model": "mbart50",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": false
+ },
+ {
+  "id": "m074",
+  "source_id": "engpidginedu-25224",
+  "a_model": "cheetah",
+  "b_model": "mbart50",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": false
+ },
+ {
+  "id": "m075",
+  "source_id": "engpidginedu-18211",
+  "a_model": "cheetah",
+  "b_model": "mbart50",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": false
+ },
+ {
+  "id": "m076",
+  "source_id": "engpidginedu-19217",
+  "a_model": "mbart50",
+  "b_model": "cheetah",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": false
+ },
+ {
+  "id": "m077",
+  "source_id": "engpidginedu-09779",
+  "a_model": "mbart50",
+  "b_model": "cheetah",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": false
+ },
+ {
+  "id": "m078",
+  "source_id": "engpidginedu-13825",
+  "a_model": "mbart50",
+  "b_model": "cheetah",
+  "pair_label": "cheetah vs mbart50",
+  "is_core": false
+ },
+ {
+  "id": "m079",
+  "source_id": "engpidginedu-24692",
+  "a_model": "nllb",
+  "b_model": "afrimt5",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": true
+ },
+ {
+  "id": "m080",
+  "source_id": "engpidginedu-07908",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": true
+ },
+ {
+  "id": "m081",
+  "source_id": "engpidginedu-01658",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": true
+ },
+ {
+  "id": "m082",
+  "source_id": "engpidginedu-25794",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": true
+ },
+ {
+  "id": "m083",
+  "source_id": "engpidginedu-10803",
+  "a_model": "nllb",
+  "b_model": "afrimt5",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": true
+ },
+ {
+  "id": "m084",
+  "source_id": "engpidginedu-16428",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": true
+ },
+ {
+  "id": "m085",
+  "source_id": "engpidginedu-16259",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": false
+ },
+ {
+  "id": "m086",
+  "source_id": "engpidginedu-21717",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": false
+ },
+ {
+  "id": "m087",
+  "source_id": "engpidginedu-15405",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": false
+ },
+ {
+  "id": "m088",
+  "source_id": "engpidginedu-00565",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": false
+ },
+ {
+  "id": "m089",
+  "source_id": "engpidginedu-14812",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": false
+ },
+ {
+  "id": "m090",
+  "source_id": "engpidginedu-02502",
+  "a_model": "nllb",
+  "b_model": "afrimt5",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": false
+ },
+ {
+  "id": "m091",
+  "source_id": "engpidginedu-04689",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": false
+ },
+ {
+  "id": "m092",
+  "source_id": "engpidginedu-22876",
+  "a_model": "nllb",
+  "b_model": "afrimt5",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": false
+ },
+ {
+  "id": "m093",
+  "source_id": "engpidginedu-18173",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": false
+ },
+ {
+  "id": "m094",
+  "source_id": "engpidginedu-22630",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": false
+ },
+ {
+  "id": "m095",
+  "source_id": "engpidginedu-16988",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": false
+ },
+ {
+  "id": "m096",
+  "source_id": "engpidginedu-22740",
+  "a_model": "nllb",
+  "b_model": "afrimt5",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": false
+ },
+ {
+  "id": "m097",
+  "source_id": "engpidginedu-07796",
+  "a_model": "nllb",
+  "b_model": "afrimt5",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": false
+ },
+ {
+  "id": "m098",
+  "source_id": "engpidginedu-02992",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": false
+ },
+ {
+  "id": "m099",
+  "source_id": "engpidginedu-18736",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": false
+ },
+ {
+  "id": "m100",
+  "source_id": "engpidginedu-13310",
+  "a_model": "nllb",
+  "b_model": "afrimt5",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": false
+ },
+ {
+  "id": "m101",
+  "source_id": "engpidginedu-03773",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": false
+ },
+ {
+  "id": "m102",
+  "source_id": "engpidginedu-03246",
+  "a_model": "nllb",
+  "b_model": "afrimt5",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": false
+ },
+ {
+  "id": "m103",
+  "source_id": "engpidginedu-19016",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": false
+ },
+ {
+  "id": "m104",
+  "source_id": "engpidginedu-24086",
+  "a_model": "afrimt5",
+  "b_model": "nllb",
+  "pair_label": "afrimt5 vs nllb",
+  "is_core": false
+ },
+ {
+  "id": "m105",
+  "source_id": "engpidginedu-22532",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless",
+  "is_core": true
+ },
+ {
+  "id": "m106",
+  "source_id": "engpidginedu-02631",
+  "a_model": "afriteva",
+  "b_model": "seamless",
+  "pair_label": "afriteva vs seamless",
+  "is_core": true
+ },
+ {
+  "id": "m107",
+  "source_id": "engpidginedu-03632",
+  "a_model": "afriteva",
+  "b_model": "seamless",
+  "pair_label": "afriteva vs seamless",
+  "is_core": true
+ },
+ {
+  "id": "m108",
+  "source_id": "engpidginedu-21487",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless",
+  "is_core": true
+ },
+ {
+  "id": "m109",
+  "source_id": "engpidginedu-17036",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless",
+  "is_core": true
+ },
+ {
+  "id": "m110",
+  "source_id": "engpidginedu-22739",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless",
+  "is_core": true
+ },
+ {
+  "id": "m111",
+  "source_id": "engpidginedu-02040",
+  "a_model": "afriteva",
+  "b_model": "seamless",
+  "pair_label": "afriteva vs seamless",
+  "is_core": false
+ },
+ {
+  "id": "m112",
+  "source_id": "engpidginedu-16358",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless",
+  "is_core": false
+ },
+ {
+  "id": "m113",
+  "source_id": "engpidginedu-02683",
+  "a_model": "afriteva",
+  "b_model": "seamless",
+  "pair_label": "afriteva vs seamless",
+  "is_core": false
+ },
+ {
+  "id": "m114",
+  "source_id": "engpidginedu-19971",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless",
+  "is_core": false
+ },
+ {
+  "id": "m115",
+  "source_id": "engpidginedu-21936",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless",
+  "is_core": false
+ },
+ {
+  "id": "m116",
+  "source_id": "engpidginedu-20552",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless",
+  "is_core": false
+ },
+ {
+  "id": "m117",
+  "source_id": "engpidginedu-09163",
+  "a_model": "afriteva",
+  "b_model": "seamless",
+  "pair_label": "afriteva vs seamless",
+  "is_core": false
+ },
+ {
+  "id": "m118",
+  "source_id": "engpidginedu-18394",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless",
+  "is_core": false
+ },
+ {
+  "id": "m119",
+  "source_id": "engpidginedu-06222",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless",
+  "is_core": false
+ },
+ {
+  "id": "m120",
+  "source_id": "engpidginedu-21717",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless",
+  "is_core": false
+ },
+ {
+  "id": "m121",
+  "source_id": "engpidginedu-18864",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless",
+  "is_core": false
+ },
+ {
+  "id": "m122",
+  "source_id": "engpidginedu-23859",
+  "a_model": "afriteva",
+  "b_model": "seamless",
+  "pair_label": "afriteva vs seamless",
+  "is_core": false
+ },
+ {
+  "id": "m123",
+  "source_id": "engpidginedu-07395",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless",
+  "is_core": false
+ },
+ {
+  "id": "m124",
+  "source_id": "engpidginedu-02430",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless",
+  "is_core": false
+ },
+ {
+  "id": "m125",
+  "source_id": "engpidginedu-00502",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless",
+  "is_core": false
+ },
+ {
+  "id": "m126",
+  "source_id": "engpidginedu-05954",
+  "a_model": "afriteva",
+  "b_model": "seamless",
+  "pair_label": "afriteva vs seamless",
+  "is_core": false
+ },
+ {
+  "id": "m127",
+  "source_id": "engpidginedu-21745",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless",
+  "is_core": false
+ },
+ {
+  "id": "m128",
+  "source_id": "engpidginedu-02538",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless",
+  "is_core": false
+ },
+ {
+  "id": "m129",
+  "source_id": "engpidginedu-26063",
+  "a_model": "seamless",
+  "b_model": "afriteva",
+  "pair_label": "afriteva vs seamless",
+  "is_core": false
+ },
+ {
+  "id": "m130",
+  "source_id": "engpidginedu-22384",
+  "a_model": "afriteva",
+  "b_model": "seamless",
+  "pair_label": "afriteva vs seamless",
+  "is_core": false
  }
 ]

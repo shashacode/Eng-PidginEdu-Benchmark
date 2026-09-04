@@ -83,8 +83,8 @@ TEMPLATE = r'''<title>PidginEdu Results Viewer</title>
   section.results { display: none; }
   section.results.visible { display: block; }
 
-  .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 22px; }
-  @media (max-width: 600px) { .stat-row { grid-template-columns: 1fr; } }
+  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 22px; }
+  @media (max-width: 700px) { .stat-row { grid-template-columns: repeat(2, 1fr); } }
   .stat-box { padding: 20px; text-align: center; }
   .stat-box .n { font-family: var(--serif); font-size: 2.1rem; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; line-height: 1; margin-bottom: 6px; }
   .stat-box .lbl { font-size: 0.74rem; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.05em; }
@@ -124,7 +124,7 @@ TEMPLATE = r'''<title>PidginEdu Results Viewer</title>
 
 <div class="shell">
   <header class="top">
-    <p class="eyebrow">toucan vs. mt5_large &middot; blind pairwise study</p>
+    <p class="eyebrow">Africa-specific vs. general models &middot; 5 matchups</p>
     <h1>PidginEdu human evaluation results</h1>
     <p>
       Paste in what each rater sent you back from the rating tool (or drop a saved file, if
@@ -150,6 +150,7 @@ TEMPLATE = r'''<title>PidginEdu Results Viewer</title>
       <div class="card stat-box"><div class="n" id="statRaters">0</div><div class="lbl">Raters loaded</div></div>
       <div class="card stat-box"><div class="n" id="statJudgments">0</div><div class="lbl">Total judgments</div></div>
       <div class="card stat-box"><div class="n" id="statKappa">&ndash;</div><div class="lbl">Agreement (kappa)</div></div>
+      <div class="card stat-box"><div class="n" id="statCoverage">0</div><div class="lbl" id="statCoverageLbl">Distinct sentences covered</div></div>
     </div>
 
     <div class="card panel">
@@ -288,6 +289,7 @@ TEMPLATE = r'''<title>PidginEdu Results Viewer</title>
         note: row.note || "",
         subject: key.subject,
         pairLabel: key.pair_label,
+        isCore: !!key.is_core,
       };
     });
     raters.push({ name: name, unblinded: unblinded });
@@ -352,9 +354,13 @@ TEMPLATE = r'''<title>PidginEdu Results Viewer</title>
     var totalJudgments = 0;
     var notes = [];
 
+    var coveredCore = {};
+    var coveredIndividual = {};
+
     raters.forEach(function (r) {
       Object.keys(r.unblinded).forEach(function (rowId) {
         var row = r.unblinded[rowId];
+        (row.isCore ? coveredCore : coveredIndividual)[rowId] = true;
         if (row.choice) {
           prefCounts[row.choice] = (prefCounts[row.choice] || 0) + 1;
           totalJudgments++;
@@ -380,6 +386,11 @@ TEMPLATE = r'''<title>PidginEdu Results Viewer</title>
 
     document.getElementById("statRaters").textContent = raters.length;
     document.getElementById("statJudgments").textContent = totalJudgments;
+
+    var coreN = Object.keys(coveredCore).length;
+    var individualN = Object.keys(coveredIndividual).length;
+    document.getElementById("statCoverage").textContent = coreN + individualN;
+    document.getElementById("statCoverageLbl").textContent = coreN + " core + " + individualN + " rotating";
 
     // preference bars
     var prefTotal = prefCounts.africa + prefCounts.general + prefCounts.tie;

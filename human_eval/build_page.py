@@ -416,7 +416,7 @@ TEMPLATE = r'''<title>PidginEdu Rating Study</title>
     <p class="eyebrow">Blind comparison &middot; ~7&ndash;10 minutes</p>
     <h1>Which Pidgin translation reads better to you?</h1>
     <p>
-      You'll see <strong>__N__ short English sentences</strong> from Nigerian secondary-school
+      You'll see <strong><span id="introCount">50</span> short English sentences</strong> from Nigerian secondary-school
       material, each with two Pidgin translations, labeled only <strong>A</strong> and
       <strong>B</strong>. You won't be told which system made which -- that's deliberate,
       so your judgment isn't influenced by knowing.
@@ -442,7 +442,7 @@ TEMPLATE = r'''<title>PidginEdu Rating Study</title>
   <section id="screenRate" hidden>
     <div class="progress-wrap">
       <div class="progress-meta">
-        <span id="progressText">Item 1 of __N__</span>
+        <span id="progressText">Item 1 of 50</span>
         <span id="progressPct">0%</span>
       </div>
       <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
@@ -512,7 +512,7 @@ TEMPLATE = r'''<title>PidginEdu Rating Study</title>
   <!-- SCREEN 3: done -->
   <section id="screenDone" hidden class="card summary">
     <p class="eyebrow">All done</p>
-    <div class="stat" id="doneCount">__N__</div>
+    <div class="stat" id="doneCount">50</div>
     <div class="stat-label">sentences rated</div>
     <h1>Thank you<span id="doneNameSuffix"></span>.</h1>
     <p>
@@ -535,8 +535,76 @@ TEMPLATE = r'''<title>PidginEdu Rating Study</title>
 (function () {
   "use strict";
 
-  var ROWS = JSON.parse(document.getElementById("ratingData").textContent);
+  var MASTER_POOL = JSON.parse(document.getElementById("ratingData").textContent);
+  var ROWS = null; // this rater's personal playlist, built once their name is known
+  var ROTATING_PER_MATCHUP = 4;
   var STORAGE_KEY = "pidginedu_human_eval_v1";
+
+  // Deterministic per-rater selection: every matchup's "core" items are
+  // shown to everyone (so inter-rater agreement stays measurable), plus
+  // a handful of "rotating" items drawn differently per rater (broader
+  // test-set coverage across the whole study). The draw is seeded from
+  // the rater's own name, so it's stable across reloads for that person
+  // but differs from anyone else's -- no server needed to coordinate it.
+  function hashSeed(str) {
+    var h = 2166136261;
+    for (var i = 0; i < str.length; i++) {
+      h ^= str.charCodeAt(i);
+      h = (h * 16777619) >>> 0;
+    }
+    return h >>> 0;
+  }
+
+  function mulberry32(seed) {
+    return function () {
+      seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+      var t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  function seededShuffle(arr, rng) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(rng() * (i + 1));
+      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+  }
+
+  function buildPlaylist(name) {
+    var rng = mulberry32(hashSeed(name + "::pidginedu_v2"));
+    var byMatchup = {};
+    MASTER_POOL.forEach(function (row) {
+      (byMatchup[row.matchup_idx] = byMatchup[row.matchup_idx] || []).push(row);
+    });
+
+    var playlist = [];
+    Object.keys(byMatchup).sort(function (a, b) { return a - b; }).forEach(function (idx) {
+      var items = byMatchup[idx];
+      var core = items.filter(function (r) { return r.is_core; });
+      var pool = items.filter(function (r) { return !r.is_core; });
+      var rotating = seededShuffle(pool, rng).slice(0, ROTATING_PER_MATCHUP);
+      playlist = playlist.concat(core, rotating);
+    });
+
+    return seededShuffle(playlist, rng);
+  }
+
+  (function setIntroCount() {
+    var byMatchup = {};
+    MASTER_POOL.forEach(function (row) {
+      (byMatchup[row.matchup_idx] = byMatchup[row.matchup_idx] || []).push(row);
+    });
+    var total = 0;
+    Object.keys(byMatchup).forEach(function (idx) {
+      var coreCount = byMatchup[idx].filter(function (r) { return r.is_core; }).length;
+      total += coreCount + ROTATING_PER_MATCHUP;
+    });
+    var el = document.getElementById("introCount");
+    if (el) el.textContent = total;
+  })();
 
   var state = {
     raterName: "",
@@ -718,6 +786,7 @@ TEMPLATE = r'''<title>PidginEdu Rating Study</title>
       return;
     }
     state.raterName = name;
+    ROWS = buildPlaylist(name);
     raterBadge.textContent = name;
     saveState();
     showScreen("rate");
@@ -785,7 +854,7 @@ TEMPLATE = r'''<title>PidginEdu Rating Study</title>
       });
     }
     return {
-      study: "pidginedu_flagship_pairwise_v1",
+      study: "pidginedu_africa_vs_general_v2",
       rater_name: state.raterName,
       exported_at: new Date().toISOString(),
       total_items: ROWS.length,
@@ -828,6 +897,7 @@ TEMPLATE = r'''<title>PidginEdu Rating Study</title>
   if (state.raterName) {
     raterNameInput.value = state.raterName;
     raterBadge.textContent = state.raterName;
+    ROWS = buildPlaylist(state.raterName);
   }
   if (state.raterName && Object.keys(state.answers).length > 0 && state.index < ROWS.length) {
     showScreen("rate");
@@ -839,7 +909,7 @@ TEMPLATE = r'''<title>PidginEdu Rating Study</title>
 </script>
 '''
 
-html = TEMPLATE.replace('__DATA_JSON__', data_json).replace('__N__', str(len(rows)))
+html = TEMPLATE.replace('__DATA_JSON__', data_json)
 
 with open('pidginedu_rating_study.html', 'w', encoding='utf-8') as f:
     f.write(html)

@@ -2550,6 +2550,34 @@ as `toucan` regardless, per the qualitative override documented in
     excludes identical-output rows per matchup, as established above,
     rather than globally.
 
+    **Further redesigned: shared-core + rotating-extras per rater,
+    still 50 questions total.** A fixed 50-item study means every
+    rater rates the exact same sentences, which caps the study's
+    coverage of the test set at 50 items regardless of how many raters
+    participate. Per the author's request, each matchup's 10 questions
+    now split into 6 "core" items every rater sees (so inter-rater
+    agreement stays measurable -- Cohen's kappa needs shared items to
+    compute at all) and 4 "rotating" items drawn from a per-matchup
+    pool of 20 candidates, selected differently per rater. The
+    selection is client-side and deterministic: seeded from a hash of
+    the rater's own name (`mulberry32`, seeded via an FNV-1a-style
+    string hash), so the same name always reproduces the same 50-item
+    playlist (resuming works) while different raters get different
+    rotating items, with no backend or coordination needed. The master
+    pool embedded in the page grew to 130 sentences (30 core + 100
+    rotating candidates across 5 matchups); each individual rater still
+    sees exactly 50. Verified the selection logic against an
+    independent Python port of the same algorithm before trusting it
+    (confirmed: every playlist is exactly 50 items with no duplicates,
+    the same name always reproduces the same playlist, and different
+    names produce different rotating draws) -- the actual browser-side
+    JavaScript itself could not be executed in this environment (no
+    JS runtime available), so this is algorithm-level verification, not
+    a live browser test. The results viewer gained a fourth summary
+    stat (distinct sentences covered, split core vs. rotating) so the
+    coverage gain from rotation is visible, not just happening
+    invisibly.
+
     **Not yet run**: raters (native Nigerian Pidgin speakers,
     independent of the project) have not yet been recruited or
     completed the study. `human_eval/` was originally held back from
